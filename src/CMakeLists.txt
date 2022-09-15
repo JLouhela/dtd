@@ -1,9 +1,2 @@
-add_executable(testlib 
-    main.cpp
-)
-
-
-target_link_libraries(testlib
-	PRIVATE
-        sfml-window
-        sfml-graphics)
+add_subdirectory(game)
+add_subdirectory(game_loop)

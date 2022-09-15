@@ -1,0 +1,2 @@
+add_library(game_interface INTERFACE)
+target_include_directories(game_interface INTERFACE include)
