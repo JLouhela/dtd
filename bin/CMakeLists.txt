@@ -5,5 +5,7 @@ add_executable(dtd
 
 target_link_libraries(dtd
 	PRIVATE
-        sfml-window
-        sfml-graphics)
+        game
+        game_loop
+        renderer
+)

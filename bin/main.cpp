@@ -1,26 +1,14 @@
-#include <SFML/Graphics.hpp>
+#include "game/game_interface.hpp"
+#include "game_loop/game_loop_interface.hpp"
+#include "renderer/renderer_interface.hpp"
 
 int main()
 {
-    // TODO move to renderer
-    sf::RenderWindow window(sf::VideoMode(sf::Vector2(200u, 200u), 32u), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    auto game = game::make_game();
+    auto renderer = renderer::make_renderer();
+    auto game_loop = game_loop::make_game_loop(*game, *renderer);
 
-    while (window.isOpen())
-    {
-        // TODO move to game_loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    game_loop->start();
 
     return 0;
 }

@@ -13,9 +13,15 @@ public:
     Game_loop(game::Game_interface& game, renderer::Renderer_interface& renderer);
     ~Game_loop() final = default;
 
+    void start() final;
+    void stop() final;
+
 private:
+    void run();
+
     game::Game_interface& m_game;
     renderer::Renderer_interface& m_renderer;
+    bool m_running{false};
 };
 
 }  // namespace game_loop

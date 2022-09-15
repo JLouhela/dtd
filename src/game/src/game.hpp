@@ -11,6 +11,8 @@ public:
     Game();
     ~Game() final = default;
 
+    void update(std::int32_t delta_time) final;
+
 private:
 };
 

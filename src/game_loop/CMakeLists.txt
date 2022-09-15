@@ -17,6 +17,7 @@ target_link_libraries(game_loop
     PUBLIC
         game_loop_interface
     PRIVATE
+        sfml-graphics
         game_interface
         renderer_interface
 )
