@@ -2,7 +2,7 @@ generate:
 	cmake -DCMAKE_BUILD_TYPE=Debug -S . -B build
 
 compile:
-	cd build; make
+	make generate; cd build; make
 
 run:
 	./build/bin/dtd
