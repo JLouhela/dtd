@@ -1,0 +1,12 @@
+# Dtd
+Dtd is a hobby project targeting to build a tower defense game with draft mechanics.
+
+Tech stack: SFLM 3 (WIP) and C++17.
+
+Nothing here yet
+
+## Usage
+
+make generate
+make compile
+make run
