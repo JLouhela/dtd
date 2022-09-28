@@ -15,6 +15,8 @@ target_include_directories(renderer
 
 target_link_libraries(renderer
     PUBLIC
+        renderer_interface
         sfml-window
+    PRIVATE
         sfml-graphics
 )

@@ -5,7 +5,8 @@ add_executable(dtd
 
 target_link_libraries(dtd
 	PRIVATE
+        loguru
+        renderer
         game
         game_loop
-        renderer
 )

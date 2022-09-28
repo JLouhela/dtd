@@ -14,7 +14,7 @@ public:
     ~Renderer() final = default;
     void render() final;
     bool has_window() final;
-    bool close_window() final;
+    void close_window() final;
     bool get_window_event(sf::Event& event) final;
 
 private:

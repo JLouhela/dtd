@@ -21,7 +21,7 @@ bool Renderer::has_window()
     return m_window.isOpen();
 }
 
-bool Renderer::close_window()
+void Renderer::close_window()
 {
     m_window.close();
 }

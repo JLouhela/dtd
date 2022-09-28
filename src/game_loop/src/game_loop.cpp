@@ -2,6 +2,7 @@
 
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Window/Event.hpp"
+#include "loguru/loguru.hpp"
 
 namespace game_loop
 {
@@ -18,6 +19,7 @@ void Game_loop::start()
         return;
     }
     m_running = true;
+    LOG_F(INFO, "Starting game loop..");
     run();
 }
 

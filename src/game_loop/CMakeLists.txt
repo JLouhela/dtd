@@ -20,4 +20,5 @@ target_link_libraries(game_loop
         sfml-graphics
         game_interface
         renderer_interface
+        loguru
 )
