@@ -28,20 +28,18 @@ void Game_loop::stop()
 
 void Game_loop::run()
 {
-    auto& window = m_renderer.get_window();
-    while (window.isOpen() && m_running)
+    while (m_renderer.has_window() && m_running)
     {
         sf::Event event;
-        while (window.pollEvent(event))
+        // TODO create some central event handler
+        while (m_renderer.get_window_event(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+            {
+                m_renderer.close_window();
+            }
         }
-
-        // game.update();
-        window.clear();
-        // window.draw(shape);
-        window.display();
+        m_renderer.render();
     }
     m_running = false;
 }

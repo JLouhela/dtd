@@ -12,7 +12,10 @@ class Renderer : public Renderer_interface
 public:
     Renderer();
     ~Renderer() final = default;
-    sf::RenderWindow& get_window() final;
+    void render() final;
+    bool has_window() final;
+    bool close_window() final;
+    bool get_window_event(sf::Event& event) final;
 
 private:
     sf::RenderWindow m_window;
