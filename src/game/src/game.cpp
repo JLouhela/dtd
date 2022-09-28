@@ -9,7 +9,7 @@ Game::Game()
 
 void Game::update(std::int32_t delta_time)
 {
-    // TODO
+    m_system_manager.execute();
 }
 
 std::unique_ptr<Game_interface> make_game()

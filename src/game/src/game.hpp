@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game/game_interface.hpp"
+#include "system_manager.hpp"
 
 namespace game
 {
@@ -14,6 +15,7 @@ public:
     void update(std::int32_t delta_time) final;
 
 private:
+    System_manager m_system_manager;
 };
 
 }  // namespace game
