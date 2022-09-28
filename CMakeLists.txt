@@ -10,7 +10,7 @@ project (Dtd VERSION 0.0.1 LANGUAGES CXX)
 
 set(BUILD_SHARED_LIBS FALSE)
 add_subdirectory(bin)
-add_subdirectory(lib/SFML)
+add_subdirectory(lib)
 add_subdirectory(src)
 #add_subdirectory(res)
 
