@@ -28,6 +28,7 @@ void Game_loop::stop()
 
 void Game_loop::run()
 {
+    sf::Clock delta_clock;
     while (m_renderer.has_window() && m_running)
     {
         sf::Event event;
@@ -39,6 +40,8 @@ void Game_loop::run()
                 m_renderer.close_window();
             }
         }
+        sf::Time dt = delta_clock.restart();
+        m_game.update(dt.asMilliseconds());
         m_renderer.render();
     }
     m_running = false;
