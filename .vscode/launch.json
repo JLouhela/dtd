@@ -6,7 +6,7 @@
             "cwd": "${workspaceFolder}",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/", // Binary to exec
+            "program": "${workspaceFolder}/build/bin/dtd", // Binary to exec
             "args": [],
             "stopAtEntry": false,
             "environment": [],
