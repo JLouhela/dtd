@@ -1,3 +1,4 @@
 add_subdirectory(game)
 add_subdirectory(game_loop)
+add_subdirectory(event_handler)
 add_subdirectory(renderer)

@@ -8,9 +8,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project (Dtd VERSION 0.0.1 LANGUAGES CXX)
 
+
 set(BUILD_SHARED_LIBS FALSE)
-add_subdirectory(bin)
+
 add_subdirectory(lib)
+
+link_libraries(loguru)
+
+add_subdirectory(bin)
 add_subdirectory(src)
 #add_subdirectory(res)
 

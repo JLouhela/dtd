@@ -3,7 +3,7 @@
 namespace renderer
 {
 
-Renderer::Renderer() : m_window{sf::VideoMode{sf::Vector2{200u, 200u}, 32u}, "SFML works!"}
+Renderer::Renderer() : m_window{sf::VideoMode{sf::Vector2{500u, 500u}, 32u}, "Dtd!"}
 {
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -16,19 +16,14 @@ void Renderer::render()
     m_window.display();
 }
 
-bool Renderer::has_window()
-{
-    return m_window.isOpen();
-}
-
 void Renderer::close_window()
 {
     m_window.close();
 }
 
-bool Renderer::get_window_event(sf::Event& event)
+sf::Window& Renderer::get_window()
 {
-    return m_window.pollEvent(event);
+    return m_window;
 }
 
 std::unique_ptr<Renderer_interface> make_renderer()

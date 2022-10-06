@@ -4,7 +4,7 @@
 
 namespace sf
 {
-class RenderWindow;
+class Window;
 class Event;
 }  // namespace sf
 
@@ -16,9 +16,8 @@ class Renderer_interface
 public:
     virtual ~Renderer_interface() = default;
     virtual void render() = 0;
-    virtual bool has_window() = 0;
     virtual void close_window() = 0;
-    virtual bool get_window_event(sf::Event& event) = 0;
+    virtual sf::Window& get_window() = 0;
 };
 
 std::unique_ptr<Renderer_interface> make_renderer();
