@@ -7,6 +7,7 @@ namespace game
 class System_manager
 {
 public:
+    System_manager();
     void execute();
 
 private:

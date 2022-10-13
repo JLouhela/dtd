@@ -19,5 +19,6 @@ target_link_libraries(game
     PUBLIC
         game_interface
     PRIVATE
+        renderer_interface
         EnTT
 )

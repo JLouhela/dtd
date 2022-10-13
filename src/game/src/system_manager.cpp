@@ -3,6 +3,10 @@
 namespace game
 {
 
+System_manager::System_manager()
+{
+}
+
 void System_manager::execute()
 {
 }

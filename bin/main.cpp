@@ -7,8 +7,8 @@
 int main(int argc, char* argv[])
 {
     loguru::init(argc, argv);
-    auto game = game::make_game();
     auto renderer = renderer::make_renderer();
+    auto game = game::make_game(*renderer);
     auto event_handler = events::make_event_handler(renderer->get_window());
     auto game_loop = game_loop::make_game_loop(*game, *renderer, *event_handler);
 

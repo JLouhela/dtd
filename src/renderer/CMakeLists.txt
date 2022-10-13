@@ -2,8 +2,11 @@ add_library(renderer_interface INTERFACE)
 target_include_directories(renderer_interface INTERFACE include)
 
 add_library(renderer
-    src/renderer.hpp
-    src/renderer.cpp
+src/debug_renderer.hpp
+src/debug_renderer.cpp
+src/renderer.hpp
+src/renderer.cpp
+src/window_size.hpp
 )
 
 target_include_directories(renderer

@@ -1,9 +1,17 @@
 #include "renderer.hpp"
 
+#include "window_size.hpp"
+
+namespace
+{
+constexpr sf::Color bg_color{145, 178, 199};
+}  // namespace
+
 namespace renderer
 {
 
-Renderer::Renderer() : m_window{sf::VideoMode{sf::Vector2{500u, 500u}, 32u}, "Dtd!"}
+// TODO configure
+Renderer::Renderer() : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}
 {
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -11,8 +19,14 @@ Renderer::Renderer() : m_window{sf::VideoMode{sf::Vector2{500u, 500u}, 32u}, "Dt
 
 void Renderer::render()
 {
-    m_window.clear();
-    // TODO render tex to screen
+    m_window.clear(bg_color);
+#ifdef DEBUG
+    sf::Sprite debug_tex(m_debug_renderer.get_render_texture().getTexture());
+    m_window.draw(debug_tex);
+    // TODO separate render & clear in renderer interface -> clear there before game logic
+    m_debug_renderer.clear();
+
+#endif
     m_window.display();
 }
 
