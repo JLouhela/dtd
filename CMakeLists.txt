@@ -14,6 +14,7 @@ set(BUILD_SHARED_LIBS FALSE)
 add_subdirectory(lib)
 
 link_libraries(loguru)
+link_libraries(math)
 
 add_subdirectory(bin)
 add_subdirectory(src)
