@@ -2,6 +2,7 @@
 
 #include "game/game_interface.hpp"
 #include "renderer/renderer_interface.hpp"
+#include "scenes/scene_manager.hpp"
 #include "system_manager.hpp"
 
 namespace game
@@ -18,6 +19,7 @@ public:
 private:
     renderer::Renderer_interface& m_renderer;
     System_manager m_system_manager;
+    Scene_manager m_scene_manager;
 };
 
 }  // namespace game
