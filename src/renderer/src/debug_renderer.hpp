@@ -14,6 +14,7 @@ public:
     Debug_renderer();
     ~Debug_renderer() = default;
     void draw_line(const Screen_coord& start, const Screen_coord& end) final;
+    void draw_grid(std::uint8_t grid_size) final;
 
     void clear();
     void render();

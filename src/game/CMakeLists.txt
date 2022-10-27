@@ -2,6 +2,7 @@ add_library(game_interface INTERFACE)
 target_include_directories(game_interface INTERFACE include)
 
 add_library(game
+src/constants.hpp
 src/game.hpp
 src/game.cpp
 src/level.hpp
