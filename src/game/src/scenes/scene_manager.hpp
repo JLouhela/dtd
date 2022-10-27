@@ -13,9 +13,9 @@ class Scene_manager
 public:
     Scene_manager();
 
-    void set_battle_scene();
+    void set_battle_scene(const std::string& level);
 
-    Scene &get_current_scene();
+    Scene& get_current_scene();
 
 private:
     std::unordered_map<Scene_id, std::unique_ptr<Scene>> m_scenes;

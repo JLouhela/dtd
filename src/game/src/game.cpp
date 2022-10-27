@@ -8,6 +8,7 @@ namespace game
 
 Game::Game(renderer::Renderer_interface& renderer) : m_renderer{renderer}
 {
+    m_scene_manager.set_battle_scene(constants::levels::level_1);
 }
 
 void Game::update(std::int32_t delta_time)
