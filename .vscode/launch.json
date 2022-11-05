@@ -2,6 +2,28 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(Windows) Launch Debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/dtd.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal"
+        },
+        {
+            "name": "(Windows) Launch Release",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Release/dtd.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal"
+        },
+        {
             "name": "In debug",
             "cwd": "${workspaceFolder}",
             "type": "cppdbg",
@@ -21,6 +43,6 @@
             ],
             "preLaunchTask": "${defaultBuildTask}",
             "miDebuggerPath": "/usr/bin/gdb"
-        }
+        },
     ]
 }
