@@ -10,7 +10,7 @@ namespace game
 class Battle_scene : public Scene
 {
 public:
-    Battle_scene() = default;
+    Battle_scene(entt::registry& registry);
 
     void dispose() final;
 

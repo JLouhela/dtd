@@ -1,5 +1,6 @@
 #pragma once
 
+#include <entt/entt.hpp>
 #include <memory>
 #include <unordered_map>
 
@@ -11,7 +12,9 @@ namespace game
 class Scene_manager
 {
 public:
-    Scene_manager();
+    Scene_manager() = default;
+
+    void init(entt::registry& registry);
 
     void set_battle_scene(const std::string& level);
 

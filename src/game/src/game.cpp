@@ -8,6 +8,8 @@ namespace game
 
 Game::Game(renderer::Renderer_interface& renderer) : m_renderer{renderer}
 {
+    // TODO init registry properly
+    m_scene_manager.init(m_registry);
     m_scene_manager.set_battle_scene(constants::levels::level_1);
 }
 

@@ -2,6 +2,10 @@
 
 namespace game
 {
+Battle_scene::Battle_scene(entt::registry& registry) : Scene(registry)
+{
+}
+
 void Battle_scene::init(const std::string& level)
 {
     m_level.load(level);

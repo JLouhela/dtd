@@ -7,11 +7,11 @@
 namespace game
 {
 
-Scene_manager::Scene_manager()
+void Scene_manager::init(entt::registry& registry)
 {
-    m_scenes.emplace(Scene_id::UNINITIALIZED, std::make_unique<Scene>());
-    m_scenes.emplace(Scene_id::BATTLE, std::make_unique<Battle_scene>());
-    m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>());
+    m_scenes.emplace(Scene_id::UNINITIALIZED, std::make_unique<Scene>(registry));
+    m_scenes.emplace(Scene_id::BATTLE, std::make_unique<Battle_scene>(registry));
+    m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>(registry));
 }
 
 void Scene_manager::set_battle_scene(const std::string& level)

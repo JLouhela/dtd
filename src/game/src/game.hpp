@@ -17,6 +17,7 @@ public:
     void update(std::int32_t delta_time) final;
 
 private:
+    entt::registry m_registry;
     renderer::Renderer_interface& m_renderer;
     System_manager m_system_manager;
     Scene_manager m_scene_manager;

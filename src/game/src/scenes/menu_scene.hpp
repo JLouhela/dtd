@@ -7,6 +7,6 @@ namespace game
 class Menu_scene : public Scene
 {
 public:
-    Menu_scene() = default;
+    Menu_scene(entt::registry& registry);
 };
 }  // namespace game
