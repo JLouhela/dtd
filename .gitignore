@@ -1,5 +1,6 @@
 build
 CMakeCache.txt
-lib
+lib/SFML
+lib/entt
 CMakeFiles
 .todomo
