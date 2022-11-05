@@ -9,6 +9,7 @@ src/level.hpp
 src/level.cpp
 src/system_manager.hpp
 src/system_manager.cpp
+src/components/position_component.hpp
 src/scenes/scene.hpp
 src/scenes/scene.cpp
 src/scenes/battle_scene.hpp

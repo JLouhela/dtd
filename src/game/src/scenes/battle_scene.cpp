@@ -1,5 +1,17 @@
 #include "battle_scene.hpp"
 
+// TODO factory
+#include "components/position_component.hpp"
+
+namespace
+{
+void create_debug_entity(entt::registry& registry)
+{
+    auto entity = registry.create();
+    registry.emplace<game::comp::Position>(entity, 0, 0);
+}
+}  // namespace
+
 namespace game
 {
 Battle_scene::Battle_scene(entt::registry& registry) : Scene(registry)

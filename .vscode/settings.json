@@ -66,6 +66,9 @@
         "valarray": "cpp",
         "variant": "cpp",
         "bitset": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "queue": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp"
     }
 }
