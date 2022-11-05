@@ -6,6 +6,8 @@ src/debug_renderer.hpp
 src/debug_renderer.cpp
 src/renderer.hpp
 src/renderer.cpp
+src/sprite_renderer.hpp
+src/sprite_renderer.cpp
 src/window_size.hpp
 )
 

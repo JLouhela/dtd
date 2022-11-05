@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "renderer/renderer_interface.hpp"
+#include "sprite_renderer.hpp"
 
 #ifdef DEBUG
 #include "debug_renderer.hpp"
@@ -20,6 +21,11 @@ public:
     void close_window() final;
     sf::Window& get_window() final;
 
+    Sprite_renderer_interface& get_sprite_renderer() final
+    {
+        return m_sprite_renderer;
+    }
+
 #ifdef DEBUG
     Debug_renderer_interface& get_debug_renderer() final
     {
@@ -29,6 +35,7 @@ public:
 
 private:
     sf::RenderWindow m_window;
+    Sprite_renderer m_sprite_renderer;
 #ifdef DEBUG
     Debug_renderer m_debug_renderer;
 #endif

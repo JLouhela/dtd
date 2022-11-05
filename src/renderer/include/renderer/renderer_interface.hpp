@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "sprite_renderer_interface.hpp"
+
 #ifdef DEBUG
 #include "debug_renderer_interface.hpp"
 #endif
@@ -26,6 +28,8 @@ public:
     virtual void render() = 0;
     virtual void close_window() = 0;
     virtual sf::Window& get_window() = 0;
+
+    virtual Sprite_renderer_interface& get_sprite_renderer() = 0;
 
 #ifdef DEBUG
     virtual Debug_renderer_interface& get_debug_renderer() = 0;

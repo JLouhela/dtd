@@ -1,6 +1,6 @@
 #pragma once
 
-#include "math/vector.hpp"
+#include "renderer/screen_coord.hpp"
 
 namespace renderer
 {
@@ -8,8 +8,6 @@ namespace renderer
 class Debug_renderer_interface
 {
 public:
-    using Screen_coord = math::Int_vector;
-
     virtual ~Debug_renderer_interface() = default;
     virtual void draw_line(const Screen_coord& start, const Screen_coord& end) = 0;
     virtual void draw_grid(std::uint8_t grid_size) = 0;
