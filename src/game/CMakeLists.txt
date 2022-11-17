@@ -11,6 +11,8 @@ src/system_manager.hpp
 src/system_manager.cpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
+src/systems/render_system.hpp
+src/systems/render_system.cpp
 src/scenes/scene.hpp
 src/scenes/scene.cpp
 src/scenes/battle_scene.hpp
