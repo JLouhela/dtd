@@ -13,6 +13,6 @@ public:
 private:
 };
 
-std::unique_ptr<Assets_interface> make_assets();
+std::unique_ptr<Assets_interface> make_assets(std::string asset_folder_root);
 
 }  // namespace assets

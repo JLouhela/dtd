@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
     loguru::init(argc, argv);
-    auto assets = assets::make_assets();
+    auto assets = assets::make_assets("../assets");
     assets->load("test", "test");
     auto renderer = renderer::make_renderer(*assets);
     auto game = game::make_game(*renderer);
