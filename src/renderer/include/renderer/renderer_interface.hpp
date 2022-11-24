@@ -14,6 +14,11 @@ class Window;
 class Event;
 }  // namespace sf
 
+namespace assets
+{
+class Assets_interface;
+}
+
 namespace renderer
 {
 
@@ -36,6 +41,6 @@ public:
 #endif
 };
 
-std::unique_ptr<Renderer_interface> make_renderer();
+std::unique_ptr<Renderer_interface> make_renderer(const assets::Assets_interface& assets);
 
 }  // namespace renderer

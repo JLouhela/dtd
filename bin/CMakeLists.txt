@@ -5,6 +5,7 @@ add_executable(dtd
 
 target_link_libraries(dtd
 	PRIVATE
+        assets
         loguru
         renderer
         game

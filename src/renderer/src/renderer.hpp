@@ -15,7 +15,7 @@ namespace renderer
 class Renderer : public Renderer_interface
 {
 public:
-    Renderer();
+    Renderer(const assets::Assets_interface& assets);
     ~Renderer() final = default;
     void render() final;
     void close_window() final;
@@ -36,6 +36,7 @@ public:
 private:
     sf::RenderWindow m_window;
     Sprite_renderer m_sprite_renderer;
+    const assets::Assets_interface& m_assets;
 #ifdef DEBUG
     Debug_renderer m_debug_renderer;
 #endif

@@ -21,4 +21,5 @@ target_link_libraries(game_loop
         game_interface
         renderer_interface
         event_handler_interface
+        assets_interface
 )

@@ -11,7 +11,8 @@ namespace renderer
 {
 
 // TODO configure
-Renderer::Renderer() : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}
+Renderer::Renderer(const assets::Assets_interface& assets)
+    : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}, m_assets{assets}
 {
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -40,8 +41,8 @@ sf::Window& Renderer::get_window()
     return m_window;
 }
 
-std::unique_ptr<Renderer_interface> make_renderer()
+std::unique_ptr<Renderer_interface> make_renderer(const assets::Assets_interface& assets)
 {
-    return std::make_unique<Renderer>();
+    return std::make_unique<Renderer>(assets);
 }
 }  // namespace renderer

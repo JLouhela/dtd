@@ -3,7 +3,7 @@
 #include "game/game_interface.hpp"
 #include "renderer/renderer_interface.hpp"
 #include "scenes/scene_manager.hpp"
-#include "system_manager.hpp"
+#include "systems/system_manager.hpp"
 
 namespace game
 {

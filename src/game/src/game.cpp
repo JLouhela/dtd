@@ -6,7 +6,7 @@
 namespace game
 {
 
-Game::Game(renderer::Renderer_interface& renderer) : m_renderer{renderer}
+Game::Game(renderer::Renderer_interface& renderer) : m_renderer{renderer}, m_system_manager{m_registry, m_renderer}
 {
     // TODO init registry properly
     m_scene_manager.init(m_registry);

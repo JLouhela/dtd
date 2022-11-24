@@ -6,6 +6,10 @@ src/debug_renderer.hpp
 src/debug_renderer.cpp
 src/renderer.hpp
 src/renderer.cpp
+src/sprite_cache.hpp
+src/sprite_cache.hpp
+src/sprite.hpp
+src/sprite.hpp
 src/sprite_renderer.hpp
 src/sprite_renderer.cpp
 src/window_size.hpp
@@ -23,5 +27,6 @@ target_link_libraries(renderer
         renderer_interface
         sfml-window
     PRIVATE
+        assets
         sfml-graphics
 )

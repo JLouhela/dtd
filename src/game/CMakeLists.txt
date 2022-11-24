@@ -7,12 +7,8 @@ src/game.hpp
 src/game.cpp
 src/level.hpp
 src/level.cpp
-src/system_manager.hpp
-src/system_manager.cpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
-src/systems/render_system.hpp
-src/systems/render_system.cpp
 src/scenes/scene.hpp
 src/scenes/scene.cpp
 src/scenes/battle_scene.hpp
@@ -22,6 +18,10 @@ src/scenes/menu_scene.hpp
 src/scenes/menu_scene.cpp
 src/scenes/scene_manager.hpp
 src/scenes/scene_manager.cpp
+src/systems/render_system.hpp
+src/systems/render_system.cpp
+src/systems/system_manager.hpp
+src/systems/system_manager.cpp
 )
 
 target_include_directories(game
