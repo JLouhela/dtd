@@ -5,13 +5,25 @@
 namespace assets
 {
 
-Assets::Assets(const std::string& asset_folder_root) : m_folder_root{std::move(asset_folder_root)}
+Assets::Assets(std::string asset_folder_root) : m_asset_loader{std::move(asset_folder_root)}
 {
 }
 
-void Assets::load(const std::string& file_path, const std::string& id)
+Load_result Assets::load(const std::string& file_path, const std::string& id)
 {
     LOG_F(WARNING, "Asset loading not implemented!");
+    const auto asset = m_asset_loader.load(file_path);
+    if (!asset)
+    {
+        LOG_F(WARNING, "Could not load %s from %s", id, file_path);
+    }
+    return Load_result::Failed;
+}
+
+Asset* Assets::get(const std::string& id)
+{
+    LOG_F(WARNING, "Asset get not implemented!");
+    return nullptr;
 }
 
 std::unique_ptr<Assets_interface> make_assets(std::string asset_folder_root)

@@ -10,6 +10,7 @@ int main(int argc, char* argv[])
     loguru::init(argc, argv);
     auto assets = assets::make_assets("../assets");
     assets->load("test", "test");
+    auto* a = assets->get("test");
     auto renderer = renderer::make_renderer(*assets);
     auto game = game::make_game(*renderer);
     auto event_handler = events::make_event_handler(renderer->get_window());
