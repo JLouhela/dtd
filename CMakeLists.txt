@@ -8,12 +8,19 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project (Dtd VERSION 0.0.1 LANGUAGES CXX)
 
+
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 set(BUILD_SHARED_LIBS FALSE)
 
 add_subdirectory(lib)
-
 link_libraries(loguru)
+
+if(MSVC)
+  add_compile_options(/W4)
+else()
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
 link_libraries(math)
 
 add_subdirectory(bin)

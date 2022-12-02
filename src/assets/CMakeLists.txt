@@ -19,5 +19,6 @@ target_link_libraries(assets
     PUBLIC
         assets_interface
     PRIVATE
-        sfml-system
+        sfml-graphics
+        sfml-audio
 )

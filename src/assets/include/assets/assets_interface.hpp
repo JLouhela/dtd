@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-#include "asset.hpp"
+#include "SFML/Graphics/Texture.hpp"
 
 namespace assets
 {
@@ -17,8 +17,8 @@ enum class Load_result
 class Assets_interface
 {
 public:
-    virtual Load_result load(const std::string& file_path, const std::string& id) = 0;
-    virtual Asset* get(const std::string& id) = 0;
+    virtual Load_result load_texture(const std::string& file_path, const std::string& id) = 0;
+    virtual sf::Texture* get_texture(const std::string& id) const = 0;
 
 private:
 };
