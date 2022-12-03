@@ -1,17 +1,18 @@
 #include "asset_loader.hpp"
 
+#include "asset_path.hpp"
 #include "loguru/loguru.hpp"
 
 namespace assets
 {
-Asset_loader::Asset_loader(std::string root_path) : m_root_path(root_path)
+Asset_loader::Asset_loader()
 {
 }
 
 std::unique_ptr<sf::Texture> Asset_loader::load_texture(const std::string& file_path)
 {
     sf::Texture texture;
-    const std::string full_path = m_root_path + '/' + file_path;
+    const std::string full_path = ASSET_FOLDER_ROOT + file_path;
     if (!texture.loadFromFile(full_path))
     {
         LOG_F(WARNING, "Could not load texture from %s", full_path.c_str());

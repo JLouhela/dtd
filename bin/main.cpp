@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
     loguru::init(argc, argv);
-    auto assets = assets::make_assets("assets");
+    auto assets = assets::make_assets();
     assets->load_texture("sprites/towerDefense_tilesheet.png", "td_tilesheet");
     auto* a = assets->get_texture("td_tilesheet");
     auto renderer = renderer::make_renderer(*assets);

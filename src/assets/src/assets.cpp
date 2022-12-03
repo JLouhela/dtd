@@ -7,7 +7,7 @@
 namespace assets
 {
 
-Assets::Assets(std::string asset_folder_root) : m_asset_loader{std::move(asset_folder_root)}
+Assets::Assets()
 {
 }
 
@@ -42,9 +42,9 @@ sf::Texture* Assets::get_texture(const std::string& id) const
     return &(*it->second);
 }
 
-std::unique_ptr<Assets_interface> make_assets(std::string asset_folder_root)
+std::unique_ptr<Assets_interface> make_assets()
 {
-    return std::make_unique<Assets>(std::move(asset_folder_root));
+    return std::make_unique<Assets>();
 }
 
 }  // namespace assets

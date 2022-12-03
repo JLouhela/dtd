@@ -12,15 +12,6 @@ void Sprite_renderer::render_sprite(const Sprite_id& sprite_id, const Screen_coo
         note = true;
         LOG_F(WARNING, "Render sprite not implemented");
     }
-
-    // TODO: sprite_id -> texture
-    /*
-    sf::Texture texture;
-if (!texture.loadFromFile("image.png"))
-{
-    // error...
-}
-*/
 }
 
 }  // namespace renderer

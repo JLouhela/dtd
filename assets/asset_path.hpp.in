@@ -1,0 +1,7 @@
+#pragma once
+
+#include <string>
+namespace assets
+{
+static const std::string ASSET_FOLDER_ROOT = "${CMAKE_CURRENT_SOURCE_DIR}/";
+}

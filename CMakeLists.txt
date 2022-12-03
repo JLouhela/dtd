@@ -25,7 +25,7 @@ link_libraries(math)
 
 add_subdirectory(bin)
 add_subdirectory(src)
-#add_subdirectory(res)
+add_subdirectory(assets)
 
 #enable_testing()
 #add_subdirectory(test)

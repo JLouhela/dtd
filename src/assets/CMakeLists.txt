@@ -18,7 +18,7 @@ target_include_directories(assets
 target_link_libraries(assets
     PUBLIC
         assets_interface
-    PRIVATE
         sfml-graphics
+    PRIVATE
         sfml-audio
 )

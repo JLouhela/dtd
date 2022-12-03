@@ -13,7 +13,7 @@ namespace assets
 class Assets : public Assets_interface
 {
 public:
-    Assets(std::string asset_folder_root);
+    Assets();
     Load_result load_texture(const std::string& file_path, const std::string& id) final;
     sf::Texture* get_texture(const std::string& id) const final;
 
