@@ -11,7 +11,13 @@ class Asset_loader
 {
 public:
     Asset_loader();
-    std::unique_ptr<sf::Texture> load_texture(const std::string& file_path);
+
+    struct TextureLoadResult
+    {
+        bool success{false};
+        sf::Texture texture;
+    };
+    TextureLoadResult load_texture(const std::string& file_path);
 };
 
 }  // namespace assets

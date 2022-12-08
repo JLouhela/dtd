@@ -12,7 +12,7 @@ namespace renderer
 
 // TODO configure
 Renderer::Renderer(const assets::Assets_interface& assets)
-    : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}, m_assets{assets}
+    : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}, m_assets{assets}, m_sprite_renderer{assets}
 {
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);

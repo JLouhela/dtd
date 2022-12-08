@@ -5,7 +5,8 @@ namespace renderer
 enum class Sprite_id
 {
     Rectangle_black,
-    Rectangle_green
+    Rectangle_green,
+    Rectangle_red
 };
 
 }  // namespace renderer

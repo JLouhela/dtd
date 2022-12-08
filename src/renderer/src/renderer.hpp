@@ -35,8 +35,8 @@ public:
 
 private:
     sf::RenderWindow m_window;
-    Sprite_renderer m_sprite_renderer;
     const assets::Assets_interface& m_assets;
+    Sprite_renderer m_sprite_renderer;
 #ifdef DEBUG
     Debug_renderer m_debug_renderer;
 #endif

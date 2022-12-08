@@ -9,16 +9,16 @@ Asset_loader::Asset_loader()
 {
 }
 
-std::unique_ptr<sf::Texture> Asset_loader::load_texture(const std::string& file_path)
+Asset_loader::TextureLoadResult Asset_loader::load_texture(const std::string& file_path)
 {
     sf::Texture texture;
     const std::string full_path = ASSET_FOLDER_ROOT + file_path;
     if (!texture.loadFromFile(full_path))
     {
         LOG_F(WARNING, "Could not load texture from %s", full_path.c_str());
-        return nullptr;
+        return {};
     }
-    return std::make_unique<sf::Texture>(texture);
+    return {true, texture};
 }
 
 }  // namespace assets

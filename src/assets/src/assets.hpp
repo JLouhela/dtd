@@ -1,7 +1,6 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
 #include <unordered_map>
 
@@ -15,10 +14,11 @@ class Assets : public Assets_interface
 public:
     Assets();
     Load_result load_texture(const std::string& file_path, const std::string& id) final;
-    sf::Texture* get_texture(const std::string& id) const final;
+    const sf::Texture* get_texture(const std::string& id) const final;
 
 private:
-    std::unordered_map<std::string, std::unique_ptr<sf::Texture>> m_textures;
+    void create_color_textures();
+    std::unordered_map<std::string, sf::Texture> m_textures;
     Asset_loader m_asset_loader;
 };
 

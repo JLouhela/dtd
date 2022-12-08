@@ -7,8 +7,8 @@ src/debug_renderer.cpp
 src/renderer.hpp
 src/renderer.cpp
 src/sprite_cache.hpp
-src/sprite_cache.hpp
-src/sprite.hpp
+src/sprite_cache.cpp
+src/sprite.cpp
 src/sprite.hpp
 src/sprite_renderer.hpp
 src/sprite_renderer.cpp
