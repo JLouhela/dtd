@@ -1,8 +1,8 @@
 #include <vector>
 
+#include "SFML/Graphics/Sprite.hpp"
 #include "assets/assets_interface.hpp"
 #include "renderer/sprite_id.hpp"
-#include "sprite.hpp"
 
 namespace renderer
 {
@@ -11,16 +11,16 @@ class Sprite_cache
 {
 public:
     Sprite_cache(const assets::Assets_interface& assets);
-    const Sprite* get(const Sprite_id& id);
+    sf::Sprite* get(const Sprite_id& id);
 
 private:
     struct CachedSprite
     {
-        CachedSprite(Sprite_id id, Sprite sprite) : id{std::move(id)}, sprite{std::move(sprite)}
+        CachedSprite(Sprite_id id, sf::Sprite sprite) : id{std::move(id)}, sprite{std::move(sprite)}
         {
         }
         Sprite_id id;
-        Sprite sprite;
+        sf::Sprite sprite;
     };
 
     void init_rectangles();

@@ -14,8 +14,6 @@ namespace renderer
 Renderer::Renderer(const assets::Assets_interface& assets)
     : m_window{sf::VideoMode{constants::WINDOW_SIZE, 32u}, "Dtd!"}, m_assets{assets}, m_sprite_renderer{assets}
 {
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
 }
 
 void Renderer::render()
@@ -23,11 +21,15 @@ void Renderer::render()
     m_window.clear(bg_color);
 #ifdef DEBUG
     sf::Sprite debug_tex(m_debug_renderer.get_render_texture().getTexture());
-    m_window.draw(debug_tex);
+    // m_window.draw(debug_tex);
     // TODO separate render & clear in renderer interface -> clear there before game logic
     m_debug_renderer.clear();
 
 #endif
+    sf::Sprite sprite_tex(m_sprite_renderer.get_render_texture().getTexture());
+
+    m_window.draw(sprite_tex);
+    m_sprite_renderer.clear();
     m_window.display();
 }
 

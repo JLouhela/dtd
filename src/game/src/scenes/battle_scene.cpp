@@ -9,8 +9,8 @@ namespace
 void create_debug_entity(entt::registry& registry)
 {
     auto entity = registry.create();
-    registry.emplace<game::comp::Position>(entity, 400, 400);
-    registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Rectangle_green);
+    registry.emplace<game::comp::Position>(entity, 100, 100);
+    registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Rectangle_red);
 }
 }  // namespace
 
