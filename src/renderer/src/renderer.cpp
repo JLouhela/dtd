@@ -21,16 +21,20 @@ void Renderer::render()
     m_window.clear(bg_color);
 #ifdef DEBUG
     sf::Sprite debug_tex(m_debug_renderer.get_render_texture().getTexture());
-    // m_window.draw(debug_tex);
-    // TODO separate render & clear in renderer interface -> clear there before game logic
-    m_debug_renderer.clear();
-
+    m_window.draw(debug_tex);
 #endif
     sf::Sprite sprite_tex(m_sprite_renderer.get_render_texture().getTexture());
 
     m_window.draw(sprite_tex);
-    m_sprite_renderer.clear();
     m_window.display();
+}
+
+void Renderer::clear()
+{
+#ifdef DEBUG
+    m_debug_renderer.clear();
+#endif
+    m_sprite_renderer.clear();
 }
 
 void Renderer::close_window()

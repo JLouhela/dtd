@@ -47,8 +47,8 @@ void Game_loop::run()
         sf::Time dt = delta_clock.restart();
         m_event_handler.update();
         m_game.update(dt.asMilliseconds());
-        // TODO renderer clear separate
         m_renderer.render();
+        m_renderer.clear();
     }
     m_running = false;
 }

@@ -31,6 +31,7 @@ class Renderer_interface
 public:
     virtual ~Renderer_interface() = default;
     virtual void render() = 0;
+    virtual void clear() = 0;
     virtual void close_window() = 0;
     virtual sf::Window& get_window() = 0;
 

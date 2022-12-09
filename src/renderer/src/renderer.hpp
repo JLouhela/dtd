@@ -18,6 +18,7 @@ public:
     Renderer(const assets::Assets_interface& assets);
     ~Renderer() final = default;
     void render() final;
+    void clear() final;
     void close_window() final;
     sf::Window& get_window() final;
 
