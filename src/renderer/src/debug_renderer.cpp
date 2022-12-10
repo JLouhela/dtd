@@ -6,13 +6,8 @@
 namespace renderer
 {
 
-Debug_renderer::Debug_renderer()
+Debug_renderer::Debug_renderer() : Subrenderer(nullptr)
 {
-    const auto ret = m_render_texture.create(constants::WINDOW_SIZE);
-    if (!ret)
-    {
-        LOG_F(ERROR, "Failed to create render texture for debug renderer");
-    }
 }
 
 void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& end, const sf::Color& color)
@@ -24,7 +19,7 @@ void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& en
 
     line[0].color = color;
     line[1].color = color;
-    m_render_texture.draw(line);
+    draw(line);
 }
 
 void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& end)
@@ -46,16 +41,6 @@ void Debug_renderer::draw_grid(const std::uint8_t grid_size)
     {
         draw_line({x * grid_size, 0}, {x * grid_size, static_cast<std::int32_t>(screen_size.y)});
     }
-}
-
-void Debug_renderer::clear()
-{
-    m_render_texture.clear(sf::Color::Transparent);
-}
-
-void Debug_renderer::render()
-{
-    m_render_texture.display();
 }
 
 }  // namespace renderer

@@ -1,8 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
+#include "hud_renderer.hpp"
 #include "renderer/renderer_interface.hpp"
+#include "sprite_cache.hpp"
 #include "sprite_renderer.hpp"
 
 #ifdef DEBUG
@@ -37,7 +40,9 @@ public:
 private:
     sf::RenderWindow m_window;
     const assets::Assets_interface& m_assets;
+    std::shared_ptr<Sprite_cache> m_sprite_cache;
     Sprite_renderer m_sprite_renderer;
+    Hud_renderer m_hud_renderer;
 #ifdef DEBUG
     Debug_renderer m_debug_renderer;
 #endif
