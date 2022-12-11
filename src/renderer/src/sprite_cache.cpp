@@ -48,6 +48,8 @@ void Sprite_cache::init_rectangles()
 void Sprite_cache::init_towers()
 {
     LOG_F(WARNING, "Tower sprite initialization NOT implemented!");
+    auto* tower_tex = m_assets.get_texture("td_tilesheet");
+    // TODO load stuff
 }
 
 }  // namespace renderer

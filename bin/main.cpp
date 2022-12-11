@@ -5,12 +5,20 @@
 #include "loguru/loguru.hpp"
 #include "renderer/renderer_interface.hpp"
 
+namespace
+{
+void load_assets(assets::Assets_interface& assets)
+{
+    assets.load_texture("sprites/towerDefense_tilesheet.png", "td_tilesheet");
+}
+}  // namespace
+
 int main(int argc, char* argv[])
 {
     loguru::init(argc, argv);
     auto assets = assets::make_assets();
-    assets->load_texture("sprites/towerDefense_tilesheet.png", "td_tilesheet");
-    auto* a = assets->get_texture("td_tilesheet");
+    load_assets(*assets);
+
     auto renderer = renderer::make_renderer(*assets);
     auto game = game::make_game(*renderer);
     auto event_handler = events::make_event_handler(renderer->get_window());

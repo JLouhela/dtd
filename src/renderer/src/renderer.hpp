@@ -30,6 +30,11 @@ public:
         return m_sprite_renderer;
     }
 
+    Hud_renderer_interface& get_hud_renderer() final
+    {
+        return m_hud_renderer;
+    }
+
 #ifdef DEBUG
     Debug_renderer_interface& get_debug_renderer() final
     {

@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "hud_renderer_interface.hpp"
 #include "sprite_renderer_interface.hpp"
 
 #ifdef DEBUG
@@ -36,6 +37,7 @@ public:
     virtual sf::Window& get_window() = 0;
 
     virtual Sprite_renderer_interface& get_sprite_renderer() = 0;
+    virtual Hud_renderer_interface& get_hud_renderer() = 0;
 
 #ifdef DEBUG
     virtual Debug_renderer_interface& get_debug_renderer() = 0;
