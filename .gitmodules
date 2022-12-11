@@ -4,3 +4,6 @@
 [submodule "lib/entt"]
 	path = lib/entt
 	url = https://github.com/skypjack/entt.git
+[submodule "lib/tmxlite"]
+	path = lib/tmxlite
+	url = https://github.com/fallahn/tmxlite.git

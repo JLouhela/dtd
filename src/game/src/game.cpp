@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include "constants.hpp"
+#include "level_parser.hpp"
 #include "loguru/loguru.hpp"
 
 namespace game
