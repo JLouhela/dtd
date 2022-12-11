@@ -33,11 +33,11 @@ void Debug_renderer::draw_grid(const std::uint8_t grid_size)
     const auto row_count = screen_size.y / grid_size;
     const auto col_count = screen_size.x / grid_size;
 
-    for (int y = 0; y < static_cast<int>(row_count); ++y)
+    for (int y = 0; y <= static_cast<int>(row_count); ++y)
     {
         draw_line({0, y * grid_size}, {static_cast<std::int32_t>(screen_size.x), y * grid_size});
     }
-    for (int x = 0; x < static_cast<int>(col_count); ++x)
+    for (int x = 0; x <= static_cast<int>(col_count); ++x)
     {
         draw_line({x * grid_size, 0}, {x * grid_size, static_cast<std::int32_t>(screen_size.y)});
     }

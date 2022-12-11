@@ -29,7 +29,7 @@ sf::Sprite Sprite_cache::get(const Sprite_id& id)
 void Sprite_cache::init_rectangles()
 {
     const sf::Texture* black_tex = m_assets.get_texture("texture_black");
-    const sf::IntRect sprite_rect = {{0, 0}, {32, 32}};
+    const sf::IntRect sprite_rect = {{0, 0}, {64, 64}};
     if (black_tex)
     {
         m_sprites.emplace_back(Sprite_id::Rectangle_black, black_tex, sprite_rect);
