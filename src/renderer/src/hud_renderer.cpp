@@ -18,8 +18,9 @@ void Hud_renderer::render_buy_menu()
         LOG_F(WARNING, "Could not find sprite for Rectangle_black");
         return;
     }
-    sprite.setPosition({400.0f, 200.0f});
-    sprite.setScale({3.0f, 5.0f});
+    // sprite.setOrigin({0.0f, 0.0f});
+    sprite.setPosition({800.0f, 200.0f});
+    sprite.setScale({5.0f, 10.0f});
     draw(sprite);
 }
 }  // namespace renderer

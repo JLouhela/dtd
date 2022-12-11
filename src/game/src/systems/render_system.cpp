@@ -22,5 +22,11 @@ void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& re
         renderer.render_sprite(sprite.sprite, screen_pos);
     }
 }
+
+void render_hud(renderer::Hud_renderer_interface& renderer)
+{
+    renderer.render_buy_menu();
+}
+
 }  // namespace sys
 }  // namespace game

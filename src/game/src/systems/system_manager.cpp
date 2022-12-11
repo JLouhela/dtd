@@ -14,7 +14,12 @@ System_manager::System_manager(entt::registry& registry, renderer::Renderer_inte
 void System_manager::execute()
 {
     sys::render_sprites(m_registry, m_renderer.get_sprite_renderer());
-    // TODO hook to render_system
+    // TODO hook to events
+    const bool display_hud = false;
+    if (display_hud)
+    {
+        sys::render_hud(m_renderer.get_hud_renderer());
+    }
 }
 
 }  // namespace game

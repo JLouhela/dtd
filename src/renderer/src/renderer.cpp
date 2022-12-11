@@ -24,12 +24,15 @@ void Renderer::render()
 {
     m_window.clear(bg_color);
 #ifdef DEBUG
-    sf::Sprite debug_tex(m_debug_renderer.get_render_texture().getTexture());
-    m_window.draw(debug_tex);
+    sf::Sprite debug(m_debug_renderer.get_render_texture().getTexture());
+    m_window.draw(debug);
 #endif
-    sf::Sprite sprite_tex(m_sprite_renderer.get_render_texture().getTexture());
+    sf::Sprite sprites(m_sprite_renderer.get_render_texture().getTexture());
+    m_window.draw(sprites);
 
-    m_window.draw(sprite_tex);
+    sf::Sprite hud(m_hud_renderer.get_render_texture().getTexture());
+    m_window.draw(hud);
+
     m_window.display();
 }
 
@@ -39,6 +42,7 @@ void Renderer::clear()
     m_debug_renderer.clear();
 #endif
     m_sprite_renderer.clear();
+    m_hud_renderer.clear();
 }
 
 void Renderer::close_window()
