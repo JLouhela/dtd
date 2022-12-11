@@ -18,6 +18,8 @@ src/scenes/menu_scene.hpp
 src/scenes/menu_scene.cpp
 src/scenes/scene_manager.hpp
 src/scenes/scene_manager.cpp
+src/systems/debug_render_system.hpp
+src/systems/debug_render_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
 src/systems/system_manager.hpp

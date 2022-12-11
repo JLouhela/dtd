@@ -16,6 +16,8 @@ public:
     void execute();
 
 private:
+    void execute_renderers();
+
     entt::registry& m_registry;
     renderer::Renderer_interface& m_renderer;
 };

@@ -1,11 +1,10 @@
 #include "entt/entt.hpp"
-#include "renderer/hud_renderer_interface.hpp"
-#include "renderer/sprite_renderer_interface.hpp"
 
 namespace renderer
 {
+class Hud_renderer_interface;
 class Sprite_renderer_interface;
-}
+}  // namespace renderer
 
 namespace game
 {

@@ -2,6 +2,8 @@
 
 #include "../components/position_component.hpp"
 #include "../components/sprite_component.hpp"
+#include "renderer/hud_renderer_interface.hpp"
+#include "renderer/sprite_renderer_interface.hpp"
 
 namespace game
 {
