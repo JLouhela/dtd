@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "level.hpp"
+#include "../level.hpp"
 #include "scene.hpp"
 
 namespace game
@@ -14,7 +14,7 @@ public:
 
     void dispose() final;
 
-    void init(const std::string& level);
+    void init(const Level& level);
     const std::string& get_level_id();
 
 private:

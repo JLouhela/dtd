@@ -4,6 +4,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include "../level.hpp"
 #include "scene.hpp"
 #include "scene_id.hpp"
 
@@ -16,7 +17,7 @@ public:
 
     void init(entt::registry& registry);
 
-    void set_battle_scene(const std::string& level);
+    void set_battle_scene(const Level& level);
 
     Scene& get_current_scene();
 

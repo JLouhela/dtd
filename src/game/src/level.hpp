@@ -2,16 +2,17 @@
 
 #include <string>
 
+#include "assets/level_interface.hpp"
+
 namespace game
 {
 class Level
 {
 public:
     Level() = default;
+    explicit Level(const assets::Level_interface& source);
 
-    void load(const std::string& level_file);
-
-    const std::string& get_id()
+    const std::string& get_id() const
     {
         return m_cur_level_id;
     }

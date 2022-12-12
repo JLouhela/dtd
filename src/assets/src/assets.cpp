@@ -4,6 +4,7 @@
 #include <array>
 
 #include "SFML/Graphics.hpp"
+#include "level_parser.hpp"
 #include "loguru/loguru.hpp"
 
 namespace
@@ -64,6 +65,17 @@ Load_result Assets::load_texture(const std::string& file_path, const std::string
     }
     LOG_F(INFO, "Loaded texture %s, mapped to id %s", file_path.c_str(), id.c_str());
     m_textures.emplace(id, std::move(tex.texture));
+    return Load_result::Ok;
+}
+
+Load_result Assets::load_level(const std::string& file_path)
+{
+    Level level = Level_parser::load(file_path);
+    if (level == Level{})
+    {
+        return Load_result::Failed;
+    }
+    m_loaded_Level = level;
     return Load_result::Ok;
 }
 

@@ -5,7 +5,6 @@ add_library(game
 src/constants.hpp
 src/game.hpp
 src/game.cpp
-src/level_parser.hpp
 src/level.hpp
 src/level.cpp
 src/components/position_component.hpp
@@ -39,7 +38,7 @@ target_link_libraries(game
     PUBLIC
         game_interface
     PRIVATE
-        tmxlite
+        assets_interface
         renderer_interface
         EnTT
 )

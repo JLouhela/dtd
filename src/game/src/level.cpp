@@ -4,10 +4,8 @@
 
 namespace game
 {
-
-void Level::load(const std::string& level_file)
+Level::Level(const assets::Level_interface& source)
 {
-    LOG_F(INFO, "TODO: load level %s", level_file.c_str());
+    LOG_F(WARNING, "game::Level ctor not implemented");
 }
-
 }  // namespace game

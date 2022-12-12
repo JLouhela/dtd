@@ -14,14 +14,15 @@ void Scene_manager::init(entt::registry& registry)
     m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>(registry));
 }
 
-void Scene_manager::set_battle_scene(const std::string& level)
+void Scene_manager::set_battle_scene(const Level& level)
 {
     auto& battle_scene = static_cast<Battle_scene&>(*m_scenes[Scene_id::BATTLE]);
 
     if (m_current_scene == Scene_id::BATTLE)
     {
-        if (battle_scene.get_level_id() == level)
+        if (battle_scene.get_level_id() == level.get_id())
         {
+            LOG_F(WARNING, "Tried to initialize same level (%s) twice!", level.get_id().c_str());
             return;
         }
     }

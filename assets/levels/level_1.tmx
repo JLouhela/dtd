@@ -44,28 +44,28 @@
 </data>
  </layer>
  <objectgroup id="4" name="waypoints_2" offsetx="18.3732" offsety="2.44976">
-  <object id="3" x="-37.9713" y="650.411">
+  <object id="3" x="-37.9713" y="650">
    <point/>
   </object>
-  <object id="4" x="1027.67" y="645.512">
+  <object id="4" x="1000" y="650">
    <point/>
   </object>
-  <object id="5" x="1025.22" y="891.713">
+  <object id="5" x="1000" y="900">
    <point/>
   </object>
-  <object id="6" x="1600.92" y="908.861">
+  <object id="6" x="1600.92" y="900">
    <point/>
   </object>
-  <object id="7" x="-41.6459" y="191.081">
+  <object id="7" x="-41.6459" y="200">
    <point/>
   </object>
-  <object id="8" x="832.919" y="197.206">
+  <object id="8" x="815" y="200">
    <point/>
   </object>
-  <object id="9" x="832.919" y="383.388">
+  <object id="9" x="815" y="390">
    <point/>
   </object>
-  <object id="10" x="1599.69" y="394.411">
+  <object id="10" x="1599.69" y="390">
    <point/>
   </object>
  </objectgroup>

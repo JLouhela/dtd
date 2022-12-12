@@ -1,6 +1,7 @@
 #include "battle_scene.hpp"
 
 // TODO factory
+#include "assets/level_interface.hpp"
 #include "components/position_component.hpp"
 #include "components/sprite_component.hpp"
 
@@ -21,9 +22,9 @@ Battle_scene::Battle_scene(entt::registry& registry) : Scene(registry)
     create_debug_entity(registry);
 }
 
-void Battle_scene::init(const std::string& level)
+void Battle_scene::init(const Level& level)
 {
-    m_level.load(level);
+    // TODO do something
 }
 
 const std::string& Battle_scene::get_level_id()

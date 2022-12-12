@@ -1,4 +1,5 @@
 #include "assets/assets_interface.hpp"
+#include "assets/levels.hpp"
 #include "event_handler/event_handler_interface.hpp"
 #include "game/game_interface.hpp"
 #include "game_loop/game_loop_interface.hpp"
@@ -10,6 +11,8 @@ namespace
 void load_assets(assets::Assets_interface& assets)
 {
     assets.load_texture("sprites/towerDefense_tilesheet.png", "td_tilesheet");
+    const std::string level_file = "levels/" + assets::levels::level_1;
+    assets.load_level(level_file);
 }
 }  // namespace
 
@@ -20,7 +23,7 @@ int main(int argc, char* argv[])
     load_assets(*assets);
 
     auto renderer = renderer::make_renderer(*assets);
-    auto game = game::make_game(*renderer);
+    auto game = game::make_game(*renderer, *assets);
     auto event_handler = events::make_event_handler(renderer->get_window());
     auto game_loop = game_loop::make_game_loop(*game, *renderer, *event_handler);
 

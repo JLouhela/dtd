@@ -6,6 +6,10 @@ src/assets.hpp
 src/assets.cpp
 src/asset_loader.hpp
 src/asset_loader.cpp
+src/level.hpp
+src/level.cpp
+src/level_parser.hpp
+src/level_parser.cpp
 )
 
 target_include_directories(assets
@@ -18,7 +22,8 @@ target_include_directories(assets
 target_link_libraries(assets
     PUBLIC
         assets_interface
-        sfml-graphics
+        tmxlite
     PRIVATE
         sfml-audio
+        sfml-graphics
 )
