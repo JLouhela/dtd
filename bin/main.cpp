@@ -1,5 +1,5 @@
 #include "assets/assets_interface.hpp"
-#include "assets/levels.hpp"
+#include "assets/level/levels.hpp"
 #include "event_handler/event_handler_interface.hpp"
 #include "game/game_interface.hpp"
 #include "game_loop/game_loop_interface.hpp"

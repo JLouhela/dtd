@@ -14,7 +14,7 @@ Game::Game(renderer::Renderer_interface& renderer, assets::Assets_interface& ass
     m_scene_manager.init(m_registry);
 
     // Assuming current level has been loaded OK before game ctor is called
-    const auto& level_asset = assets.get_current_level();
+    const auto& level_asset = assets.get_loaded_level_content();
     Level level(level_asset);
     m_scene_manager.set_battle_scene(level);
 }

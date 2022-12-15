@@ -49,7 +49,7 @@ Assets::Assets()
     create_color_textures();
 }
 
-Load_result Assets::load_texture(const std::string& file_path, const std::string& id)
+Load_result Assets::load_texture(const std::string& file_path, const Asset_id& id)
 {
     if (m_textures.count(id) > 0)
     {
@@ -75,12 +75,12 @@ Load_result Assets::load_level(const std::string& file_path)
     {
         return Load_result::Failed;
     }
-    m_loaded_Level = level;
+    m_loaded_level = level;
     return Load_result::Ok;
 }
 
 // TODO templatize
-const sf::Texture* Assets::get_texture(const std::string& id) const
+const sf::Texture* Assets::get_texture(const Asset_id& id) const
 {
     const auto it = m_textures.find(id);
     if (it == m_textures.end())
