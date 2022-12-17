@@ -3,6 +3,8 @@
 #include "level_parser.hpp"
 
 #include <cstdint>
+#include <fstream>
+#include <nlohmann/json.hpp>
 #include <tmxlite/Layer.hpp>
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
@@ -102,11 +104,34 @@ void parse_tilesets(const std::vector<tmx::Tileset>& tmx_tilesets,
     }
 }
 
+const tmx::Property* get_property(const std::vector<tmx::Property>& props, const std::string& id)
+{
+    const auto it = std::find_if(std::begin(props), std::end(props),
+                                 [id](const tmx::Property& prop) { return prop.getName() == id; });
+    return it == std::end(props) ? nullptr : &(*it);
+}
+
+const tmx::Property* get_metadata_property(const std::vector<tmx::Property>& props)
+{
+    return get_property(props, "metadata_file");
+}
+
 void parse_properties(const tmx::Map& map, assets::level::Level& level)
 {
-    LOG_F(WARNING, "Properties parsing missing from level parser -> no wave data!");
-    // TODO get json file -> read and store wave format
-    // map.getProperties()
+    const auto& props = map.getProperties();
+    const auto* meta_data_prop = get_metadata_property(props);
+    if (!meta_data_prop)
+    {
+        LOG_F(WARNING, "Could not find metadata property for the level %s!", level.get_id().c_str());
+        return;
+    }
+    const auto& metadata_file = meta_data_prop->getStringValue();
+    const std::string json_path = assets::ASSET_FOLDER_ROOT + "levels/" + metadata_file;
+    std::ifstream json_stream{json_path};
+    const auto data = nlohmann::json::parse(json_stream);
+    const auto waves = data["waves"];
+    const auto wave_count = waves.size();
+    LOG_F(WARNING, "There are %d waves in json for %s -> TODO store to level", wave_count, level.get_id().c_str());
 }
 
 }  // namespace

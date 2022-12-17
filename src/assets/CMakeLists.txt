@@ -27,4 +27,5 @@ target_link_libraries(assets
         tmxlite
         sfml-audio
         sfml-graphics
+        nlohmann_json
 )
