@@ -10,7 +10,6 @@ src/level.hpp
 src/level.cpp
 src/level_parser.hpp
 src/level_parser.cpp
-src/level/tileset.cpp
 )
 
 target_include_directories(assets
@@ -23,6 +22,7 @@ target_include_directories(assets
 target_link_libraries(assets
     PUBLIC
         assets_interface
+        math
     PRIVATE
         tmxlite
         sfml-audio

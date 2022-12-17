@@ -31,6 +31,7 @@ public:
 private:
     void create_color_textures();
     std::unordered_map<Asset_id, sf::Texture> m_textures;
+    std::unordered_map<std::string, Asset_id> m_asset_id_map;
     Asset_loader m_asset_loader;
     level::Level m_loaded_level;
 };

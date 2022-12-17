@@ -22,5 +22,10 @@ void Level::add_layer(Layer layer)
     m_layers.emplace_back(std::move(layer));
 }
 
+void Level::add_tileset(Tileset tileset)
+{
+    m_tilesets.emplace_back(std::move(tileset));
+}
+
 }  // namespace level
 }  // namespace assets

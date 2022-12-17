@@ -65,12 +65,13 @@ Load_result Assets::load_texture(const std::string& file_path, const Asset_id& i
     }
     LOG_F(INFO, "Loaded texture %s, mapped to id %s", file_path.c_str(), id.c_str());
     m_textures.emplace(id, std::move(tex.texture));
+    m_asset_id_map.emplace(file_path, id);
     return Load_result::Ok;
 }
 
 Load_result Assets::load_level(const std::string& file_path)
 {
-    level::Level level = level::Level_parser::load(file_path);
+    level::Level level = level::Level_parser::load(file_path, m_asset_id_map);
     if (level == level::Level{})
     {
         return Load_result::Failed;

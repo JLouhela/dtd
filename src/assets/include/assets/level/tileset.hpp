@@ -2,57 +2,33 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 #include "../asset_id.hpp"
-#include "SFML/Graphics.hpp"
+#include "math/vector.hpp"
 
 namespace assets
 {
 namespace level
 {
 
-struct Tile
+struct Tileset
 {
-    // TODO vertices based on padding / margin
-    Tile(const sf::Vector2f& top_left, const sf::Vector2f bottom_right)
+    struct Tile
     {
-    }
-    sf::VertexArray vertices;
-};
+        // TODO vertices based on padding / margin
+        Tile(std::uint32_t id, std::vector<math::Float_vector> vertices) : id{id}, vertices{std::move(vertices)}
+        {
+        }
+        std::uint32_t id{0};
+        std::vector<math::Float_vector> vertices;
+    };
 
-class Tileset
-{
-public:
-    const Asset_id& get_texture_id()
-    {
-        // TODO when filling this: add filename table to assets
-        return m_texture_id;
-    }
-
-    std::uint32_t get_margin()
-    {
-        return m_margin;
-    }
-
-    std::uint32_t get_padding()
-    {
-        return m_padding;
-    }
-
-    std::uint32_t get_tile_size()
-    {
-        return m_tile_size;
-    }
-
-    std::uint32_t has_tile(std::uint32_t id);
-
-private:
-    Asset_id m_texture_id;
-    std::uint32_t m_first_gid{0};
-    std::uint32_t m_last_gid{0};
-    std::uint32_t m_margin{0};
-    std::uint32_t m_padding{0};
-    std::uint32_t m_tile_size{0};
+    Asset_id texture_id{0};
+    std::uint32_t first_gid{0};
+    std::uint32_t last_gid{0};
+    math::Int_vector tile_size{0, 0};
+    std::vector<Tile> tiles;
 };
 
 }  // namespace level

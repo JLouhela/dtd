@@ -25,6 +25,7 @@ struct Vector
 using Int_vector = Vector<std::int32_t>;
 using UInt_vector = Vector<std::uint32_t>;
 using Double_vector = Vector<double>;
+using Float_vector = Vector<float>;
 
 template <typename T>
 [[nodiscard]] constexpr Vector<T> operator+(const Vector<T>& left, const Vector<T>& right)
