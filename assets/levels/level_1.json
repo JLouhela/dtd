@@ -1,0 +1,94 @@
+{
+	"waves": [
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		},
+		{
+			"enemies": [
+				{
+					"type": "basic",
+					"count": 5,
+					"spawn_time": 1000
+				}
+			]
+		}
+	]
+} 
