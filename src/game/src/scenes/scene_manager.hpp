@@ -8,6 +8,11 @@
 #include "scene.hpp"
 #include "scene_id.hpp"
 
+namespace renderer
+{
+class Renderer_interface;
+}
+
 namespace game
 {
 class Scene_manager
@@ -15,7 +20,7 @@ class Scene_manager
 public:
     Scene_manager() = default;
 
-    void init(entt::registry& registry);
+    void init(entt::registry& registry, renderer::Renderer_interface& renderer);
 
     void set_battle_scene(const Level& level);
 

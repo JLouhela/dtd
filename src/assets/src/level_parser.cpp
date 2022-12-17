@@ -49,6 +49,8 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
         return Level{};
     }
     Level level;
+    // TODO get json file -> read and store wave format
+    // map.getProperties()
     level.set_id(file_path);
     const auto& tmx_layers = map.getLayers();
     for (const auto& tmx_layer : tmx_layers)
@@ -60,7 +62,7 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
             for (const auto& object : objects)
             {
                 LOG_F(WARNING, "Level object parsing missing!");
-                // do stuff with object properties
+                // TODO store wavespawns
             }
         }
         else if (tmx_layer->getType() == tmx::Layer::Type::Tile)

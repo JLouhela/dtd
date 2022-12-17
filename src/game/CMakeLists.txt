@@ -20,10 +20,10 @@ src/scenes/scene_manager.hpp
 src/scenes/scene_manager.cpp
 src/systems/debug_render_system.hpp
 src/systems/debug_render_system.cpp
+src/systems/enemy_spawn_system.hpp
+src/systems/enemy_spawn_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
-src/systems/system_manager.hpp
-src/systems/system_manager.cpp
 )
 
 target_include_directories(game

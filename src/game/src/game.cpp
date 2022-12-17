@@ -8,10 +8,10 @@ namespace game
 {
 
 Game::Game(renderer::Renderer_interface& renderer, assets::Assets_interface& assets)
-    : m_renderer{renderer}, m_assets{assets}, m_system_manager{m_registry, m_renderer}
+    : m_renderer{renderer}, m_assets{assets}
 {
     // TODO init registry properly
-    m_scene_manager.init(m_registry);
+    m_scene_manager.init(m_registry, m_renderer);
 
     // Assuming current level has been loaded OK before game ctor is called
     const auto& level_asset = assets.get_loaded_level_content();
@@ -21,7 +21,7 @@ Game::Game(renderer::Renderer_interface& renderer, assets::Assets_interface& ass
 
 void Game::update(std::int32_t delta_time)
 {
-    m_system_manager.execute();
+    m_scene_manager.get_current_scene().update(delta_time);
 }
 
 std::unique_ptr<Game_interface> make_game(renderer::Renderer_interface& renderer, assets::Assets_interface& assets)

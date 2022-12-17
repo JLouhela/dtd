@@ -2,7 +2,7 @@
 
 namespace game
 {
-Menu_scene::Menu_scene(entt::registry& registry) : Scene(registry)
+Menu_scene::Menu_scene(entt::registry& registry, renderer::Renderer_interface& renderer) : Scene(registry, renderer)
 {
 }
 

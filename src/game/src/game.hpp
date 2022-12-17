@@ -4,7 +4,6 @@
 #include "game/game_interface.hpp"
 #include "renderer/renderer_interface.hpp"
 #include "scenes/scene_manager.hpp"
-#include "systems/system_manager.hpp"
 
 namespace game
 {
@@ -21,7 +20,6 @@ private:
     entt::registry m_registry;
     renderer::Renderer_interface& m_renderer;
     assets::Assets_interface& m_assets;
-    System_manager m_system_manager;
     Scene_manager m_scene_manager;
 };
 

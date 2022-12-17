@@ -3,11 +3,16 @@
 namespace game
 {
 
-Scene::Scene(entt::registry& registry) : m_registry{registry}
+Scene::Scene(entt::registry& registry, renderer::Renderer_interface& renderer)
+    : m_registry{registry}, m_renderer{renderer}
 {
 }
 
 void Scene::dispose()
+{
+}
+
+void Scene::update(std::int32_t delta_time)
 {
 }
 
