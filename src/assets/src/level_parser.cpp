@@ -33,26 +33,28 @@ std::string get_file_name(const std::string& file_path)
     return file_path.substr(file_path.find_last_of("/\\") + 1);
 }
 
-}  // namespace
-
-namespace assets
+void parse_tile_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers,
+                       std::uint32_t level_width,
+                       assets::level::Level& level)
 {
-namespace level
-{
-Level Level_parser::load(const std::string& file_path, const std::unordered_map<std::string, Asset_id>& asset_id_map)
-{
-    const std::string full_path = ASSET_FOLDER_ROOT + file_path;
-    tmx::Map map;
-    if (!map.load(full_path))
+    for (const auto& tmx_layer : tmx_layers)
     {
-        LOG_F(WARNING, "Could not load level %s", full_path.c_str());
-        return Level{};
+        if (tmx_layer->getType() == tmx::Layer::Type::Tile)
+        {
+            const auto& tile_layer = tmx_layer->getLayerAs<tmx::TileLayer>();
+            assets::level::Layer layer;
+            layer.width = level_width;
+            for (const auto& tile : tile_layer.getTiles())
+            {
+                layer.tiles.emplace_back(tile.ID);
+            }
+            level.add_layer(std::move(layer));
+        }
     }
-    Level level;
-    // TODO get json file -> read and store wave format
-    // map.getProperties()
-    level.set_id(file_path);
-    const auto& tmx_layers = map.getLayers();
+}
+
+void parse_object_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers, assets::level::Level& level)
+{
     for (const auto& tmx_layer : tmx_layers)
     {
         if (tmx_layer->getType() == tmx::Layer::Type::Object)
@@ -61,27 +63,20 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
             const auto& objects = object_layer.getObjects();
             for (const auto& object : objects)
             {
-                LOG_F(WARNING, "Level object parsing missing!");
+                LOG_F(WARNING, "Level object parsing missing -> no waypoints!");
                 // TODO store wavespawns
             }
         }
-        else if (tmx_layer->getType() == tmx::Layer::Type::Tile)
-        {
-            const auto& tile_layer = tmx_layer->getLayerAs<tmx::TileLayer>();
-            Layer layer;
-            layer.width = map.getTileCount().x;
-            for (const auto& tile : tile_layer.getTiles())
-            {
-                layer.tiles.emplace_back(tile.ID);
-            }
-            level.add_layer(std::move(layer));
-        }
     }
+}
 
-    const auto& tmx_tilesets = map.getTilesets();
+void parse_tilesets(const std::vector<tmx::Tileset>& tmx_tilesets,
+                    const std::unordered_map<std::string, assets::Asset_id>& asset_id_map,
+                    assets::level::Level& level)
+{
     for (const auto& tmx_tileset : tmx_tilesets)
     {
-        Tileset tileset;
+        assets::level::Tileset tileset;
         tileset.first_gid = tmx_tileset.getFirstGID();
         tileset.last_gid = tmx_tileset.getLastGID();
         const auto& tile_size = tmx_tileset.getTileSize();
@@ -105,6 +100,40 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
         tileset.texture_id = find_asset_id(asset_id_map, get_file_name(tmx_tileset.getImagePath()));
         level.add_tileset(std::move(tileset));
     }
+}
+
+void parse_properties(const tmx::Map& map, assets::level::Level& level)
+{
+    LOG_F(WARNING, "Properties parsing missing from level parser -> no wave data!");
+    // TODO get json file -> read and store wave format
+    // map.getProperties()
+}
+
+}  // namespace
+
+namespace assets
+{
+namespace level
+{
+Level Level_parser::load(const std::string& file_path, const std::unordered_map<std::string, Asset_id>& asset_id_map)
+{
+    const std::string full_path = ASSET_FOLDER_ROOT + file_path;
+    tmx::Map map;
+    if (!map.load(full_path))
+    {
+        LOG_F(WARNING, "Could not load level %s", full_path.c_str());
+        return Level{};
+    }
+    Level level;
+    level.set_id(file_path);
+    const auto& tmx_layers = map.getLayers();
+    parse_tile_layers(tmx_layers, map.getTileCount().x, level);
+    parse_object_layers(tmx_layers, level);
+
+    const auto& tmx_tilesets = map.getTilesets();
+    parse_tilesets(tmx_tilesets, asset_id_map, level);
+    parse_properties(map, level);
+
     LOG_F(INFO, "Level loaded from %s", full_path.c_str());
     return level;
 }
