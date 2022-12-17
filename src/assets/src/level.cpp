@@ -8,6 +8,11 @@ namespace assets
 namespace level
 {
 
+void Level::set_id(std::string id)
+{
+    m_id = std::move(id);
+}
+
 bool Level::operator==(const Level& rhs) const
 {
     return m_id == rhs.get_id();

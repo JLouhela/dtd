@@ -16,6 +16,7 @@ struct Layer
         std::uint32_t id{0};
     };
     std::vector<Tile> tiles;
+    std::uint32_t width{0};
 };
 
 }  // namespace level

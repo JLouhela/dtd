@@ -28,6 +28,7 @@ public:
         return m_tilesets;
     }
 
+    void set_id(std::string id);
     void add_layer(Layer layer);
     void add_tileset(Tileset tileset);
     bool operator==(const Level& rhs) const;

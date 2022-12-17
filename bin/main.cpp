@@ -23,6 +23,8 @@ int main(int argc, char* argv[])
     load_assets(*assets);
 
     auto renderer = renderer::make_renderer(*assets);
+    renderer->get_level_renderer().init_current_Level();
+
     auto game = game::make_game(*renderer, *assets);
     auto event_handler = events::make_event_handler(renderer->get_window());
     auto game_loop = game_loop::make_game_loop(*game, *renderer, *event_handler);

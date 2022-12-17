@@ -26,9 +26,9 @@ public:
 protected:
     void draw(const sf::Drawable& drawable);
     std::shared_ptr<Sprite_cache> m_sprite_cache;
+    sf::RenderStates m_renderStates{sf::RenderStates::Default};
 
 private:
-    sf::RenderStates m_renderStates{sf::RenderStates::Default};
     sf::RenderTexture m_render_texture;
 };
 

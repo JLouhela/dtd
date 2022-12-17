@@ -49,6 +49,7 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
         return Level{};
     }
     Level level;
+    level.set_id(file_path);
     const auto& tmx_layers = map.getLayers();
     for (const auto& tmx_layer : tmx_layers)
     {
@@ -66,6 +67,7 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
         {
             const auto& tile_layer = tmx_layer->getLayerAs<tmx::TileLayer>();
             Layer layer;
+            layer.width = map.getTileCount().x;
             for (const auto& tile : tile_layer.getTiles())
             {
                 layer.tiles.emplace_back(tile.ID);
@@ -87,15 +89,15 @@ Level Level_parser::load(const std::string& file_path, const std::unordered_map<
         {
             const auto* tile = tmx_tileset.getTile(id);
             // TODO probably needs tileoffset, margins and paddings
-            math::Float_vector top_left{static_cast<float>(tile->imagePosition.x * tile_size.x),
-                                        static_cast<float>(tile->imagePosition.y * tile_size.y)};
+            math::Float_vector top_left{static_cast<float>(tile->imagePosition.x),
+                                        static_cast<float>(tile->imagePosition.y)};
             math::Float_vector bottom_right{top_left.x + static_cast<float>(tile_size.x),
                                             top_left.y + static_cast<float>(tile_size.y)};
             tileset.tiles.emplace_back(id, std::vector<math::Float_vector>{top_left,
-                                                                           {top_left.x, bottom_right.y},
-                                                                           bottom_right,
-                                                                           bottom_right,
                                                                            {bottom_right.x, top_left.y},
+                                                                           bottom_right,
+                                                                           bottom_right,
+                                                                           {top_left.x, bottom_right.y},
                                                                            top_left});
         }
         tileset.texture_id = find_asset_id(asset_id_map, get_file_name(tmx_tileset.getImagePath()));

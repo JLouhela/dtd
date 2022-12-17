@@ -28,6 +28,10 @@ void Renderer::render()
     sf::Sprite debug(m_debug_renderer.get_render_texture().getTexture());
     m_window.draw(debug);
 #endif
+
+    sf::Sprite level(m_level_renderer.get_render_texture().getTexture());
+    m_window.draw(level);
+
     sf::Sprite sprites(m_sprite_renderer.get_render_texture().getTexture());
     m_window.draw(sprites);
 
@@ -42,6 +46,7 @@ void Renderer::clear()
 #ifdef DEBUG
     m_debug_renderer.clear();
 #endif
+    m_level_renderer.clear();
     m_sprite_renderer.clear();
     m_hud_renderer.clear();
 }
