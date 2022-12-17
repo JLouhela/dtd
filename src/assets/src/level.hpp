@@ -8,6 +8,9 @@
 
 namespace assets
 {
+namespace level
+{
+
 class Level : public Level_interface, public Render_level_interface
 {
 public:
@@ -15,16 +18,19 @@ public:
     {
         return m_id;
     }
-    const std::vector<level::Layer> get_layers() const final
+    const std::vector<Layer> get_layers() const final
     {
         return m_layers;
     }
+
+    void add_layer(Layer layer);
     bool operator==(const Level& rhs) const;
     bool operator!=(const Level& rhs) const;
 
 private:
     std::string m_id{"undefined"};
-    std::vector<level::Layer> m_layers;
+    std::vector<Layer> m_layers;
 };
+}  // namespace level
 
 }  // namespace assets

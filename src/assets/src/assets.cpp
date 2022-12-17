@@ -70,8 +70,8 @@ Load_result Assets::load_texture(const std::string& file_path, const Asset_id& i
 
 Load_result Assets::load_level(const std::string& file_path)
 {
-    Level level = Level_parser::load(file_path);
-    if (level == Level{})
+    level::Level level = level::Level_parser::load(file_path);
+    if (level == level::Level{})
     {
         return Load_result::Failed;
     }

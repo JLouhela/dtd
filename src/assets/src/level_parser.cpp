@@ -12,6 +12,8 @@
 
 namespace assets
 {
+namespace level
+{
 
 Level Level_parser::load(const std::string& file_path)
 {
@@ -25,22 +27,27 @@ Level Level_parser::load(const std::string& file_path)
         return Level{};
     }
     Level level;
-    const auto& layers = map.getLayers();
-    for (const auto& layer : layers)
+    const auto& tmx_layers = map.getLayers();
+    for (const auto& tmx_layer : tmx_layers)
     {
-        if (layer->getType() == tmx::Layer::Type::Object)
+        if (tmx_layer->getType() == tmx::Layer::Type::Object)
         {
-            const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
-            const auto& objects = objectLayer.getObjects();
+            const auto& object_layer = tmx_layer->getLayerAs<tmx::ObjectGroup>();
+            const auto& objects = object_layer.getObjects();
             for (const auto& object : objects)
             {
                 // do stuff with object properties
             }
         }
-        else if (layer->getType() == tmx::Layer::Type::Tile)
+        else if (tmx_layer->getType() == tmx::Layer::Type::Tile)
         {
-            const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
-            // read out tile layer properties etc...
+            const auto& tile_layer = tmx_layer->getLayerAs<tmx::TileLayer>();
+            Layer layer;
+            for (const auto& tile : tile_layer.getTiles())
+            {
+                layer.tiles.emplace_back(tile.ID);
+            }
+            level.add_layer(std::move(layer));
         }
     }
 
@@ -49,7 +56,9 @@ Level Level_parser::load(const std::string& file_path)
     {
         // read out tile set properties, load textures etc...
     }
+    LOG_F(INFO, "Level loaded from %s", full_path.c_str());
     return level;
 }
 
+}  // namespace level
 }  // namespace assets

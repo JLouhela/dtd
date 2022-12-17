@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../asset_id.hpp"
+#include "SFML/Graphics.hpp"
 
 namespace assets
 {
@@ -13,6 +14,10 @@ namespace level
 struct Tile
 {
     // TODO vertices based on padding / margin
+    Tile(const sf::Vector2f& top_left, const sf::Vector2f bottom_right)
+    {
+    }
+    sf::VertexArray vertices;
 };
 
 class Tileset
@@ -34,6 +39,11 @@ public:
         return m_padding;
     }
 
+    std::uint32_t get_tile_size()
+    {
+        return m_tile_size;
+    }
+
     std::uint32_t has_tile(std::uint32_t id);
 
 private:
@@ -42,6 +52,7 @@ private:
     std::uint32_t m_last_gid{0};
     std::uint32_t m_margin{0};
     std::uint32_t m_padding{0};
+    std::uint32_t m_tile_size{0};
 };
 
 }  // namespace level

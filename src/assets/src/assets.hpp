@@ -32,7 +32,7 @@ private:
     void create_color_textures();
     std::unordered_map<Asset_id, sf::Texture> m_textures;
     Asset_loader m_asset_loader;
-    Level m_loaded_level;
+    level::Level m_loaded_level;
 };
 
 }  // namespace assets
