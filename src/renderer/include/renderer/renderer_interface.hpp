@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "hud_renderer_interface.hpp"
+#include "level_renderer_interface.hpp"
 #include "sprite_renderer_interface.hpp"
 
 #ifdef DEBUG
@@ -38,6 +39,7 @@ public:
 
     virtual Sprite_renderer_interface& get_sprite_renderer() = 0;
     virtual Hud_renderer_interface& get_hud_renderer() = 0;
+    virtual Level_renderer_interface& get_level_renderer() = 0;
 
 #ifdef DEBUG
     virtual Debug_renderer_interface& get_debug_renderer() = 0;

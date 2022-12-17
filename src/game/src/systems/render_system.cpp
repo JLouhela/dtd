@@ -2,7 +2,9 @@
 
 #include "../components/position_component.hpp"
 #include "../components/sprite_component.hpp"
+#include "assets/render_level_interface.hpp"
 #include "renderer/hud_renderer_interface.hpp"
+#include "renderer/level_renderer_interface.hpp"
 #include "renderer/sprite_renderer_interface.hpp"
 
 namespace game
@@ -28,6 +30,10 @@ void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& re
 void render_hud(renderer::Hud_renderer_interface& renderer)
 {
     renderer.render_buy_menu();
+}
+void render_level(renderer::Level_renderer_interface& renderer)
+{
+    renderer.render_current_level();
 }
 
 }  // namespace sys

@@ -6,6 +6,8 @@ src/debug_renderer.hpp
 src/debug_renderer.cpp
 src/hud_renderer.hpp
 src/hud_renderer.cpp
+src/level_renderer.hpp
+src/level_renderer.cpp
 src/renderer.hpp
 src/renderer.cpp
 src/sprite_cache.hpp

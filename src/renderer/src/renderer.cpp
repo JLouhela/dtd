@@ -16,7 +16,8 @@ Renderer::Renderer(const assets::Assets_interface& assets)
       m_assets{assets},
       m_sprite_cache{std::make_shared<Sprite_cache>(assets)},
       m_sprite_renderer{m_sprite_cache},
-      m_hud_renderer{m_sprite_cache}
+      m_hud_renderer{m_sprite_cache},
+      m_level_renderer{assets}
 {
 }
 

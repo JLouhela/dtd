@@ -4,6 +4,8 @@
 #include <memory>
 
 #include "hud_renderer.hpp"
+#include "level_renderer.hpp"
+#include "renderer/level_renderer_interface.hpp"
 #include "renderer/renderer_interface.hpp"
 #include "sprite_cache.hpp"
 #include "sprite_renderer.hpp"
@@ -35,6 +37,11 @@ public:
         return m_hud_renderer;
     }
 
+    Level_renderer_interface& get_level_renderer() final
+    {
+        return m_level_renderer;
+    }
+
 #ifdef DEBUG
     Debug_renderer_interface& get_debug_renderer() final
     {
@@ -48,6 +55,7 @@ private:
     std::shared_ptr<Sprite_cache> m_sprite_cache;
     Sprite_renderer m_sprite_renderer;
     Hud_renderer m_hud_renderer;
+    Level_renderer m_level_renderer;
 #ifdef DEBUG
     Debug_renderer m_debug_renderer;
 #endif

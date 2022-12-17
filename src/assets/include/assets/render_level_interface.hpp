@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "level/layer.hpp"
+#include "level/tileset.hpp"
 
 namespace assets
 {
