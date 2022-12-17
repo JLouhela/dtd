@@ -93,9 +93,9 @@ void Level_renderer::init_current_Level()
     m_vertices.reserve(layer_count);
     for (unsigned int i = 0; i < layer_count; ++i)
     {
-        m_vertices.emplace_back(sf::Triangles, renderer::constants::WINDOW_SIZE.x / renderer::constants::TILE_SIZE.x *
-                                                   renderer::constants::WINDOW_SIZE.y /
-                                                   renderer::constants::TILE_SIZE.y * 6);
+        m_vertices.emplace_back(sf::PrimitiveType::Triangles,
+                                renderer::constants::WINDOW_SIZE.x / renderer::constants::TILE_SIZE.x *
+                                    renderer::constants::WINDOW_SIZE.y / renderer::constants::TILE_SIZE.y * 6);
     }
 }
 

@@ -12,7 +12,7 @@ Debug_renderer::Debug_renderer() : Subrenderer(nullptr)
 
 void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& end, const sf::Color& color)
 {
-    sf::VertexArray line(sf::Lines, 2);
+    sf::VertexArray line(sf::PrimitiveType::Lines, 2);
 
     line[0].position = sf::Vector2f(static_cast<float>(start.x), static_cast<float>(start.y));
     line[1].position = sf::Vector2f(static_cast<float>(end.x), static_cast<float>(end.y));
