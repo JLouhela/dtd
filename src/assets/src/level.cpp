@@ -37,5 +37,10 @@ void Level::add_wave(Enemy_wave wave)
     m_waves.emplace_back(std::move(wave));
 }
 
+void Level::add_waypoints(Waypoints waypoints)
+{
+    m_waypoints.emplace_back(std::move(waypoints));
+}
+
 }  // namespace level
 }  // namespace assets

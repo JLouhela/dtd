@@ -66,7 +66,7 @@ void parse_object_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers, assets:
             for (const auto& object : objects)
             {
                 LOG_F(WARNING, "Level object parsing missing -> no waypoints!");
-                // TODO store wavespawns
+                // TODO store waypoints to levels
             }
         }
     }

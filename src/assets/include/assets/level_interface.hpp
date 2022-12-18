@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "math/vector.hpp"
+
 namespace assets
 {
 
@@ -26,14 +28,22 @@ struct Enemy_wave
     std::vector<Enemy> enemies;
 };
 
+struct Waypoint
+{
+    math::Float_vector point{0, 0};
+};
+
+struct Waypoints
+{
+    std::vector<Waypoint> waypoints;
+};
+
 class Level_interface
 {
 public:
     virtual const std::string& get_id() const = 0;
     virtual const std::vector<Enemy_wave>& get_waves() const = 0;
-    // TODO mitä tarvitaan logiikkaaN?
-    // waypointit
-    // spawnihommat (joku tiled metadata -> Json file?)
+    virtual const std::vector<Waypoints>& get_waypoints() const = 0;
 };
 
 }  // namespace level
