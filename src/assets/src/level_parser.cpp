@@ -130,8 +130,19 @@ void parse_properties(const tmx::Map& map, assets::level::Level& level)
     std::ifstream json_stream{json_path};
     const auto data = nlohmann::json::parse(json_stream);
     const auto waves = data["waves"];
-    const auto wave_count = waves.size();
-    LOG_F(WARNING, "There are %d waves in json for %s -> TODO store to level", wave_count, level.get_id().c_str());
+    for (std::uint32_t wave_idx = 0; wave_idx < waves.size(); ++wave_idx)
+    {
+        const auto& wave = waves[wave_idx];
+        assets::level::Enemy_wave enemy_wave;
+
+        const auto& enemies = wave["enemies"];
+        for (std::uint32_t enemy_idx = 0; enemy_idx < enemies.size(); ++enemy_idx)
+        {
+            const auto& enemy = enemies[enemy_idx];
+            enemy_wave.enemies.emplace_back(enemy["type"], enemy["count"], enemy["spawn_time"]);
+        }
+        level.add_wave(enemy_wave);
+    }
 }
 
 }  // namespace

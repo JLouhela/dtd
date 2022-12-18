@@ -10,7 +10,7 @@ class Level
 {
 public:
     Level() = default;
-    explicit Level(const assets::Level_interface& source);
+    explicit Level(const assets::level::Level_interface& source);
 
     const std::string& get_id() const
     {

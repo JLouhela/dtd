@@ -4,7 +4,7 @@
 
 namespace game
 {
-Level::Level(const assets::Level_interface& source)
+Level::Level(const assets::level::Level_interface& source)
 {
     LOG_F(WARNING, "game::Level ctor not implemented");
 }

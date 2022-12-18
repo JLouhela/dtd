@@ -28,9 +28,15 @@ public:
         return m_tilesets;
     }
 
+    virtual const std::vector<Enemy_wave>& get_waves() const final
+    {
+        return m_waves;
+    }
+
     void set_id(std::string id);
     void add_layer(Layer layer);
     void add_tileset(Tileset tileset);
+    void add_wave(Enemy_wave wave);
     bool operator==(const Level& rhs) const;
     bool operator!=(const Level& rhs) const;
 
@@ -38,6 +44,7 @@ private:
     std::string m_id{"undefined"};
     std::vector<Layer> m_layers;
     std::vector<Tileset> m_tilesets;
+    std::vector<Enemy_wave> m_waves;
 };
 }  // namespace level
 

@@ -32,5 +32,10 @@ void Level::add_tileset(Tileset tileset)
     m_tilesets.emplace_back(std::move(tileset));
 }
 
+void Level::add_wave(Enemy_wave wave)
+{
+    m_waves.emplace_back(std::move(wave));
+}
+
 }  // namespace level
 }  // namespace assets

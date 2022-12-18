@@ -8,6 +8,8 @@
 
 namespace assets
 {
+namespace level
+{
 
 // TODO wrap tmxlite obj
 class Render_level_interface
@@ -24,4 +26,5 @@ public:
     // paddingit yms
 };
 
+}  // namespace level
 }  // namespace assets

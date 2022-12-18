@@ -12,9 +12,11 @@ class Texture;
 
 namespace assets
 {
-
+namespace level
+{
 class Level_interface;
 class Render_level_interface;
+}  // namespace level
 
 enum class Load_result
 {
@@ -30,8 +32,8 @@ public:
     virtual Load_result load_level(const std::string& file_path) = 0;
     virtual const sf::Texture* get_texture(const Asset_id& id) const = 0;
 
-    virtual const Level_interface& get_loaded_level_content() const = 0;
-    virtual const Render_level_interface& get_loaded_level_render() const = 0;
+    virtual const level::Level_interface& get_loaded_level_content() const = 0;
+    virtual const level::Render_level_interface& get_loaded_level_render() const = 0;
 };
 
 std::unique_ptr<Assets_interface> make_assets();

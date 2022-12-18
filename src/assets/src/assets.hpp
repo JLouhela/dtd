@@ -18,12 +18,12 @@ public:
     Load_result load_level(const std::string& file_path) final;
     const sf::Texture* get_texture(const Asset_id& id) const final;
 
-    const Level_interface& get_loaded_level_content() const final
+    const level::Level_interface& get_loaded_level_content() const final
     {
         return m_loaded_level;
     }
 
-    const Render_level_interface& get_loaded_level_render() const final
+    const level::Render_level_interface& get_loaded_level_render() const final
     {
         return m_loaded_level;
     }
