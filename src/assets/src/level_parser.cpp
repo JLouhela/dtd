@@ -62,11 +62,17 @@ void parse_object_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers, assets:
         if (tmx_layer->getType() == tmx::Layer::Type::Object)
         {
             const auto& object_layer = tmx_layer->getLayerAs<tmx::ObjectGroup>();
-            const auto& objects = object_layer.getObjects();
-            for (const auto& object : objects)
+            if (object_layer.getName().find_first_of("waypoints") != std::string::npos)
             {
-                LOG_F(WARNING, "Level object parsing missing -> no waypoints!");
-                // TODO store waypoints to levels
+                const auto& objects = object_layer.getObjects();
+                assets::level::Waypoints waypoints;
+                for (const auto& object : objects)
+                {
+                    const auto& pos = object.getPosition();
+                    waypoints.waypoints.emplace_back(pos.x, pos.y);
+                    LOG_F(WARNING, "Level object parsing missing -> no waypoints!");
+                }
+                level.add_waypoints(waypoints);
             }
         }
     }

@@ -30,6 +30,9 @@ struct Enemy_wave
 
 struct Waypoint
 {
+    Waypoint(float x, float y) : point{x, y}
+    {
+    }
     math::Float_vector point{0, 0};
 };
 
