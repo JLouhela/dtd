@@ -39,6 +39,7 @@ std::string Battle_scene::get_level_id()
 
 void Battle_scene::dispose()
 {
+    m_enemy_spawner.set_level(nullptr);
 }
 
 void Battle_scene::update(std::int32_t delta_time)
