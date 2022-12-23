@@ -44,6 +44,8 @@ void Battle_scene::dispose()
 
 void Battle_scene::update(std::int32_t delta_time)
 {
+    // TODO handle states properly
+    m_state = Battle_state::SPAWN;
     if (m_state == Battle_state::SPAWN)
     {
         m_enemy_spawner.spawn_enemies(m_registry, delta_time);

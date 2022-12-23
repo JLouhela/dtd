@@ -5,29 +5,46 @@ namespace
 
 bool all_waves_spawned(const game::sys::Wave_state& wave_state)
 {
-    return true;
+    return wave_state.current_wave == wave_state.end_wave;
 }
 
-bool all_enemies_spawned(const game::sys::Wave_state& wave_state)
+bool need_spawn(const game::sys::Wave_state& wave_state)
 {
-    return true;
-}
+    if (all_waves_spawned(wave_state))
+    {
+        return false;
+    }
 
-bool all_spawned(const game::sys::Wave_state& wave_state)
-{
-    return all_waves_spawned(wave_state) && all_enemies_spawned(wave_state);
-}
-bool time_to_spawn(const game::sys::Wave_state& wave_state)
-{
+    for (std::uint32_t i = 0; i < wave_state.current_wave->enemies.size(); ++i)
+    {
+        const auto& enemies = wave_state.current_wave->enemies[i];
+        if (wave_state.spawned_counts[i] >= enemies.count)
+        {
+            continue;
+        }
+        if (wave_state.remaining_spawn_times[i] <= 0)
+        {
+            return true;
+        }
+    }
     return false;
 }
 
-void spawn_enemy(game::sys::Wave_state& wave_state, entt::registry& reg)
+void update_spawn_times(game::sys::Wave_state& wave_state, const std::uint32_t delta_time)
+{
+    for (auto& spawn_time : wave_state.remaining_spawn_times)
+    {
+        spawn_time -= static_cast<std::int32_t>(delta_time);
+    }
+}
+
+void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg)
 {
 }
 
-void update_state(game::sys::Wave_state& wave_state, const std::uint32_t delta_time)
+void progress_state(game::sys::Wave_state& wave_state)
 {
+    // TODO set spawn_time from enemies
 }
 
 }  // namespace
@@ -57,7 +74,7 @@ void Enemy_spawner::prepare_next_wave()
         }
         const auto enemy_count = wave_state.current_wave->enemies.size();
         // Heap allocation, bad!
-        wave_state.last_spawn_times = std::vector<std::uint32_t>(enemy_count, 0);
+        wave_state.remaining_spawn_times = std::vector<std::int32_t>(enemy_count, 0);
         wave_state.spawned_counts = std::vector<std::uint32_t>(enemy_count, 0);
     }
 }
@@ -70,16 +87,13 @@ void Enemy_spawner::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
     }
     for (auto& wave_state : m_wave_states)
     {
-        if (all_spawned(wave_state))
+        update_spawn_times(wave_state, delta_time);
+        if (!need_spawn(wave_state))
         {
             continue;
         }
-        if (!time_to_spawn(wave_state))
-        {
-            continue;
-        }
-        spawn_enemy(wave_state, reg);
-        update_state(wave_state, delta_time);
+        ::spawn_enemies(wave_state, reg);
+        progress_state(wave_state);
     }
 }
 
