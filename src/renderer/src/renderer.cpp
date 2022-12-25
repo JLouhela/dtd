@@ -24,11 +24,6 @@ Renderer::Renderer(const assets::Assets_interface& assets)
 void Renderer::render()
 {
     m_window.clear(bg_color);
-#ifdef DEBUG
-    sf::Sprite debug(m_debug_renderer.get_render_texture().getTexture());
-    m_window.draw(debug);
-#endif
-
     sf::Sprite level(m_level_renderer.get_render_texture().getTexture());
     m_window.draw(level);
 
@@ -37,6 +32,11 @@ void Renderer::render()
 
     sf::Sprite hud(m_hud_renderer.get_render_texture().getTexture());
     m_window.draw(hud);
+
+#ifdef DEBUG
+    sf::Sprite debug(m_debug_renderer.get_render_texture().getTexture());
+    m_window.draw(debug);
+#endif
 
     m_window.display();
 }
