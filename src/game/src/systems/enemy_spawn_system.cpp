@@ -44,7 +44,14 @@ void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg)
 
 void progress_state(game::sys::Wave_state& wave_state)
 {
-    // TODO set spawn_time from enemies
+    for (std::uint32_t i = 0; i < wave_state.current_wave->enemies.size(); ++i)
+    {
+        auto& spawn_time = wave_state.remaining_spawn_times[i];
+        if (spawn_time <= 0)
+        {
+            spawn_time = wave_state.current_wave->enemies[i].spawn_time;
+        }
+    }
 }
 
 }  // namespace

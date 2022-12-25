@@ -9,6 +9,8 @@ src/level.hpp
 src/level.cpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
+src/entities/entity_factory.hpp
+src/entities/entity_factory.cpp
 src/scenes/scene.hpp
 src/scenes/scene.cpp
 src/scenes/battle_scene.hpp

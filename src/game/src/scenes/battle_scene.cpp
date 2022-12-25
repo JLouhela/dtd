@@ -3,27 +3,16 @@
 #include "renderer/renderer_interface.hpp"
 
 // TODO factory
+#include "../entities/entity_factory.hpp"
 #include "../systems/debug_render_system.hpp"
 #include "../systems/render_system.hpp"
 #include "assets/level_interface.hpp"
-#include "components/position_component.hpp"
-#include "components/sprite_component.hpp"
-
-namespace
-{
-void create_debug_entity(entt::registry& registry)
-{
-    auto entity = registry.create();
-    registry.emplace<game::comp::Position>(entity, 100, 100);
-    registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Rectangle_red);
-}
-}  // namespace
 
 namespace game
 {
 Battle_scene::Battle_scene(entt::registry& registry, renderer::Renderer_interface& renderer) : Scene(registry, renderer)
 {
-    create_debug_entity(registry);
+    entity::factory::create_debug_entity(registry);
 }
 
 void Battle_scene::init(const Level& level)
