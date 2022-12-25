@@ -1,12 +1,10 @@
 #include "battle_scene.hpp"
 
-#include "renderer/renderer_interface.hpp"
-
-// TODO factory
 #include "../entities/entity_factory.hpp"
 #include "../systems/debug_render_system.hpp"
 #include "../systems/render_system.hpp"
 #include "assets/level_interface.hpp"
+#include "renderer/renderer_interface.hpp"
 
 namespace game
 {

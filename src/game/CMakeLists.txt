@@ -9,6 +9,7 @@ src/level.hpp
 src/level.cpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
+src/components/waypoint_follower_component.hpp
 src/entities/entity_factory.hpp
 src/entities/entity_factory.cpp
 src/scenes/scene.hpp

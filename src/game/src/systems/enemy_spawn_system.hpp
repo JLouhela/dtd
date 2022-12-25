@@ -21,7 +21,7 @@ struct Wave_state
     }
     Waves::const_iterator current_wave;
     Waves::const_iterator end_wave;
-    math::Float_vector spawn_point{0, 0};
+    math::Float_vector spawn_point{0.f, 0.f};
     std::vector<std::uint32_t> spawned_counts;        // Corresponds to amount of different enemies in wave
     std::vector<std::int32_t> remaining_spawn_times;  // Corresponds to amount of different enemies in wave
 };

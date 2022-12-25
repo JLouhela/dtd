@@ -1,5 +1,7 @@
 #include "enemy_spawn_system.hpp"
 
+#include "../entities/entity_factory.hpp"
+
 namespace
 {
 
@@ -40,16 +42,15 @@ void update_spawn_times(game::sys::Wave_state& wave_state, const std::uint32_t d
 
 void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg)
 {
-}
-
-void progress_state(game::sys::Wave_state& wave_state)
-{
     for (std::uint32_t i = 0; i < wave_state.current_wave->enemies.size(); ++i)
     {
         auto& spawn_time = wave_state.remaining_spawn_times[i];
         if (spawn_time <= 0)
         {
-            spawn_time = wave_state.current_wave->enemies[i].spawn_time;
+            const auto& enemies = wave_state.current_wave->enemies[i];
+            game::entity::factory::create_enemy(reg, enemies.type, wave_state.spawn_point);
+            wave_state.spawned_counts[i]++;
+            spawn_time = enemies.spawn_time;
         }
     }
 }
@@ -100,7 +101,6 @@ void Enemy_spawner::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
             continue;
         }
         ::spawn_enemies(wave_state, reg);
-        progress_state(wave_state);
     }
 }
 
