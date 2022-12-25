@@ -3,6 +3,7 @@
 #include "components/position_component.hpp"
 #include "components/sprite_component.hpp"
 #include "components/waypoint_follower_component.hpp"
+#include "renderer/sprite_id.hpp"
 
 namespace game::entity
 {
@@ -20,7 +21,7 @@ void create_enemy(entt::registry& registry, const std::string& enemy_type, const
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     // TODO pick by enemy_type
-    registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Rectangle_black);
+    registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type));
     // TODO create system to handle this
     registry.emplace<game::comp::Waypoint_follower>(entity, pos);
 }

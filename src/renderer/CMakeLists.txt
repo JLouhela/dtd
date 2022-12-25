@@ -12,6 +12,7 @@ src/renderer.hpp
 src/renderer.cpp
 src/sprite_cache.hpp
 src/sprite_cache.cpp
+src/sprite_id.cpp
 src/sprite_renderer.hpp
 src/sprite_renderer.cpp
 src/subrenderer.hpp

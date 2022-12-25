@@ -11,6 +11,7 @@ Sprite_cache::Sprite_cache(const assets::Assets_interface& assets) : m_assets{as
 {
     init_rectangles();
     init_towers();
+    init_enemies();
 }
 
 sf::Sprite Sprite_cache::get(const Sprite_id& id)
@@ -23,7 +24,9 @@ sf::Sprite Sprite_cache::get(const Sprite_id& id)
         static const sf::Sprite invalid_sprite;
         return invalid_sprite;
     }
-    return sf::Sprite{*it->texture, it->sprite_rect};
+    auto sprite = sf::Sprite{*it->texture, it->sprite_rect};
+    sprite.setOrigin({static_cast<float>(it->sprite_rect.width / 2), static_cast<float>(it->sprite_rect.height / 2)});
+    return sprite;
 }
 
 void Sprite_cache::init_rectangles()
@@ -51,6 +54,12 @@ void Sprite_cache::init_towers()
     LOG_F(WARNING, "Tower sprite initialization NOT implemented!");
     auto* tower_tex = m_assets.get_texture("td_tilesheet");
     // TODO load stuff
+}
+void Sprite_cache::init_enemies()
+{
+    auto* enemy_tex = m_assets.get_texture("td_tilesheet");
+    const sf::IntRect sprite_rect = {{960, 640}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_enemy, enemy_tex, sprite_rect);
 }
 
 }  // namespace renderer

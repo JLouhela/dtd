@@ -93,6 +93,8 @@
         "ranges": "cpp",
         "span": "cpp",
         "any": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "*.def": "cpp",
+        "*.rh": "cpp"
     }
 }

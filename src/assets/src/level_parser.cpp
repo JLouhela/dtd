@@ -70,7 +70,6 @@ void parse_object_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers, assets:
                 {
                     const auto& pos = object.getPosition();
                     waypoints.waypoints.emplace_back(pos.x, pos.y);
-                    LOG_F(WARNING, "Level object parsing missing -> no waypoints!");
                 }
                 level.add_waypoints(waypoints);
             }
