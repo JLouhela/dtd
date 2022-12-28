@@ -43,7 +43,7 @@ void Battle_scene::update(std::int32_t delta_time)
 void Battle_scene::execute_renderers()
 {
 #ifdef DEBUG
-    // sys::debug::Render_system::render_grid(m_renderer.get_debug_renderer());
+    sys::debug::Render_system::render_grid(m_renderer.get_debug_renderer());
 #endif
     sys::Render_system::render_level(m_renderer.get_level_renderer());
     sys::Render_system::render_sprites(m_registry, m_renderer.get_sprite_renderer());

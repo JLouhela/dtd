@@ -5,12 +5,12 @@
 
 namespace game
 {
-namespace sys::debug
+namespace sys::debug::Render_system
 {
 void render_grid(renderer::Debug_renderer_interface& renderer)
 {
     renderer.draw_grid(constants::TILE_SIZE);
 }
 
-}  // namespace sys::debug
+}  // namespace sys::debug::Render_system
 }  // namespace game
