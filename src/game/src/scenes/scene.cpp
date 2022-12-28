@@ -12,7 +12,7 @@ void Scene::dispose()
 {
 }
 
-void Scene::update(std::int32_t delta_time)
+void Scene::update(float delta_time)
 {
 }
 

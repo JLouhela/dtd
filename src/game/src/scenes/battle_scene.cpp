@@ -31,7 +31,7 @@ void Battle_scene::dispose()
     m_enemy_spawner.set_level(std::weak_ptr<Level>());
 }
 
-void Battle_scene::update(std::int32_t delta_time)
+void Battle_scene::update(float delta_time)
 {
     // TODO handle states properly
     m_state = Battle_state::SPAWN;

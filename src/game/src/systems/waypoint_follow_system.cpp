@@ -38,7 +38,7 @@ void Waypoint_follow_system::update_entity_directions(entt::registry& reg)
 
             const auto& target = level->get_waypoints()[waypoint.spawn_index].waypoints[waypoint.waypoint_index].point;
             const math::Float_vector dir{target.x - pos.x, target.y - pos.y};
-            const float length_to_target = std::sqrt(std::powf(target.x, 2) + std::powf(target.y, 2));
+            const float length_to_target = std::sqrt(std::powf(dir.x, 2) + std::powf(dir.y, 2));
             direction.x = dir.x / length_to_target;
             direction.y = dir.y / length_to_target;
         }

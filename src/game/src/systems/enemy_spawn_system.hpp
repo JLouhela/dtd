@@ -18,20 +18,20 @@ struct Wave_state
     {
         const auto enemy_count = wave_start->enemies.size();
         spawned_counts = std::vector<std::uint32_t>(enemy_count, 0);
-        remaining_spawn_times = std::vector<std::int32_t>(enemy_count, 0);
+        remaining_spawn_times = std::vector<float>(enemy_count, 0);
     }
     Waves::const_iterator current_wave;
     Waves::const_iterator end_wave;
     std::int8_t spawn_index{-1};
-    std::vector<std::uint32_t> spawned_counts;        // Corresponds to amount of different enemies in wave
-    std::vector<std::int32_t> remaining_spawn_times;  // Corresponds to amount of different enemies in wave
+    std::vector<std::uint32_t> spawned_counts;  // Corresponds to amount of different enemies in wave
+    std::vector<float> remaining_spawn_times;   // Corresponds to amount of different enemies in wave
 };
 
 class Enemy_spawn_system
 {
 public:
     void set_level(std::weak_ptr<Level> level);
-    void spawn_enemies(entt::registry& reg, std::uint32_t delta_time);
+    void spawn_enemies(entt::registry& reg, float delta_time);
     void prepare_next_wave();
 
 private:

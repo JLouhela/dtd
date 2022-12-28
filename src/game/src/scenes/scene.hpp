@@ -15,7 +15,7 @@ public:
     virtual ~Scene() = default;
     Scene(entt::registry& registry, renderer::Renderer_interface& renderer);
     virtual void dispose();
-    virtual void update(std::int32_t delta_time);
+    virtual void update(float delta_time);
 
 protected:
     entt::registry& m_registry;

@@ -21,7 +21,7 @@ class Game_interface
 public:
     virtual ~Game_interface() = default;
 
-    virtual void update(std::int32_t delta_time) = 0;
+    virtual void update(float delta_time) = 0;
 };
 
 std::unique_ptr<Game_interface> make_game(renderer::Renderer_interface& renderer_interface,

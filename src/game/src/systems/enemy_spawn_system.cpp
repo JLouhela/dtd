@@ -32,11 +32,11 @@ bool need_spawn(const game::sys::Wave_state& wave_state)
     return false;
 }
 
-void update_spawn_times(game::sys::Wave_state& wave_state, const std::uint32_t delta_time)
+void update_spawn_times(game::sys::Wave_state& wave_state, const float delta_time)
 {
     for (auto& spawn_time : wave_state.remaining_spawn_times)
     {
-        spawn_time -= static_cast<std::int32_t>(delta_time);
+        spawn_time -= delta_time;
     }
 }
 
@@ -84,12 +84,12 @@ void Enemy_spawn_system::prepare_next_wave()
         }
         const auto enemy_count = wave_state.current_wave->enemies.size();
         // Heap allocation, bad!
-        wave_state.remaining_spawn_times = std::vector<std::int32_t>(enemy_count, 0);
+        wave_state.remaining_spawn_times = std::vector<float>(enemy_count, 0.f);
         wave_state.spawned_counts = std::vector<std::uint32_t>(enemy_count, 0);
     }
 }
 
-void Enemy_spawn_system::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
+void Enemy_spawn_system::spawn_enemies(entt::registry& reg, float delta_time)
 {
     if (const auto level = m_level.lock())
     {

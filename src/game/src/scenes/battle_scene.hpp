@@ -23,7 +23,7 @@ public:
     void dispose() final;
 
     void init(const assets::level::Level_interface& level_content);
-    void update(std::int32_t delta_time) final;
+    void update(float delta_time) final;
     std::string get_level_id();
 
 private:

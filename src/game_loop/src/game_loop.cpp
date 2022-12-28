@@ -46,7 +46,7 @@ void Game_loop::run()
     {
         sf::Time dt = delta_clock.restart();
         m_event_handler.update();
-        m_game.update(dt.asMilliseconds());
+        m_game.update(dt.asSeconds());
         m_renderer.render();
         m_renderer.clear();
     }

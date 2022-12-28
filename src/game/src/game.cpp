@@ -18,7 +18,7 @@ Game::Game(renderer::Renderer_interface& renderer, assets::Assets_interface& ass
     m_scene_manager.set_battle_scene(level_asset);
 }
 
-void Game::update(std::int32_t delta_time)
+void Game::update(float delta_time)
 {
     m_scene_manager.get_current_scene().update(delta_time);
 }

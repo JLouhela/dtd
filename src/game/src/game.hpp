@@ -14,7 +14,7 @@ public:
     Game(renderer::Renderer_interface& renderer_interface, assets::Assets_interface& assets);
     ~Game() final = default;
 
-    void update(std::int32_t delta_time) final;
+    void update(float delta_time) final;
 
 private:
     entt::registry m_registry;
