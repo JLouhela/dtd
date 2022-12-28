@@ -91,6 +91,7 @@ void Enemy_spawn_system::prepare_next_wave()
 
 void Enemy_spawn_system::spawn_enemies(entt::registry& reg, float delta_time)
 {
+    // Use regular ptr if perf issues
     if (const auto level = m_level.lock())
     {
         for (auto& wave_state : m_wave_states)
