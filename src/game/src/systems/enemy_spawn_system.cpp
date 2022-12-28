@@ -64,12 +64,12 @@ namespace game
 namespace sys
 {
 
-void Enemy_spawn_system::set_level(const Level* level)
+void Enemy_spawn_system::set_level(std::weak_ptr<Level> level)
 {
     m_level = level;
-    if (m_level)
+    if (const auto level = m_level.lock())
     {
-        init_wave_states();
+        init_wave_states(*level);
     }
 }
 
@@ -91,27 +91,26 @@ void Enemy_spawn_system::prepare_next_wave()
 
 void Enemy_spawn_system::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
 {
-    if (!m_level)
+    if (const auto level = m_level.lock())
     {
-        return;
-    }
-    for (auto& wave_state : m_wave_states)
-    {
-        update_spawn_times(wave_state, delta_time);
-        if (!need_spawn(wave_state))
+        for (auto& wave_state : m_wave_states)
         {
-            continue;
+            update_spawn_times(wave_state, delta_time);
+            if (!need_spawn(wave_state))
+            {
+                continue;
+            }
+            ::spawn_enemies(wave_state, reg, *level);
         }
-        ::spawn_enemies(wave_state, reg, *m_level);
     }
 }
 
-void Enemy_spawn_system::init_wave_states()
+void Enemy_spawn_system::init_wave_states(const Level& level)
 {
     m_wave_states.clear();
 
-    const auto& waypoints = m_level->get_waypoints();
-    const auto& waves = m_level->get_waves();
+    const auto& waypoints = level.get_waypoints();
+    const auto& waves = level.get_waves();
     for (std::size_t i = 0; i < waypoints.size(); ++i)
     {
         m_wave_states.emplace_back(std::cbegin(waves), std::cend(waves), static_cast<std::int8_t>(i));

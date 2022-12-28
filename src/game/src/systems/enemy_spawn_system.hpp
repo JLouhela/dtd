@@ -1,5 +1,6 @@
 #include <chrono>
 #include <cstdint>
+#include <memory>
 
 #include "entt/entt.hpp"
 #include "level.hpp"
@@ -29,15 +30,15 @@ struct Wave_state
 class Enemy_spawn_system
 {
 public:
-    void set_level(const Level* level);
+    void set_level(std::weak_ptr<Level> level);
     void spawn_enemies(entt::registry& reg, std::uint32_t delta_time);
     void prepare_next_wave();
 
 private:
-    void init_wave_states();
+    void init_wave_states(const Level& level);
 
     std::vector<Wave_state> m_wave_states;
-    const Level* m_level{nullptr};
+    std::weak_ptr<Level> m_level;
 };
 
 }  // namespace sys

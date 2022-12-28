@@ -14,15 +14,15 @@ void Scene_manager::init(entt::registry& registry, renderer::Renderer_interface&
     m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>(registry, renderer));
 }
 
-void Scene_manager::set_battle_scene(const Level& level)
+void Scene_manager::set_battle_scene(const assets::level::Level_interface& level_content)
 {
     auto& battle_scene = static_cast<Battle_scene&>(*m_scenes[Scene_id::BATTLE]);
 
     if (m_current_scene == Scene_id::BATTLE)
     {
-        if (battle_scene.get_level_id() == level.get_id())
+        if (battle_scene.get_level_id() == level_content.get_id())
         {
-            LOG_F(WARNING, "Tried to initialize same level (%s) twice!", level.get_id().c_str());
+            LOG_F(WARNING, "Tried to initialize same level (%s) twice!", level_content.get_id().c_str());
             return;
         }
     }
@@ -30,7 +30,7 @@ void Scene_manager::set_battle_scene(const Level& level)
     current_scene.dispose();
 
     m_current_scene = Scene_id::BATTLE;
-    battle_scene.init(level);
+    battle_scene.init(level_content);
 }
 
 Scene& Scene_manager::get_current_scene()

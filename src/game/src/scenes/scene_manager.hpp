@@ -13,6 +13,11 @@ namespace renderer
 class Renderer_interface;
 }
 
+namespace assets::level
+{
+class Level_interface;
+}
+
 namespace game
 {
 class Scene_manager
@@ -22,7 +27,7 @@ public:
 
     void init(entt::registry& registry, renderer::Renderer_interface& renderer);
 
-    void set_battle_scene(const Level& level);
+    void set_battle_scene(const assets::level::Level_interface& level_content);
 
     Scene& get_current_scene();
 
