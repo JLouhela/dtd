@@ -1,5 +1,6 @@
 #include "entity_factory.hpp"
 
+#include "components/direction_component.hpp"
 #include "components/position_component.hpp"
 #include "components/sprite_component.hpp"
 #include "components/waypoint_follower_component.hpp"
@@ -25,6 +26,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type));
     // TODO create system to handle this
+    registry.emplace<game::comp::Direction>(entity, math::Float_vector{});
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{0});
 }
 

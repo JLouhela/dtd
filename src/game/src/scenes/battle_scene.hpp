@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 
+#include "../systems/waypoint_follow_system.hpp"
 #include "level.hpp"
 #include "scene.hpp"
 #include "systems/enemy_spawn_system.hpp"
@@ -38,5 +39,6 @@ private:
     std::shared_ptr<Level> m_level{nullptr};
     Battle_state m_state{Battle_state::BUY};
     sys::Enemy_spawn_system m_enemy_spawner;
+    sys::Waypoint_follow_system m_waypoint_system;
 };
 }  // namespace game

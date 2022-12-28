@@ -17,6 +17,7 @@ void Battle_scene::init(const assets::level::Level_interface& level_content)
 {
     m_level = std::make_shared<Level>(level_content);
     m_enemy_spawner.set_level(m_level);
+    m_waypoint_system.set_level(m_level);
 }
 
 std::string Battle_scene::get_level_id()
@@ -37,6 +38,8 @@ void Battle_scene::update(std::int32_t delta_time)
     {
         m_enemy_spawner.spawn_enemies(m_registry, delta_time);
     }
+    m_waypoint_system.update_entity_waypoints(m_registry);
+    m_waypoint_system.update_entity_directions(m_registry);
     execute_renderers();
 }
 

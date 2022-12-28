@@ -9,13 +9,10 @@ class Waypoint_follow_system
 public:
     void update_entity_waypoints(entt::registry& reg);
     void update_entity_directions(entt::registry& reg);
-    void set_waypoints(const std::vector<assets::level::Waypoints>& waypoints)
-    {
-        m_waypoints = &waypoints;
-    }
+    void set_level(std::weak_ptr<Level> level);
 
 private:
-    const std::vector<assets::level::Waypoints>* m_waypoints{nullptr};
+    std::weak_ptr<Level> m_level;
 };
 
 }  // namespace game::sys
