@@ -11,6 +11,8 @@ src/components/direction_component.hpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
 src/components/waypoint_follower_component.hpp
+src/entities/enemy_type.hpp
+src/entities/enemy_type.cpp
 src/entities/entity_factory.hpp
 src/entities/entity_factory.cpp
 src/scenes/scene.hpp
@@ -26,6 +28,8 @@ src/systems/debug_render_system.hpp
 src/systems/debug_render_system.cpp
 src/systems/enemy_spawn_system.hpp
 src/systems/enemy_spawn_system.cpp
+src/systems/movement_system.hpp
+src/systems/movement_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
 src/systems/waypoint_follow_system.hpp

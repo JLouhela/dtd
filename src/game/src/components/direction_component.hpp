@@ -2,15 +2,13 @@
 
 #include "math/vector.hpp"
 
-namespace game
-{
-namespace comp
+namespace game::comp
 {
 
 struct Direction
 {
-    math::Float_vector dir;
+    float x{0.f};
+    float y{0.f};
 };
 
-}  // namespace comp
-}  // namespace game
+}  // namespace game::comp

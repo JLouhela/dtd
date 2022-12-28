@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace game
-{
-namespace comp
+namespace game::comp
 {
 
 struct Waypoint_follower
@@ -13,5 +11,4 @@ struct Waypoint_follower
     std::int8_t waypoint_index{-1};
 };
 
-}  // namespace comp
-}  // namespace game
+}  // namespace game::comp

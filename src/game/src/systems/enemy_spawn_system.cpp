@@ -67,9 +67,9 @@ namespace sys
 void Enemy_spawn_system::set_level(std::weak_ptr<Level> level)
 {
     m_level = level;
-    if (const auto level = m_level.lock())
+    if (const auto lvl = m_level.lock())
     {
-        init_wave_states(*level);
+        init_wave_states(*lvl);
     }
 }
 
