@@ -9,7 +9,7 @@
 
 namespace game
 {
-namespace sys
+namespace sys::Render_system
 {
 
 void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& renderer)
@@ -36,5 +36,5 @@ void render_level(renderer::Level_renderer_interface& renderer)
     renderer.render_current_level();
 }
 
-}  // namespace sys
+}  // namespace sys::Render_system
 }  // namespace game

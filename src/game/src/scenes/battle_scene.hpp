@@ -31,6 +31,6 @@ private:
     void execute_renderers();
     const Level* m_level{nullptr};
     Battle_state m_state{Battle_state::BUY};
-    sys::Enemy_spawner m_enemy_spawner;
+    sys::Enemy_spawn_system m_enemy_spawner;
 };
 }  // namespace game

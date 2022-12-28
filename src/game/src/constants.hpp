@@ -7,7 +7,7 @@ namespace game
 {
 namespace constants
 {
-constexpr std::int8_t TILE_SIZE{64};
+constexpr std::uint8_t TILE_SIZE{64};
 
 }  // namespace constants
 }  // namespace game

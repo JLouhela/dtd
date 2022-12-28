@@ -16,14 +16,16 @@ void create_debug_entity(entt::registry& registry)
     registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Rectangle_red);
 }
 
-void create_enemy(entt::registry& registry, const std::string& enemy_type, const math::Float_vector& pos)
+void create_enemy(entt::registry& registry,
+                  const std::string& enemy_type,
+                  const math::Float_vector& pos,
+                  const std::int8_t spawn_index)
 {
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
-    // TODO pick by enemy_type
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type));
     // TODO create system to handle this
-    registry.emplace<game::comp::Waypoint_follower>(entity, pos);
+    registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{0});
 }
 
 }  // namespace factory

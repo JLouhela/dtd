@@ -40,7 +40,7 @@ void update_spawn_times(game::sys::Wave_state& wave_state, const std::uint32_t d
     }
 }
 
-void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg)
+void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg, const game::Level& level)
 {
     for (std::uint32_t i = 0; i < wave_state.current_wave->enemies.size(); ++i)
     {
@@ -48,7 +48,9 @@ void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg)
         if (spawn_time <= 0)
         {
             const auto& enemies = wave_state.current_wave->enemies[i];
-            game::entity::factory::create_enemy(reg, enemies.type, wave_state.spawn_point);
+
+            const auto spawn_point = level.get_waypoints()[wave_state.spawn_index].waypoints.front().point;
+            game::entity::factory::create_enemy(reg, enemies.type, spawn_point, wave_state.spawn_index);
             wave_state.spawned_counts[i]++;
             spawn_time = enemies.spawn_time;
         }
@@ -62,7 +64,7 @@ namespace game
 namespace sys
 {
 
-void Enemy_spawner::set_level(const Level* level)
+void Enemy_spawn_system::set_level(const Level* level)
 {
     m_level = level;
     if (m_level)
@@ -71,7 +73,7 @@ void Enemy_spawner::set_level(const Level* level)
     }
 }
 
-void Enemy_spawner::prepare_next_wave()
+void Enemy_spawn_system::prepare_next_wave()
 {
     for (auto& wave_state : m_wave_states)
     {
@@ -87,7 +89,7 @@ void Enemy_spawner::prepare_next_wave()
     }
 }
 
-void Enemy_spawner::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
+void Enemy_spawn_system::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
 {
     if (!m_level)
     {
@@ -100,19 +102,19 @@ void Enemy_spawner::spawn_enemies(entt::registry& reg, std::uint32_t delta_time)
         {
             continue;
         }
-        ::spawn_enemies(wave_state, reg);
+        ::spawn_enemies(wave_state, reg, *m_level);
     }
 }
 
-void Enemy_spawner::init_wave_states()
+void Enemy_spawn_system::init_wave_states()
 {
     m_wave_states.clear();
 
     const auto& waypoints = m_level->get_waypoints();
     const auto& waves = m_level->get_waves();
-    for (const auto& waypoint_vector : waypoints)
+    for (std::size_t i = 0; i < waypoints.size(); ++i)
     {
-        m_wave_states.emplace_back(std::cbegin(waves), std::cend(waves), waypoint_vector.waypoints.front().point);
+        m_wave_states.emplace_back(std::cbegin(waves), std::cend(waves), static_cast<std::int8_t>(i));
     }
 }
 

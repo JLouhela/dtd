@@ -7,6 +7,7 @@ src/game.hpp
 src/game.cpp
 src/level.hpp
 src/level.cpp
+src/components/direction_component.hpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
 src/components/waypoint_follower_component.hpp
@@ -27,6 +28,8 @@ src/systems/enemy_spawn_system.hpp
 src/systems/enemy_spawn_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
+src/systems/waypoint_follow_system.hpp
+src/systems/waypoint_follow_system.cpp
 )
 
 target_include_directories(game
