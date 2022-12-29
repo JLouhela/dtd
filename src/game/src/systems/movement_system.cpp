@@ -11,7 +11,6 @@ namespace sys::Movement_system
 {
 void move_entities(entt::registry& reg, const float dt)
 {
-    // LOG_F(INFO, "dt = %d", dt);
     const auto view = reg.view<comp::Direction, comp::Position, comp::Speed>();
     const entt::registry& creg = reg;
     for (const entt::entity e : view)

@@ -51,15 +51,15 @@ void Sprite_cache::init_rectangles()
 
 void Sprite_cache::init_towers()
 {
-    LOG_F(WARNING, "Tower sprite initialization NOT implemented!");
     auto* tower_tex = m_assets.get_texture("td_tilesheet");
-    // TODO load stuff
+    const sf::IntRect basic_tower_rect = {{1216, 640}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_tower, tower_tex, basic_tower_rect);
 }
 void Sprite_cache::init_enemies()
 {
     auto* enemy_tex = m_assets.get_texture("td_tilesheet");
-    const sf::IntRect sprite_rect = {{960, 640}, {64, 64}};
-    m_sprites.emplace_back(Sprite_id::Basic_enemy, enemy_tex, sprite_rect);
+    const sf::IntRect basic_enemy_rect = {{960, 640}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_enemy, enemy_tex, basic_enemy_rect);
 }
 
 }  // namespace renderer
