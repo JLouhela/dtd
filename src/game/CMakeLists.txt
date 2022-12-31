@@ -7,8 +7,9 @@ src/game.hpp
 src/game.cpp
 src/level.hpp
 src/level.cpp
+src/components/circle_radius_component.hpp
 src/components/direction_component.hpp
-src/components/enemy_shooter.hpp
+src/components/enemy_shooter_component.hpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
 src/components/waypoint_follower_component.hpp

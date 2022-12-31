@@ -27,6 +27,18 @@ void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& en
     draw_line(start, end, sf::Color::Black);
 }
 
+void Debug_renderer::draw_circle(const Screen_coord& center, float radius)
+{
+    sf::CircleShape circle;
+    circle.setRadius(radius);
+    circle.setOutlineColor(sf::Color::Red);
+    circle.setFillColor({200, 0, 0, 128});
+    circle.setOrigin({radius, radius});
+    circle.setOutlineThickness(1);
+    circle.setPosition({center.x, center.y});
+    draw(circle);
+}
+
 void Debug_renderer::draw_grid(const std::uint8_t grid_size)
 {
     const auto& screen_size = constants::WINDOW_SIZE;

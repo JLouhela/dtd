@@ -1,7 +1,8 @@
 #include "entity_factory.hpp"
 
+#include "components/circle_radius_component.hpp"
 #include "components/direction_component.hpp"
-#include "components/enemy_shooter.hpp"
+#include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
 #include "components/speed_component.hpp"
 #include "components/sprite_component.hpp"
@@ -35,8 +36,8 @@ void create_debug_entity(entt::registry& registry)
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, 608.0f, 544.0f);
     registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Basic_tower);
-    // TODO add attr
-    registry.emplace<game::comp::Enemy_shooter>(entity);
+    registry.emplace<game::comp::Enemy_shooter>(entity, 1.0f);
+    registry.emplace<game::comp::Circle_radius>(entity, 200.0f);
 }
 
 void create_enemy(entt::registry& registry,
