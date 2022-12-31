@@ -2,6 +2,7 @@
 
 #include "components/circle_radius_component.hpp"
 #include "components/direction_component.hpp"
+#include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
 #include "components/speed_component.hpp"
@@ -50,6 +51,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type_str));
     registry.emplace<game::comp::Direction>(entity, 0.f, 0.f);
+    registry.emplace<game::comp::Enemy>(entity, 100);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 
     const auto speed = get_enemy_speed(enemy_type);

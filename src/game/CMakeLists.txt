@@ -9,6 +9,7 @@ src/level.hpp
 src/level.cpp
 src/components/circle_radius_component.hpp
 src/components/direction_component.hpp
+src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
 src/components/position_component.hpp
 src/components/sprite_component.hpp
@@ -34,6 +35,10 @@ src/systems/movement_system.hpp
 src/systems/movement_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
+src/systems/shooting_system.hpp
+src/systems/shooting_system.cpp
+src/systems/targeting_system.hpp
+src/systems/targeting_system.cpp
 src/systems/waypoint_follow_system.hpp
 src/systems/waypoint_follow_system.cpp
 )

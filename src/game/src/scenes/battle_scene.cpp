@@ -4,6 +4,7 @@
 #include "../systems/debug_render_system.hpp"
 #include "../systems/movement_system.hpp"
 #include "../systems/render_system.hpp"
+#include "../systems/targeting_system.hpp"
 #include "assets/level_interface.hpp"
 #include "renderer/renderer_interface.hpp"
 
@@ -42,6 +43,7 @@ void Battle_scene::update(float delta_time)
     m_waypoint_system.update_entity_waypoints(m_registry);
     m_waypoint_system.update_entity_directions(m_registry);
     sys::Movement_system::move_entities(m_registry, delta_time);
+    sys::Targeting_system::acquire_targets(m_registry);
     execute_renderers();
 }
 
