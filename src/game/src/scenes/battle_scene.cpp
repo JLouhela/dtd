@@ -4,6 +4,7 @@
 #include "../systems/debug_render_system.hpp"
 #include "../systems/movement_system.hpp"
 #include "../systems/render_system.hpp"
+#include "../systems/shooting_system.hpp"
 #include "../systems/targeting_system.hpp"
 #include "assets/level_interface.hpp"
 #include "renderer/renderer_interface.hpp"
@@ -45,6 +46,7 @@ void Battle_scene::update(float delta_time)
     sys::Movement_system::move_entities(m_registry, delta_time);
     sys::Targeting_system::release_targets(m_registry);
     sys::Targeting_system::acquire_targets(m_registry);
+    sys::Shooting_system::shoot_enemies(m_registry, delta_time);
     execute_renderers();
 }
 
