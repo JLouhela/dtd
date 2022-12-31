@@ -7,7 +7,7 @@ namespace game::comp
 
 struct Projectile
 {
-    std::int32_t hitpoints{0};
+    float damage{0.0f};
 };
 
 }  // namespace game::comp

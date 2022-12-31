@@ -30,6 +30,7 @@ private:
     void init_rectangles();
     void init_towers();
     void init_enemies();
+    void init_projectiles();
 
     const assets::Assets_interface& m_assets;
     std::vector<SpriteCreationData> m_sprites;

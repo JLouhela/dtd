@@ -3,6 +3,7 @@
 #include "../components/enemy_component.hpp"
 #include "../components/enemy_shooter_component.hpp"
 #include "../components/position_component.hpp"
+#include "../entities/entity_factory.hpp"
 #include "loguru/loguru.hpp"
 
 namespace game
@@ -11,7 +12,7 @@ namespace sys::Shooting_system
 {
 void shoot_enemies(entt::registry& reg, float dt)
 {
-    const auto view = reg.view<comp::Enemy_shooter>();
+    const auto view = reg.view<comp::Enemy_shooter, comp::Position>();
     const entt::registry& creg = reg;
     for (const entt::entity e : view)
     {
@@ -26,14 +27,16 @@ void shoot_enemies(entt::registry& reg, float dt)
         {
             continue;
         }
-
+        const auto& shooter_pos = creg.get<comp::Position>(e);
         const auto enemy = entt::entity{shooter.target_id};
         // Check existence of component / entity? Depends on how entities will be disposed.
         const auto& enemy_pos = creg.get<comp::Position>(enemy);
         // TODO take speed, dir into account (when rendering projectiles)
-        // TODO fire projectiles -> inflict damage
-        LOG_F(INFO, "FIRE: (%f, %f)", enemy_pos.x, enemy_pos.y);
         shooter.shooting_time = shooter.shooting_delay;
+        // TODO get values from.. somewhere
+        // TODO damage inflict & bullet destroy system
+        entity::factory::create_projectile(reg, "basic", {shooter_pos.x, shooter_pos.y}, {enemy_pos.x, enemy_pos.y},
+                                           100.0f, 10.0f);
     }
 }
 

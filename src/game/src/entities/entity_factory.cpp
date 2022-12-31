@@ -5,11 +5,13 @@
 #include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
+#include "components/projectile_component.hpp"
 #include "components/sprite_component.hpp"
 #include "components/velocity_component.hpp"
 #include "components/waypoint_follower_component.hpp"
 #include "enemy_type.hpp"
 #include "loguru/loguru.hpp"
+#include "math/vector.hpp"
 #include "renderer/sprite_id.hpp"
 
 namespace
@@ -59,10 +61,19 @@ void create_enemy(entt::registry& registry,
 }
 
 void create_projectile(entt::registry& registry,
+                       const std::string& type,
                        const math::Float_vector& pos,
                        const math::Float_vector& target_pos,
-                       float velocity)
+                       float velocity,
+                       float damage)
 {
+    auto entity = registry.create();
+    registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
+    registry.emplace<game::comp::Sprite>(entity, renderer::get_projectile_sprite(type));
+    const auto dir = math::direction(pos, target_pos).normalize();
+    registry.emplace<game::comp::Direction>(entity, dir.x, dir.y);
+    registry.emplace<game::comp::Projectile>(entity, damage);
+    registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 
 }  // namespace factory

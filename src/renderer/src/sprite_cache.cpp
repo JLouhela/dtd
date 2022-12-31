@@ -12,6 +12,7 @@ Sprite_cache::Sprite_cache(const assets::Assets_interface& assets) : m_assets{as
     init_rectangles();
     init_towers();
     init_enemies();
+    init_projectiles();
 }
 
 sf::Sprite Sprite_cache::get(const Sprite_id& id)
@@ -60,6 +61,13 @@ void Sprite_cache::init_enemies()
     auto* enemy_tex = m_assets.get_texture("td_tilesheet");
     const sf::IntRect basic_enemy_rect = {{960, 640}, {64, 64}};
     m_sprites.emplace_back(Sprite_id::Basic_enemy, enemy_tex, basic_enemy_rect);
+}
+
+void Sprite_cache::init_projectiles()
+{
+    auto* projectile_tex = m_assets.get_texture("td_tilesheet");
+    const sf::IntRect basic_bullet_rect = {{1216, 704}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_projectile, projectile_tex, basic_bullet_rect);
 }
 
 }  // namespace renderer
