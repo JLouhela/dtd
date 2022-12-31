@@ -43,6 +43,7 @@ void Battle_scene::update(float delta_time)
     m_waypoint_system.update_entity_waypoints(m_registry);
     m_waypoint_system.update_entity_directions(m_registry);
     sys::Movement_system::move_entities(m_registry, delta_time);
+    sys::Targeting_system::release_targets(m_registry);
     sys::Targeting_system::acquire_targets(m_registry);
     execute_renderers();
 }

@@ -22,7 +22,7 @@ void acquire_targets(entt::registry& reg)
     for (const entt::entity shooter_entity : shooter_view)
     {
         auto& shooter_shooter = reg.get<comp::Enemy_shooter>(shooter_entity);
-        if (shooter_shooter.target_id != -1)
+        if (shooter_shooter.target_id != comp::INVALID_TARGET_ID)
         {
             // Already has target
             continue;
@@ -53,6 +53,28 @@ void acquire_targets(entt::registry& reg)
 
 void release_targets(entt::registry& reg)
 {
+    const auto shooter_view = reg.view<comp::Circle_radius, comp::Position, comp::Enemy_shooter>();
+    const entt::registry& creg = reg;
+    for (const entt::entity shooter_entity : shooter_view)
+    {
+        auto& shooter_shooter = reg.get<comp::Enemy_shooter>(shooter_entity);
+        if (shooter_shooter.target_id == comp::INVALID_TARGET_ID)
+        {
+            // No target
+            continue;
+        }
+        const auto& shooter_pos = creg.get<comp::Position>(shooter_entity);
+        const auto& shooter_radius = creg.get<comp::Circle_radius>(shooter_entity);
+
+        const auto& enemy_pos = creg.get<comp::Position>(entt::entity{shooter_shooter.target_id});
+        const auto dx = shooter_pos.x - enemy_pos.x;
+        const auto dy = shooter_pos.y - enemy_pos.y;
+        const auto distance = std::sqrt(std::powf(dx, 2) + std::powf(dy, 2));
+        if (distance > shooter_radius.radius)
+        {
+            shooter_shooter.target_id = comp::INVALID_TARGET_ID;
+        }
+    }
 }
 
 }  // namespace sys::Targeting_system
