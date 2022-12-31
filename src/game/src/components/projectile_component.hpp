@@ -1,11 +1,13 @@
 #pragma once
 
+#include <cstdint>
+
 namespace game::comp
 {
 
-struct Speed
+struct Projectile
 {
-    float speed{0.f};
+    std::int32_t hitpoints{0};
 };
 
 }  // namespace game::comp

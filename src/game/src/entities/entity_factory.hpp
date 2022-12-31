@@ -12,5 +12,10 @@ void create_enemy(entt::registry& registry,
                   const math::Float_vector& pos,
                   std::int8_t spawn_index);
 
+void create_projectile(entt::registry& registry,
+                       const math::Float_vector& pos,
+                       const math::Float_vector& target_pos,
+                       float velocity);
+
 }  // namespace factory
 }  // namespace game::entity

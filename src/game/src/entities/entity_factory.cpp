@@ -5,8 +5,8 @@
 #include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
-#include "components/speed_component.hpp"
 #include "components/sprite_component.hpp"
+#include "components/velocity_component.hpp"
 #include "components/waypoint_follower_component.hpp"
 #include "enemy_type.hpp"
 #include "loguru/loguru.hpp"
@@ -14,7 +14,7 @@
 
 namespace
 {
-float get_enemy_speed(const game::entity::Enemy_type type)
+float get_enemy_velocity(const game::entity::Enemy_type type)
 {
     switch (type)
     {
@@ -23,7 +23,7 @@ float get_enemy_speed(const game::entity::Enemy_type type)
         return 1.0f;
     }
     }
-    LOG_F(WARNING, "Unhandled enemy type %d, cannot provide speed. Using 1.0f", static_cast<uint8_t>(type));
+    LOG_F(WARNING, "Unhandled enemy type %d, cannot provide velocity. Using 1.0f", static_cast<uint8_t>(type));
     return 1.0f;
 }
 }  // namespace
@@ -54,8 +54,15 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Enemy>(entity, 100);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 
-    const auto speed = get_enemy_speed(enemy_type);
-    registry.emplace<game::comp::Speed>(entity, speed);
+    const auto velocity = get_enemy_velocity(enemy_type);
+    registry.emplace<game::comp::Velocity>(entity, velocity);
+}
+
+void create_projectile(entt::registry& registry,
+                       const math::Float_vector& pos,
+                       const math::Float_vector& target_pos,
+                       float velocity)
+{
 }
 
 }  // namespace factory
