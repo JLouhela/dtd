@@ -72,7 +72,7 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Sprite>(entity, renderer::get_projectile_sprite(type));
     const auto dir = math::direction(pos, target_pos).normalize();
     registry.emplace<game::comp::Direction>(entity, dir.x, dir.y);
-    registry.emplace<game::comp::Projectile>(entity, damage);
+    registry.emplace<game::comp::Projectile>(entity, damage, target_pos);
     registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 

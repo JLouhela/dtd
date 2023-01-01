@@ -35,6 +35,8 @@ src/systems/enemy_spawn_system.hpp
 src/systems/enemy_spawn_system.cpp
 src/systems/movement_system.hpp
 src/systems/movement_system.cpp
+src/systems/projectile_system.hpp
+src/systems/projectile_system.cpp
 src/systems/render_system.hpp
 src/systems/render_system.cpp
 src/systems/shooting_system.hpp

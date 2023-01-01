@@ -3,6 +3,7 @@
 #include "../entities/entity_factory.hpp"
 #include "../systems/debug_render_system.hpp"
 #include "../systems/movement_system.hpp"
+#include "../systems/projectile_system.hpp"
 #include "../systems/render_system.hpp"
 #include "../systems/shooting_system.hpp"
 #include "../systems/targeting_system.hpp"
@@ -47,6 +48,7 @@ void Battle_scene::update(float delta_time)
     sys::Targeting_system::release_targets(m_registry);
     sys::Targeting_system::acquire_targets(m_registry);
     sys::Shooting_system::shoot_enemies(m_registry, delta_time);
+    sys::Projectile_system::destroy_projectiles(m_registry);
     execute_renderers();
 }
 

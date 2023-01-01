@@ -34,9 +34,8 @@ void shoot_enemies(entt::registry& reg, float dt)
         // TODO take speed, dir into account (when rendering projectiles)
         shooter.shooting_time = shooter.shooting_delay;
         // TODO get values from.. somewhere
-        // TODO damage inflict & bullet destroy system
         entity::factory::create_projectile(reg, "basic", {shooter_pos.x, shooter_pos.y}, {enemy_pos.x, enemy_pos.y},
-                                           100.0f, 10.0f);
+                                           50.0f, 10.0f);
     }
 }
 

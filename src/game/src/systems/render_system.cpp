@@ -3,6 +3,7 @@
 #include "../components/position_component.hpp"
 #include "../components/sprite_component.hpp"
 #include "assets/render_level_interface.hpp"
+#include "loguru/loguru.hpp"
 #include "renderer/hud_renderer_interface.hpp"
 #include "renderer/level_renderer_interface.hpp"
 #include "renderer/sprite_renderer_interface.hpp"
