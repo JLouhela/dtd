@@ -1,6 +1,8 @@
 #pragma once
+
 #include "entt/entt.hpp"
 #include "math/vector.hpp"
+#include "projectile_type.hpp"
 
 namespace game::entity
 {
@@ -18,6 +20,8 @@ void create_projectile(entt::registry& registry,
                        const math::Float_vector& target_pos,
                        float velocity,
                        float damage);
+
+void create_hit(Projectile_type, const math::Float_vector& pos);
 
 }  // namespace factory
 }  // namespace game::entity

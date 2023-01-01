@@ -76,5 +76,10 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 
+void create_hit(Projectile_type, const math::Float_vector& pos)
+{
+    // TODO
+}
+
 }  // namespace factory
 }  // namespace game::entity

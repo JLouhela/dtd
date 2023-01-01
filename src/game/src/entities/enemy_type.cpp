@@ -12,7 +12,7 @@ Enemy_type get_enemy_type(const std::string& enemy_type)
     {
         return it->second;
     }
-    LOG_F(WARNING, "Sprite with id %s does not exist / mapping missing!", enemy_type.c_str());
+    LOG_F(WARNING, "Enemy type %s does not exist / mapping missing!", enemy_type.c_str());
     return Enemy_type::unknown;
 }
 

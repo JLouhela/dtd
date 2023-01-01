@@ -13,11 +13,13 @@ src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
 src/components/position_component.hpp
 src/components/projectile_component.hpp
+src/components/projectile_hit_component.hpp
 src/components/velocity_component.hpp
 src/components/sprite_component.hpp
 src/components/waypoint_follower_component.hpp
 src/entities/enemy_type.hpp
 src/entities/enemy_type.cpp
+src/entities/projectile_type.hpp
 src/entities/entity_factory.hpp
 src/entities/entity_factory.cpp
 src/scenes/scene.hpp

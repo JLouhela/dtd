@@ -2,6 +2,7 @@
 
 #include "../components/position_component.hpp"
 #include "../components/projectile_component.hpp"
+#include "../entities/entity_factory.hpp"
 #include "loguru/loguru.hpp"
 #include "math/algorithm.hpp"
 #include "math/vector.hpp"
@@ -45,7 +46,7 @@ void destroy_projectiles(entt::registry& reg)
         if (hit)
         {
             // TODO: create new entity for hit animation / Sound
-            reg.destroy(e);
+            reg.create reg.destroy(e);
         }
     }
 }
