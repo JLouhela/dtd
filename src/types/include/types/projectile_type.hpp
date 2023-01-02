@@ -1,6 +1,6 @@
 #pragma once
 
-namespace game::entity
+namespace types
 {
 
 enum class Projectile_type
@@ -8,4 +8,4 @@ enum class Projectile_type
     basic
 };
 
-}  // namespace game::entity
+}  // namespace types

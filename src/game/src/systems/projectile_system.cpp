@@ -46,7 +46,8 @@ void destroy_projectiles(entt::registry& reg)
         if (hit)
         {
             // TODO: create new entity for hit animation / Sound
-            reg.create reg.destroy(e);
+            entity::factory::create_hit(projectile.type, projectile_pos);
+            reg.destroy(e);
         }
     }
 }

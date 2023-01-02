@@ -61,7 +61,7 @@ void create_enemy(entt::registry& registry,
 }
 
 void create_projectile(entt::registry& registry,
-                       const std::string& type,
+                       const types::Projectile_type& type,
                        const math::Float_vector& pos,
                        const math::Float_vector& target_pos,
                        float velocity,
@@ -72,11 +72,11 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Sprite>(entity, renderer::get_projectile_sprite(type));
     const auto dir = math::direction(pos, target_pos).normalize();
     registry.emplace<game::comp::Direction>(entity, dir.x, dir.y);
-    registry.emplace<game::comp::Projectile>(entity, damage, target_pos);
+    registry.emplace<game::comp::Projectile>(entity, damage, target_pos, type);
     registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 
-void create_hit(Projectile_type, const math::Float_vector& pos)
+void create_hit(const types::Projectile_type& type, const math::Float_vector& pos)
 {
     // TODO
 }

@@ -16,9 +16,9 @@ public:
     sf::Sprite get(const Sprite_id& id);
 
 private:
-    struct SpriteCreationData
+    struct Sprite_creation_data
     {
-        SpriteCreationData(Sprite_id id, const sf::Texture* texture, sf::IntRect sprite_rect)
+        Sprite_creation_data(Sprite_id id, const sf::Texture* texture, sf::IntRect sprite_rect)
             : id{std::move(id)}, texture{texture}, sprite_rect{std::move(sprite_rect)}
         {
         }
@@ -33,7 +33,7 @@ private:
     void init_projectiles();
 
     const assets::Assets_interface& m_assets;
-    std::vector<SpriteCreationData> m_sprites;
+    std::vector<Sprite_creation_data> m_sprites;
 };
 
 }  // namespace renderer

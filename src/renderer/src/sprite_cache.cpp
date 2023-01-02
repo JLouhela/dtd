@@ -56,6 +56,7 @@ void Sprite_cache::init_towers()
     const sf::IntRect basic_tower_rect = {{1216, 640}, {64, 64}};
     m_sprites.emplace_back(Sprite_id::Basic_tower, tower_tex, basic_tower_rect);
 }
+
 void Sprite_cache::init_enemies()
 {
     auto* enemy_tex = m_assets.get_texture("td_tilesheet");
@@ -68,6 +69,9 @@ void Sprite_cache::init_projectiles()
     auto* projectile_tex = m_assets.get_texture("td_tilesheet");
     const sf::IntRect basic_bullet_rect = {{1216, 704}, {64, 64}};
     m_sprites.emplace_back(Sprite_id::Basic_projectile, projectile_tex, basic_bullet_rect);
+
+    const sf::IntRect basic_hit_rect = {{1216, 768}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_projectile_hit, projectile_tex, basic_hit_rect);
 }
 
 }  // namespace renderer

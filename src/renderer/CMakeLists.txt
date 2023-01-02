@@ -1,5 +1,10 @@
 add_library(renderer_interface INTERFACE)
 target_include_directories(renderer_interface INTERFACE include)
+target_link_libraries(renderer_interface
+    INTERFACE
+        types
+)
+
 
 add_library(renderer
 src/debug_renderer.hpp
@@ -31,6 +36,7 @@ target_link_libraries(renderer
     PUBLIC
         renderer_interface
         sfml-window
+        types
     PRIVATE
         assets
         sfml-graphics

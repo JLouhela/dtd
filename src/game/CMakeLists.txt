@@ -19,7 +19,6 @@ src/components/sprite_component.hpp
 src/components/waypoint_follower_component.hpp
 src/entities/enemy_type.hpp
 src/entities/enemy_type.cpp
-src/entities/projectile_type.hpp
 src/entities/entity_factory.hpp
 src/entities/entity_factory.cpp
 src/scenes/scene.hpp
@@ -63,5 +62,6 @@ target_link_libraries(game
     PRIVATE
         assets_interface
         renderer_interface
+        types
         EnTT
 )
