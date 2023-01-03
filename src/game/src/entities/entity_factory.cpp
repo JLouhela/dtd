@@ -6,6 +6,7 @@
 #include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
 #include "components/projectile_component.hpp"
+#include "components/projectile_hit_component.hpp"
 #include "components/sprite_component.hpp"
 #include "components/velocity_component.hpp"
 #include "components/waypoint_follower_component.hpp"
@@ -76,9 +77,11 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 
-void create_hit(const types::Projectile_type& type, const math::Float_vector& pos)
+void create_hit(entt::registry& registry, const types::Projectile_type& type, const math::Float_vector& pos)
 {
-    // TODO
+    auto entity = registry.create();
+    registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
+    registry.emplace<game::comp::Projectile_hit>(entity, type);
 }
 
 }  // namespace factory

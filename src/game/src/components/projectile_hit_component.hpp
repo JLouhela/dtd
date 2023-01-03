@@ -1,13 +1,14 @@
 #pragma once
 
-#include "../entities/projectile_type.hpp"
+#include "math/vector.hpp"
+#include "types/projectile_type.hpp"
 
 namespace game::comp
 {
 
 struct Projectile_hit
 {
-    game::entity::Projectile_type projectile_type;
+    types::Projectile_type projectile_type;
 };
 
 }  // namespace game::comp
