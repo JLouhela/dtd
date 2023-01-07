@@ -70,8 +70,11 @@ void Sprite_cache::init_projectiles()
     const sf::IntRect basic_bullet_rect = {{1216, 704}, {64, 64}};
     m_sprites.emplace_back(Sprite_id::Basic_projectile, projectile_tex, basic_bullet_rect);
 
-    const sf::IntRect basic_hit_rect = {{1216, 768}, {64, 64}};
-    m_sprites.emplace_back(Sprite_id::Basic_projectile_hit, projectile_tex, basic_hit_rect);
+    const sf::IntRect basic_hit_rect_1 = {{1216, 768}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_projectile_hit_1, projectile_tex, basic_hit_rect_1);
+
+    const sf::IntRect basic_hit_rect_2 = {{1280, 768}, {64, 64}};
+    m_sprites.emplace_back(Sprite_id::Basic_projectile_hit_2, projectile_tex, basic_hit_rect_2);
 }
 
 }  // namespace renderer

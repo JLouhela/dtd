@@ -15,7 +15,8 @@ enum class Sprite_id
     Basic_enemy,
     Basic_tower,
     Basic_projectile,
-    Basic_projectile_hit
+    Basic_projectile_hit_1,
+    Basic_projectile_hit_2
 };
 
 static const std::unordered_map<std::string, Sprite_id> ENEMY_SPRITES{{"basic", Sprite_id::Basic_enemy}};

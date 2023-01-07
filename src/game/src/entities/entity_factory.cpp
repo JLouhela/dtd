@@ -83,7 +83,11 @@ void create_hit(entt::registry& registry, const types::Projectile_type& type, co
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     registry.emplace<game::comp::Projectile_hit>(entity, type);
-    registry.emplace<game::comp::Sprite_animation>(entity, renderer::Sprite_id::Basic_projectile_hit, 0.5f);
+    registry.emplace<game::comp::Sprite_animation>(
+        entity,
+        std::vector<renderer::Sprite_id>{renderer::Sprite_id::Basic_projectile_hit_1,
+                                         renderer::Sprite_id::Basic_projectile_hit_2},
+        0.5f);
 }
 
 }  // namespace factory

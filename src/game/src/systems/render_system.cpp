@@ -35,21 +35,23 @@ void render_sprite_animations(entt::registry& reg, renderer::Sprite_renderer_int
     const auto view = reg.view<comp::Position, comp::Sprite_animation>();
     for (const entt::entity e : view)
     {
-        const auto& pos = creg.get<comp::Position>(e);
         auto& anim = reg.get<comp::Sprite_animation>(e);
-
-        if (anim.duration > 0.0f)
-        {
-            // TODO camera transform
-            const auto screen_pos = renderer::Screen_coord{pos.x, pos.y};
-            // TODO switch frame
-            renderer.render_sprite(anim.sprite, screen_pos);
-            anim.duration -= dt;
-        }
-        else
+        if (anim.duration <= 0.0f)
         {
             reg.destroy(e);
         }
+
+        if (anim.frame_duration <= 0.0f)
+        {
+            anim.cur_frame = (anim.cur_frame + 1) % anim.frames.size();
+            anim.frame_duration += comp::DEFAULT_FRAME_DURATION;
+        }
+        // TODO camera transform
+        const auto& pos = creg.get<comp::Position>(e);
+        const auto screen_pos = renderer::Screen_coord{pos.x, pos.y};
+        renderer.render_sprite(anim.frames[anim.cur_frame], screen_pos);
+        anim.duration -= dt;
+        anim.frame_duration -= dt;
     }
 }
 
