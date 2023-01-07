@@ -39,6 +39,7 @@ void render_sprite_animations(entt::registry& reg, renderer::Sprite_renderer_int
         if (anim.duration <= 0.0f)
         {
             reg.destroy(e);
+            continue;
         }
 
         if (anim.frame_duration <= 0.0f)

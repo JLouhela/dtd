@@ -27,6 +27,7 @@ private:
     events::Event_handler_interface& m_event_handler;
 
     bool m_running{false};
+    bool m_fast_forward{false};
 };
 
 }  // namespace game_loop

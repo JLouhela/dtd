@@ -22,13 +22,32 @@ void Game_loop::start()
     }
     m_running = true;
 
-    events::Event_listener listener{"game_loop_close", [this](const sf::Event& event)
-                                    {
-                                        LOG_F(INFO, "Window closed, shutdown game loop");
-                                        m_renderer.close_window();
-                                        stop();
-                                    }};
-    m_event_handler.register_listener(sf::Event::EventType::Closed, listener);
+    events::Event_listener loop_close_listener{"game_loop_close", [this](const sf::Event& event)
+                                               {
+                                                   LOG_F(INFO, "Window closed, shutdown game loop");
+                                                   m_renderer.close_window();
+                                                   stop();
+                                               }};
+
+    events::Event_listener speed_button{"double_speed_button", [this](const sf::Event& event)
+                                        {
+                                            if (event.key.code != sf::Keyboard::Space)
+                                            {
+                                                return;
+                                            }
+                                            if (event.type == sf::Event::KeyPressed)
+                                            {
+                                                m_fast_forward = true;
+                                            }
+                                            else if (event.type == sf::Event::KeyReleased)
+                                            {
+                                                m_fast_forward = false;
+                                            }
+                                        }};
+
+    m_event_handler.register_listener(sf::Event::EventType::Closed, loop_close_listener);
+    m_event_handler.register_listener(sf::Event::EventType::KeyPressed, speed_button);
+    m_event_handler.register_listener(sf::Event::EventType::KeyReleased, speed_button);
 
     LOG_F(INFO, "Starting game loop..");
     run();
@@ -46,7 +65,8 @@ void Game_loop::run()
     {
         sf::Time dt = delta_clock.restart();
         m_event_handler.update();
-        m_game.update(dt.asSeconds());
+        const auto delta_time = dt.asSeconds() * (m_fast_forward ? 6.f : 1.f);
+        m_game.update(delta_time);
         m_renderer.render();
         m_renderer.clear();
     }
