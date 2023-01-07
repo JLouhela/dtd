@@ -34,7 +34,7 @@ void Battle_scene::dispose()
     m_enemy_spawner.set_level(std::weak_ptr<Level>());
 }
 
-void Battle_scene::update(float delta_time)
+void Battle_scene::update(const float delta_time)
 {
     // TODO handle states properly
     m_state = Battle_state::SPAWN;
@@ -49,10 +49,10 @@ void Battle_scene::update(float delta_time)
     sys::Targeting_system::acquire_targets(m_registry);
     sys::Shooting_system::shoot_enemies(m_registry, delta_time);
     sys::Projectile_system::destroy_projectiles(m_registry);
-    execute_renderers();
+    execute_renderers(delta_time);
 }
 
-void Battle_scene::execute_renderers()
+void Battle_scene::execute_renderers(const float delta_time)
 {
 #ifdef DEBUG
     sys::debug::Render_system::render_grid(m_renderer.get_debug_renderer());
@@ -60,6 +60,7 @@ void Battle_scene::execute_renderers()
 #endif
     sys::Render_system::render_level(m_renderer.get_level_renderer());
     sys::Render_system::render_sprites(m_registry, m_renderer.get_sprite_renderer());
+    sys::Render_system::render_sprite_animations(m_registry, m_renderer.get_sprite_renderer(), delta_time);
 
     // TODO hook to events
     const bool display_hud = false;

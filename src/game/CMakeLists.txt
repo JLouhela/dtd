@@ -16,6 +16,7 @@ src/components/projectile_component.hpp
 src/components/projectile_hit_component.hpp
 src/components/velocity_component.hpp
 src/components/sprite_component.hpp
+src/components/sprite_animation_component.hpp
 src/components/waypoint_follower_component.hpp
 src/entities/enemy_type.hpp
 src/entities/enemy_type.cpp

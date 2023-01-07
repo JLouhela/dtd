@@ -35,7 +35,7 @@ private:
 
     };
 
-    void execute_renderers();
+    void execute_renderers(float delta_time);
     std::shared_ptr<Level> m_level{nullptr};
     Battle_state m_state{Battle_state::BUY};
     sys::Enemy_spawn_system m_enemy_spawner;
