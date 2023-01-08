@@ -68,25 +68,24 @@ Load_result Assets::load_texture(const std::string& file_path, const Asset_id& i
     return Load_result::Ok;
 }
 
-Load_result Assets::load_audio(const std::string& file_path, const Asset_id& id)
+Load_result Assets::load_sound(const std::string& file_path, const Asset_id& id)
 {
     if (m_sounds.count(id) > 0)
     {
-        LOG_F(WARNING, "Asset loader: Texture with id %s already exists", id.c_str());
+        LOG_F(WARNING, "Asset loader: Sound with id %s already exists", id.c_str());
         return Load_result::Failed;
     }
 
-    const auto tex = m_asset_loader.load_texture(file_path);
-    if (!tex.success)
+    const auto sound = m_asset_loader.load_sound(file_path);
+    if (!sound.success)
     {
-        LOG_F(WARNING, "Could not load texture %s from %s", id.c_str(), file_path.c_str());
+        LOG_F(WARNING, "Could not load sound %s from %s", id.c_str(), file_path.c_str());
         return Load_result::Failed;
     }
-    LOG_F(INFO, "Loaded texture %s, mapped to id %s", file_path.c_str(), id.c_str());
-    m_textures.emplace(id, std::move(tex.texture));
+    LOG_F(INFO, "Loaded sound %s, mapped to id %s", file_path.c_str(), id.c_str());
+    m_sounds.emplace(id, std::move(sound.sound_buffer));
     m_asset_id_map.emplace(file_path, id);
     return Load_result::Ok;
-    return Load_result::Failed;
 }
 
 Load_result Assets::load_level(const std::string& file_path)

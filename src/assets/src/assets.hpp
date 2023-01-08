@@ -17,7 +17,7 @@ class Assets : public Assets_interface
 public:
     Assets();
     Load_result load_texture(const std::string& file_path, const Asset_id& id) final;
-    Load_result load_audio(const std::string& file_path, const Asset_id& id) final;
+    Load_result load_sound(const std::string& file_path, const Asset_id& id) final;
     Load_result load_level(const std::string& file_path) final;
     const sf::Texture* get_texture(const Asset_id& id) const final;
 
