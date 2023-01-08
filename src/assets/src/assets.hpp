@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 
+#include "SFML/Audio.hpp"
+#include "SFML/Graphics.hpp"
 #include "asset_loader.hpp"
 #include "assets/assets_interface.hpp"
 #include "level.hpp"
@@ -15,6 +17,7 @@ class Assets : public Assets_interface
 public:
     Assets();
     Load_result load_texture(const std::string& file_path, const Asset_id& id) final;
+    Load_result load_audio(const std::string& file_path, const Asset_id& id) final;
     Load_result load_level(const std::string& file_path) final;
     const sf::Texture* get_texture(const Asset_id& id) const final;
 
@@ -31,6 +34,7 @@ public:
 private:
     void create_color_textures();
     std::unordered_map<Asset_id, sf::Texture> m_textures;
+    std::unordered_map<Asset_id, sf::SoundBuffer> m_sounds;
     std::unordered_map<std::string, Asset_id> m_asset_id_map;
     Asset_loader m_asset_loader;
     level::Level m_loaded_level;

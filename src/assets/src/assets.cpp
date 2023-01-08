@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 
-#include "SFML/Graphics.hpp"
 #include "level_parser.hpp"
 #include "loguru/loguru.hpp"
 
@@ -67,6 +66,27 @@ Load_result Assets::load_texture(const std::string& file_path, const Asset_id& i
     m_textures.emplace(id, std::move(tex.texture));
     m_asset_id_map.emplace(file_path, id);
     return Load_result::Ok;
+}
+
+Load_result Assets::load_audio(const std::string& file_path, const Asset_id& id)
+{
+    if (m_sounds.count(id) > 0)
+    {
+        LOG_F(WARNING, "Asset loader: Texture with id %s already exists", id.c_str());
+        return Load_result::Failed;
+    }
+
+    const auto tex = m_asset_loader.load_texture(file_path);
+    if (!tex.success)
+    {
+        LOG_F(WARNING, "Could not load texture %s from %s", id.c_str(), file_path.c_str());
+        return Load_result::Failed;
+    }
+    LOG_F(INFO, "Loaded texture %s, mapped to id %s", file_path.c_str(), id.c_str());
+    m_textures.emplace(id, std::move(tex.texture));
+    m_asset_id_map.emplace(file_path, id);
+    return Load_result::Ok;
+    return Load_result::Failed;
 }
 
 Load_result Assets::load_level(const std::string& file_path)

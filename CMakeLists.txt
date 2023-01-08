@@ -12,6 +12,7 @@ set(TMXLITE_STATIC_LIB TRUE)
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 set(BUILD_SHARED_LIBS FALSE)
+set(SFML_USE_STATIC_STD_LIBS TRUE)
 
 add_subdirectory(lib)
 link_libraries(loguru)
