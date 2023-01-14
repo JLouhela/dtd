@@ -48,9 +48,9 @@ void spawn_enemies(game::sys::Wave_state& wave_state, entt::registry& reg, const
         if (spawn_time <= 0)
         {
             const auto& enemies = wave_state.current_wave->enemies[i];
-
             const auto spawn_point = level.get_waypoints()[wave_state.spawn_index].waypoints.front().point;
-            game::entity::factory::create_enemy(reg, enemies.type, spawn_point, wave_state.spawn_index);
+            game::entity::factory::create_enemy(reg, enemies.type, spawn_point, wave_state.spawn_index,
+                                                enemies.hitpoints);
             wave_state.spawned_counts[i]++;
             spawn_time = enemies.spawn_time;
         }

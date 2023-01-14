@@ -4,6 +4,7 @@
 #include "components/direction_component.hpp"
 #include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
+#include "components/health_component.hpp"
 #include "components/position_component.hpp"
 #include "components/projectile_component.hpp"
 #include "components/sound_component.hpp"
@@ -49,7 +50,8 @@ void create_debug_entity(entt::registry& registry)
 void create_enemy(entt::registry& registry,
                   const std::string& enemy_type_str,
                   const math::Float_vector& pos,
-                  const std::int8_t spawn_index)
+                  const std::int8_t spawn_index,
+                  const float hitpoints)
 {
     auto entity = registry.create();
     const auto enemy_type = get_enemy_type(enemy_type_str);
@@ -57,6 +59,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type_str));
     registry.emplace<game::comp::Direction>(entity, 0.f, 0.f);
     registry.emplace<game::comp::Enemy>(entity, 100);
+    registry.emplace<game::comp::Health>(entity, hitpoints);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 
     const auto velocity = get_enemy_velocity(enemy_type);

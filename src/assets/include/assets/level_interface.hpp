@@ -14,12 +14,14 @@ namespace level
 
 struct Enemy
 {
-    Enemy(std::string type, std::uint32_t count, float spawn_time) : type{type}, count{count}, spawn_time{spawn_time}
+    Enemy(std::string type, std::uint32_t count, float spawn_time, float hitpoints)
+        : type{type}, count{count}, spawn_time{spawn_time}, hitpoints{hitpoints}
     {
     }
     std::string type{"unknown"};
     std::uint32_t count{0};
     float spawn_time{0};
+    float hitpoints{0};
 };
 
 struct Enemy_wave

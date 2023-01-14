@@ -144,7 +144,7 @@ void parse_properties(const tmx::Map& map, assets::level::Level& level)
         for (std::uint32_t enemy_idx = 0; enemy_idx < enemies.size(); ++enemy_idx)
         {
             const auto& enemy = enemies[enemy_idx];
-            enemy_wave.enemies.emplace_back(enemy["type"], enemy["count"], enemy["spawn_time"]);
+            enemy_wave.enemies.emplace_back(enemy["type"], enemy["count"], enemy["spawn_time"], enemy["hitpoints"]);
         }
         level.add_wave(enemy_wave);
     }

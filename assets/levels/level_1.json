@@ -5,7 +5,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -14,7 +15,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -23,7 +25,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -32,7 +35,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -41,7 +45,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -50,7 +55,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -59,7 +65,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -68,7 +75,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -77,7 +85,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		},
@@ -86,7 +95,8 @@
 				{
 					"type": "basic",
 					"count": 5,
-					"spawn_time": 1.0
+					"spawn_time": 1.0,
+					"hitpoints": 100
 				}
 			]
 		}

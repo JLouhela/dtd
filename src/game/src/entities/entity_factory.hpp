@@ -13,7 +13,8 @@ void create_debug_entity(entt::registry& registry);
 void create_enemy(entt::registry& registry,
                   const std::string& enemy_type_str,
                   const math::Float_vector& pos,
-                  std::int8_t spawn_index);
+                  std::int8_t spawn_index,
+                  float hitpoints);
 
 void create_projectile(entt::registry& registry,
                        const types::Projectile_type& type,

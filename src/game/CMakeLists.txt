@@ -11,6 +11,7 @@ src/components/circle_radius_component.hpp
 src/components/direction_component.hpp
 src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
+src/components/health_component.hpp
 src/components/position_component.hpp
 src/components/projectile_component.hpp
 src/components/velocity_component.hpp
