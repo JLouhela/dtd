@@ -18,6 +18,11 @@ namespace assets::level
 class Level_interface;
 }
 
+namespace sound
+{
+class Sound_player_interface;
+}
+
 namespace game
 {
 class Scene_manager
@@ -25,7 +30,9 @@ class Scene_manager
 public:
     Scene_manager() = default;
 
-    void init(entt::registry& registry, renderer::Renderer_interface& renderer);
+    void init(entt::registry& registry,
+              renderer::Renderer_interface& renderer,
+              sound::Sound_player_interface& sound_player);
 
     void set_battle_scene(const assets::level::Level_interface& level_content);
 

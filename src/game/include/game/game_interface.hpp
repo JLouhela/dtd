@@ -13,6 +13,11 @@ namespace assets
 class Assets_interface;
 }
 
+namespace sound
+{
+class Sound_player_interface;
+}
+
 namespace game
 {
 
@@ -25,6 +30,7 @@ public:
 };
 
 std::unique_ptr<Game_interface> make_game(renderer::Renderer_interface& renderer_interface,
-                                          assets::Assets_interface& assets);
+                                          assets::Assets_interface& assets,
+                                          sound::Sound_player_interface& sound_player);
 
 }  // namespace game

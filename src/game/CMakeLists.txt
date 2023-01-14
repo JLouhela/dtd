@@ -13,8 +13,8 @@ src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
 src/components/position_component.hpp
 src/components/projectile_component.hpp
-src/components/projectile_hit_component.hpp
 src/components/velocity_component.hpp
+src/components/sound_component.hpp
 src/components/sprite_component.hpp
 src/components/sprite_animation_component.hpp
 src/components/waypoint_follower_component.hpp
@@ -43,6 +43,8 @@ src/systems/render_system.hpp
 src/systems/render_system.cpp
 src/systems/shooting_system.hpp
 src/systems/shooting_system.cpp
+src/systems/sound_system.hpp
+src/systems/sound_system.cpp
 src/systems/targeting_system.hpp
 src/systems/targeting_system.cpp
 src/systems/waypoint_follow_system.hpp
@@ -63,6 +65,7 @@ target_link_libraries(game
     PRIVATE
         assets_interface
         renderer_interface
+        sound_player_interface
         types
         EnTT
 )

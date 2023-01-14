@@ -6,7 +6,7 @@
 #include "components/enemy_shooter_component.hpp"
 #include "components/position_component.hpp"
 #include "components/projectile_component.hpp"
-#include "components/projectile_hit_component.hpp"
+#include "components/sound_component.hpp"
 #include "components/sprite_animation_component.hpp"
 #include "components/sprite_component.hpp"
 #include "components/velocity_component.hpp"
@@ -15,6 +15,7 @@
 #include "loguru/loguru.hpp"
 #include "math/vector.hpp"
 #include "renderer/sprite_id.hpp"
+#include "sound_player/sound_id.hpp"
 
 namespace
 {
@@ -82,7 +83,8 @@ void create_hit(entt::registry& registry, const types::Projectile_type& type, co
 {
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
-    registry.emplace<game::comp::Projectile_hit>(entity, type);
+    const auto sound_id = sound::get_hit_sound(type);
+    registry.emplace<game::comp::Sound>(entity, sound_id);
     registry.emplace<game::comp::Sprite_animation>(
         entity,
         std::vector<renderer::Sprite_id>{renderer::Sprite_id::Basic_projectile_hit_1,

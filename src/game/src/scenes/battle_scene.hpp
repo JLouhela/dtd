@@ -18,7 +18,9 @@ namespace game
 class Battle_scene : public Scene
 {
 public:
-    Battle_scene(entt::registry& registry, renderer::Renderer_interface& renderer);
+    Battle_scene(entt::registry& registry,
+                 renderer::Renderer_interface& renderer,
+                 sound::Sound_player_interface& sound_player);
 
     void dispose() final;
 
@@ -36,6 +38,7 @@ private:
     };
 
     void execute_renderers(float delta_time);
+    void execute_sound_systems(float delta_time);
     std::shared_ptr<Level> m_level{nullptr};
     Battle_state m_state{Battle_state::BUY};
     sys::Enemy_spawn_system m_enemy_spawner;

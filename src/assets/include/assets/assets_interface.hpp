@@ -8,7 +8,8 @@
 namespace sf
 {
 class Texture;
-}
+class SoundBuffer;
+}  // namespace sf
 
 namespace assets
 {
@@ -32,6 +33,7 @@ public:
     virtual Load_result load_sound(const std::string& file_path, const Asset_id& id) = 0;
     virtual Load_result load_level(const std::string& file_path) = 0;
     virtual const sf::Texture* get_texture(const Asset_id& id) const = 0;
+    virtual const sf::SoundBuffer* get_sound(const Asset_id& id) const = 0;
 
     virtual const level::Level_interface& get_loaded_level_content() const = 0;
     virtual const level::Render_level_interface& get_loaded_level_render() const = 0;

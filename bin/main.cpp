@@ -5,6 +5,7 @@
 #include "game_loop/game_loop_interface.hpp"
 #include "loguru/loguru.hpp"
 #include "renderer/renderer_interface.hpp"
+#include "sound_player/sound_player_interface.hpp"
 
 namespace
 {
@@ -24,9 +25,10 @@ int main(int argc, char* argv[])
     load_assets(*assets);
 
     auto renderer = renderer::make_renderer(*assets);
+    auto sound_player = sound::make_sound_player(*assets);
     renderer->get_level_renderer().init_current_Level();
 
-    auto game = game::make_game(*renderer, *assets);
+    auto game = game::make_game(*renderer, *assets, *sound_player);
     auto event_handler = events::make_event_handler(renderer->get_window());
     auto game_loop = game_loop::make_game_loop(*game, *renderer, *event_handler);
 

@@ -6,13 +6,17 @@
 #include "../systems/projectile_system.hpp"
 #include "../systems/render_system.hpp"
 #include "../systems/shooting_system.hpp"
+#include "../systems/sound_system.hpp"
 #include "../systems/targeting_system.hpp"
 #include "assets/level_interface.hpp"
 #include "renderer/renderer_interface.hpp"
 
 namespace game
 {
-Battle_scene::Battle_scene(entt::registry& registry, renderer::Renderer_interface& renderer) : Scene(registry, renderer)
+Battle_scene::Battle_scene(entt::registry& registry,
+                           renderer::Renderer_interface& renderer,
+                           sound::Sound_player_interface& sound_player)
+    : Scene(registry, renderer, sound_player)
 {
     entity::factory::create_debug_entity(registry);
 }
@@ -49,7 +53,13 @@ void Battle_scene::update(const float delta_time)
     sys::Targeting_system::acquire_targets(m_registry);
     sys::Shooting_system::shoot_enemies(m_registry, delta_time);
     sys::Projectile_system::destroy_projectiles(m_registry);
+    execute_sound_systems(delta_time);
     execute_renderers(delta_time);
+}
+
+void Battle_scene::execute_sound_systems(const float delta_time)
+{
+    sys::Sound_system::play_hit_sounds(m_sound_player, m_registry);
 }
 
 void Battle_scene::execute_renderers(const float delta_time)

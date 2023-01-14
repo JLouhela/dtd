@@ -99,13 +99,23 @@ Load_result Assets::load_level(const std::string& file_path)
     return Load_result::Ok;
 }
 
-// TODO templatize
 const sf::Texture* Assets::get_texture(const Asset_id& id) const
 {
     const auto it = m_textures.find(id);
     if (it == m_textures.end())
     {
         LOG_F(WARNING, "Texture %s does not exist!", id.c_str());
+        return nullptr;
+    }
+    return &(it->second);
+}
+
+const sf::SoundBuffer* Assets::get_sound(const Asset_id& id) const
+{
+    const auto it = m_sounds.find(id);
+    if (it == m_sounds.end())
+    {
+        LOG_F(WARNING, "Sound %s does not exist!", id.c_str());
         return nullptr;
     }
     return &(it->second);

@@ -20,6 +20,7 @@ public:
     Load_result load_sound(const std::string& file_path, const Asset_id& id) final;
     Load_result load_level(const std::string& file_path) final;
     const sf::Texture* get_texture(const Asset_id& id) const final;
+    const sf::SoundBuffer* get_sound(const Asset_id& id) const final;
 
     const level::Level_interface& get_loaded_level_content() const final
     {
