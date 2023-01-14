@@ -7,6 +7,8 @@ target_link_libraries(sound_player_interface
 
 add_library(sound_player
 src/sound_id.cpp
+src/sound_cache.hpp
+src/sound_cache.cpp
 src/sound_player.hpp
 src/sound_player.cpp
 )

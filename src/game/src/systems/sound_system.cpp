@@ -8,7 +8,7 @@ namespace game
 namespace sys::Sound_system
 {
 
-void play_hit_sounds(const sound::Sound_player_interface& sound_player, entt::registry& reg)
+void play_hit_sounds(sound::Sound_player_interface& sound_player, entt::registry& reg)
 {
     const auto view = reg.view<comp::Sound>();
     const entt::registry& creg = reg;

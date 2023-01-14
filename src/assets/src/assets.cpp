@@ -48,7 +48,7 @@ Assets::Assets()
     create_color_textures();
 }
 
-Load_result Assets::load_texture(const std::string& file_path, const Asset_id& id)
+Load_result Assets::load_texture(const std::string& file_path, const types::Asset_id& id)
 {
     if (m_textures.count(id) > 0)
     {
@@ -68,7 +68,7 @@ Load_result Assets::load_texture(const std::string& file_path, const Asset_id& i
     return Load_result::Ok;
 }
 
-Load_result Assets::load_sound(const std::string& file_path, const Asset_id& id)
+Load_result Assets::load_sound(const std::string& file_path, const types::Asset_id& id)
 {
     if (m_sounds.count(id) > 0)
     {
@@ -99,7 +99,7 @@ Load_result Assets::load_level(const std::string& file_path)
     return Load_result::Ok;
 }
 
-const sf::Texture* Assets::get_texture(const Asset_id& id) const
+const sf::Texture* Assets::get_texture(const types::Asset_id& id) const
 {
     const auto it = m_textures.find(id);
     if (it == m_textures.end())
@@ -110,7 +110,7 @@ const sf::Texture* Assets::get_texture(const Asset_id& id) const
     return &(it->second);
 }
 
-const sf::SoundBuffer* Assets::get_sound(const Asset_id& id) const
+const sf::SoundBuffer* Assets::get_sound_buffer(const types::Asset_id& id) const
 {
     const auto it = m_sounds.find(id);
     if (it == m_sounds.end())

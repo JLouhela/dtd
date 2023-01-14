@@ -12,7 +12,8 @@ namespace
 void load_assets(assets::Assets_interface& assets)
 {
     assets.load_texture("sprites/towerDefense_tilesheet.png", "td_tilesheet");
-    assets.load_sound("sound/effects/explosion.wav", "explosion");
+    assets.load_sound("sound/effects/explosion.wav", "explosion_wav");
+    assets.load_sound("sound/effects/explosion.ogg", "explosion_ogg");
     const std::string level_file = "levels/" + assets::levels::level_1;
     assets.load_level(level_file);
 }

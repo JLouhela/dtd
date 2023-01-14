@@ -16,16 +16,16 @@
 namespace
 {
 
-assets::Asset_id find_asset_id(const std::unordered_map<std::string, assets::Asset_id>& asset_id_map,
-                               const std::string& texture_name)
+types::Asset_id find_asset_id(const std::unordered_map<std::string, types::Asset_id>& asset_id_map,
+                              const std::string& texture_name)
 {
     const auto it = std::find_if(asset_id_map.begin(), asset_id_map.end(),
-                                 [texture_name](const std::pair<std::string, assets::Asset_id>& value)
+                                 [texture_name](const std::pair<std::string, types::Asset_id>& value)
                                  { return value.first.find(texture_name) != std::string::npos; });
 
     if (it == asset_id_map.end())
     {
-        return assets::Invalid_asset_id;
+        return types::Invalid_asset_id;
     }
     return it->second;
 }
@@ -78,7 +78,7 @@ void parse_object_layers(const std::vector<tmx::Layer::Ptr>& tmx_layers, assets:
 }
 
 void parse_tilesets(const std::vector<tmx::Tileset>& tmx_tilesets,
-                    const std::unordered_map<std::string, assets::Asset_id>& asset_id_map,
+                    const std::unordered_map<std::string, types::Asset_id>& asset_id_map,
                     assets::level::Level& level)
 {
     for (const auto& tmx_tileset : tmx_tilesets)
@@ -156,7 +156,8 @@ namespace assets
 {
 namespace level
 {
-Level Level_parser::load(const std::string& file_path, const std::unordered_map<std::string, Asset_id>& asset_id_map)
+Level Level_parser::load(const std::string& file_path,
+                         const std::unordered_map<std::string, types::Asset_id>& asset_id_map)
 {
     const std::string full_path = ASSET_FOLDER_ROOT + file_path;
     tmx::Map map;

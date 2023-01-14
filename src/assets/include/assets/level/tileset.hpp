@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../asset_id.hpp"
 #include "math/vector.hpp"
+#include "types/asset_id.hpp"
 
 namespace assets
 {
@@ -24,7 +24,7 @@ struct Tileset
         std::vector<math::Float_vector> vertices;
     };
 
-    Asset_id texture_id{0};
+    types::Asset_id texture_id{"unknown"};
     std::uint32_t first_gid{0};
     std::uint32_t last_gid{0};
     math::Int_vector tile_size{0, 0};

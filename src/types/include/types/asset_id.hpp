@@ -2,9 +2,9 @@
 
 #include <string>
 
-namespace assets
+namespace types
 {
 using Asset_id = std::string;
 static const Asset_id Invalid_asset_id{"undefined"};
 
-}  // namespace assets
+}  // namespace types

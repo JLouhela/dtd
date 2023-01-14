@@ -1,5 +1,10 @@
 add_library(assets_interface INTERFACE)
 target_include_directories(assets_interface INTERFACE include)
+target_link_libraries(assets_interface
+    INTERFACE
+        types
+)
+
 
 add_library(assets
 src/assets.hpp

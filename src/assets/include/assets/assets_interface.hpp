@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-#include "asset_id.hpp"
+#include "types/asset_id.hpp"
 
 namespace sf
 {
@@ -29,11 +29,11 @@ class Assets_interface
 {
 public:
     virtual ~Assets_interface() = default;
-    virtual Load_result load_texture(const std::string& file_path, const Asset_id& id) = 0;
-    virtual Load_result load_sound(const std::string& file_path, const Asset_id& id) = 0;
+    virtual Load_result load_texture(const std::string& file_path, const types::Asset_id& id) = 0;
+    virtual Load_result load_sound(const std::string& file_path, const types::Asset_id& id) = 0;
     virtual Load_result load_level(const std::string& file_path) = 0;
-    virtual const sf::Texture* get_texture(const Asset_id& id) const = 0;
-    virtual const sf::SoundBuffer* get_sound(const Asset_id& id) const = 0;
+    virtual const sf::Texture* get_texture(const types::Asset_id& id) const = 0;
+    virtual const sf::SoundBuffer* get_sound_buffer(const types::Asset_id& id) const = 0;
 
     virtual const level::Level_interface& get_loaded_level_content() const = 0;
     virtual const level::Render_level_interface& get_loaded_level_render() const = 0;
