@@ -1,16 +1,15 @@
-#include "debug_renderer.hpp"
+#include "shape_renderer.hpp"
 
 #include "loguru/loguru.hpp"
 #include "window_size.hpp"
 
 namespace renderer
 {
-
-Debug_renderer::Debug_renderer() : Subrenderer(nullptr)
+Shape_renderer::Shape_renderer() : Subrenderer(nullptr)
 {
 }
 
-void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& end, const sf::Color& color)
+void Shape_renderer::draw_line(const Screen_coord& start, const Screen_coord& end, const sf::Color& color)
 {
     sf::VertexArray line(sf::PrimitiveType::Lines, 2);
 
@@ -22,12 +21,12 @@ void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& en
     draw(line);
 }
 
-void Debug_renderer::draw_line(const Screen_coord& start, const Screen_coord& end)
+void Shape_renderer::draw_line(const Screen_coord& start, const Screen_coord& end)
 {
     draw_line(start, end, sf::Color::Black);
 }
 
-void Debug_renderer::draw_circle(const Screen_coord& center, float radius)
+void Shape_renderer::draw_circle(const Screen_coord& center, float radius)
 {
     sf::CircleShape circle;
     circle.setRadius(radius);
@@ -39,7 +38,7 @@ void Debug_renderer::draw_circle(const Screen_coord& center, float radius)
     draw(circle);
 }
 
-void Debug_renderer::draw_grid(const std::uint8_t grid_size)
+void Shape_renderer::draw_grid(const std::uint8_t grid_size)
 {
     const auto& screen_size = constants::WINDOW_SIZE;
     const auto row_count = static_cast<float>(screen_size.y / grid_size);

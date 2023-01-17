@@ -5,14 +5,10 @@
 
 #include "hud_renderer.hpp"
 #include "level_renderer.hpp"
-#include "renderer/level_renderer_interface.hpp"
 #include "renderer/renderer_interface.hpp"
+#include "shape_renderer.hpp"
 #include "sprite_cache.hpp"
 #include "sprite_renderer.hpp"
-
-#ifdef DEBUG
-#include "debug_renderer.hpp"
-#endif
 
 namespace renderer
 {
@@ -42,12 +38,10 @@ public:
         return m_level_renderer;
     }
 
-#ifdef DEBUG
-    Debug_renderer_interface& get_debug_renderer() final
+    Shape_renderer_interface& get_shape_renderer() final
     {
-        return m_debug_renderer;
+        return m_shape_renderer;
     }
-#endif
 
 private:
     sf::RenderWindow m_window;
@@ -56,9 +50,7 @@ private:
     Sprite_renderer m_sprite_renderer;
     Hud_renderer m_hud_renderer;
     Level_renderer m_level_renderer;
-#ifdef DEBUG
-    Debug_renderer m_debug_renderer;
-#endif
+    Shape_renderer m_shape_renderer;
 };
 
 }  // namespace renderer

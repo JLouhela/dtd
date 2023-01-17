@@ -65,8 +65,8 @@ void Battle_scene::execute_sound_systems(const float delta_time)
 void Battle_scene::execute_renderers(const float delta_time)
 {
 #ifdef DEBUG
-    sys::debug::Render_system::render_grid(m_renderer.get_debug_renderer());
-    sys::debug::Render_system::render_shoot_radiuses(m_renderer.get_debug_renderer(), m_registry);
+    sys::debug::Render_system::render_grid(m_renderer.get_shape_renderer());
+    sys::debug::Render_system::render_shoot_radiuses(m_renderer.get_shape_renderer(), m_registry);
 #endif
     sys::Render_system::render_level(m_renderer.get_level_renderer());
     sys::Render_system::render_sprites(m_registry, m_renderer.get_sprite_renderer());

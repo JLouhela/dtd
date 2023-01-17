@@ -33,19 +33,15 @@ void Renderer::render()
     sf::Sprite hud(m_hud_renderer.get_render_texture().getTexture());
     m_window.draw(hud);
 
-#ifdef DEBUG
-    sf::Sprite debug(m_debug_renderer.get_render_texture().getTexture());
-    m_window.draw(debug);
-#endif
+    sf::Sprite shapes(m_shape_renderer.get_render_texture().getTexture());
+    m_window.draw(shapes);
 
     m_window.display();
 }
 
 void Renderer::clear()
 {
-#ifdef DEBUG
-    m_debug_renderer.clear();
-#endif
+    m_shape_renderer.clear();
     m_level_renderer.clear();
     m_sprite_renderer.clear();
     m_hud_renderer.clear();
