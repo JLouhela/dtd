@@ -1,7 +1,22 @@
 #include "shape_renderer.hpp"
 
+#include <SFML/Graphics.hpp>
+
 #include "loguru/loguru.hpp"
 #include "window_size.hpp"
+
+namespace
+{
+sf::RectangleShape get_rect(const math::Float_rect& rect, const renderer::Color& outline_color)
+{
+    sf::RectangleShape rectangle;
+    rectangle.setSize(sf::Vector2f(rect.width, rect.height));
+    rectangle.setOutlineColor({outline_color.r, outline_color.g, outline_color.b, outline_color.a});
+    rectangle.setOutlineThickness(2);
+    rectangle.setPosition({rect.top_left.x, rect.top_left.y});
+    return rectangle;
+}
+}  // namespace
 
 namespace renderer
 {
@@ -54,6 +69,19 @@ void Shape_renderer::draw_grid(const std::uint8_t grid_size)
         draw_line({static_cast<float>(x) * grid_size, 0.f},
                   {static_cast<float>(x) * grid_size, static_cast<float>(screen_size.y)});
     }
+}
+
+void Shape_renderer::draw_rect(const math::Float_rect& rect, const Color& outline_color)
+{
+    const auto rectangle = get_rect(rect, outline_color);
+    draw(rectangle);
+}
+
+void Shape_renderer::draw_fill_rect(const math::Float_rect& rect, const Color& outline_color, const Color& fill_color)
+{
+    auto rectangle = get_rect(rect, outline_color);
+    rectangle.setFillColor({fill_color.r, fill_color.g, fill_color.b, fill_color.a});
+    draw(rectangle);
 }
 
 }  // namespace renderer
