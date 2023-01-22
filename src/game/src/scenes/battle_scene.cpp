@@ -71,6 +71,7 @@ void Battle_scene::execute_renderers(const float delta_time)
     sys::Render_system::render_level(m_renderer.get_level_renderer());
     sys::Render_system::render_sprites(m_registry, m_renderer.get_sprite_renderer());
     sys::Render_system::render_sprite_animations(m_registry, m_renderer.get_sprite_renderer(), delta_time);
+    sys::Render_system::render_hitpoints(m_registry, m_renderer.get_shape_renderer());
 
     // TODO hook to events
     const bool display_hud = false;

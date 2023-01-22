@@ -4,6 +4,7 @@ namespace renderer
 {
 class Hud_renderer_interface;
 class Sprite_renderer_interface;
+class Shape_renderer_interface;
 class Level_renderer_interface;
 }  // namespace renderer
 
@@ -18,7 +19,7 @@ namespace sys::Render_system
 {
 
 void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& renderer);
-void render_hitpoints(entt::registry& reg, renderer::Sprite_renderer_interface& renderer);
+void render_hitpoints(entt::registry& reg, renderer::Shape_renderer_interface& renderer);
 void render_sprite_animations(entt::registry& reg, renderer::Sprite_renderer_interface& renderer, float dt);
 void render_hud(renderer::Hud_renderer_interface& renderer);
 void render_level(renderer::Level_renderer_interface& renderer);

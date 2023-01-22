@@ -59,7 +59,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type_str));
     registry.emplace<game::comp::Direction>(entity, 0.f, 0.f);
     registry.emplace<game::comp::Enemy>(entity, 100);
-    registry.emplace<game::comp::Health>(entity, hitpoints);
+    registry.emplace<game::comp::Health>(entity, hitpoints, hitpoints);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 
     const auto velocity = get_enemy_velocity(enemy_type);

@@ -1,5 +1,6 @@
 #include "render_system.hpp"
 
+#include "../components/health_component.hpp"
 #include "../components/position_component.hpp"
 #include "../components/sprite_animation_component.hpp"
 #include "../components/sprite_component.hpp"
@@ -7,6 +8,7 @@
 #include "loguru/loguru.hpp"
 #include "renderer/hud_renderer_interface.hpp"
 #include "renderer/level_renderer_interface.hpp"
+#include "renderer/shape_renderer_interface.hpp"
 #include "renderer/sprite_renderer_interface.hpp"
 
 namespace game
@@ -53,6 +55,31 @@ void render_sprite_animations(entt::registry& reg, renderer::Sprite_renderer_int
         renderer.render_sprite(anim.frames[anim.cur_frame], screen_pos);
         anim.duration -= dt;
         anim.frame_duration -= dt;
+    }
+}
+
+void render_hitpoints(entt::registry& reg, renderer::Shape_renderer_interface& renderer)
+{
+    const auto& creg = reg;
+    const auto view = reg.view<comp::Position, comp::Health>();
+    for (const entt::entity e : view)
+    {
+        const auto& pos = creg.get<comp::Position>(e);
+        const auto& health = creg.get<comp::Health>(e);
+
+        static const renderer::Color fill_color{0, 255, 0};
+        static const renderer::Color outline_color{0, 0, 0};
+
+        static const float dx = -10.0f;
+        static const float dy = 20.0f;
+        static const float bar_height = 4.0f;
+
+        const float outline_length = health.max_health / 5.0f;
+        const float x = pos.x + dx;
+        const float y = pos.y + dy;
+        // TODO camera transform
+        math::Float_rect rect{x, y, outline_length, bar_height};
+        renderer.draw_fill_rect(rect, outline_color, fill_color);
     }
 }
 
