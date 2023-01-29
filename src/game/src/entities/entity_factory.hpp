@@ -23,7 +23,11 @@ void create_projectile(entt::registry& registry,
                        float velocity,
                        float damage);
 
-void create_hit(entt::registry& registry, const types::Projectile_type& type, const math::Float_vector& pos);
+void create_hit(entt::registry& registry,
+                const types::Projectile_type& type,
+                const math::Float_vector& pos,
+                float damage,
+                float radius);
 
 }  // namespace factory
 }  // namespace game::entity

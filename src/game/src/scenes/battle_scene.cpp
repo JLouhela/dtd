@@ -1,6 +1,7 @@
 #include "battle_scene.hpp"
 
 #include "../entities/entity_factory.hpp"
+#include "../systems/damage_system.hpp"
 #include "../systems/debug_render_system.hpp"
 #include "../systems/movement_system.hpp"
 #include "../systems/projectile_system.hpp"
@@ -52,6 +53,7 @@ void Battle_scene::update(const float delta_time)
     sys::Targeting_system::release_targets(m_registry);
     sys::Targeting_system::acquire_targets(m_registry);
     sys::Shooting_system::shoot_enemies(m_registry, delta_time);
+    sys::Damage_system::deal_damage(m_registry);
     sys::Projectile_system::destroy_projectiles(m_registry);
     execute_sound_systems(delta_time);
     execute_renderers(delta_time);

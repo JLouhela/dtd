@@ -1,6 +1,7 @@
 #include "entity_factory.hpp"
 
 #include "components/circle_radius_component.hpp"
+#include "components/damage_component.hpp"
 #include "components/direction_component.hpp"
 #include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
@@ -58,7 +59,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type_str));
     registry.emplace<game::comp::Direction>(entity, 0.f, 0.f);
-    registry.emplace<game::comp::Enemy>(entity, 100);
+    registry.emplace<game::comp::Enemy>(entity);
     registry.emplace<game::comp::Health>(entity, hitpoints, hitpoints);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 
@@ -82,12 +83,18 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Velocity>(entity, velocity);
 }
 
-void create_hit(entt::registry& registry, const types::Projectile_type& type, const math::Float_vector& pos)
+void create_hit(entt::registry& registry,
+                const types::Projectile_type& type,
+                const math::Float_vector& pos,
+                const float damage,
+                const float radius)
 {
     auto entity = registry.create();
     registry.emplace<game::comp::Position>(entity, pos.x, pos.y);
     const auto sound_id = sound::get_hit_sound(type);
     registry.emplace<game::comp::Sound>(entity, sound_id);
+    // TODO consider separate "direct damage" with no radius, just entity id
+    registry.emplace<game::comp::Damage>(entity, damage, radius);
     registry.emplace<game::comp::Sprite_animation>(
         entity,
         std::vector<renderer::Sprite_id>{renderer::Sprite_id::Basic_projectile_hit_1,

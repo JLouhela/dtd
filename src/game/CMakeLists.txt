@@ -8,6 +8,7 @@ src/game.cpp
 src/level.hpp
 src/level.cpp
 src/components/circle_radius_component.hpp
+src/components/damage_component.hpp
 src/components/direction_component.hpp
 src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
@@ -32,6 +33,8 @@ src/scenes/menu_scene.hpp
 src/scenes/menu_scene.cpp
 src/scenes/scene_manager.hpp
 src/scenes/scene_manager.cpp
+src/systems/damage_system.hpp
+src/systems/damage_system.cpp
 src/systems/debug_render_system.hpp
 src/systems/debug_render_system.cpp
 src/systems/enemy_spawn_system.hpp

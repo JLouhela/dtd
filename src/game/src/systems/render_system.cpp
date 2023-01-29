@@ -75,11 +75,14 @@ void render_hitpoints(entt::registry& reg, renderer::Shape_renderer_interface& r
         static const float bar_height = 4.0f;
 
         const float outline_length = health.max_health / 5.0f;
+        const float bar_length = health.health / 5.0f;
         const float x = pos.x + dx;
         const float y = pos.y + dy;
         // TODO camera transform
-        math::Float_rect rect{x, y, outline_length, bar_height};
-        renderer.draw_fill_rect(rect, outline_color, fill_color);
+        math::Float_rect outline_rect{x, y, outline_length, bar_height};
+        math::Float_rect bar_rect{x, y, bar_length, bar_height};
+        renderer.draw_rect(outline_rect, outline_color);
+        renderer.draw_fill_rect(bar_rect, outline_color, fill_color);
     }
 }
 

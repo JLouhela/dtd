@@ -45,7 +45,11 @@ void destroy_projectiles(entt::registry& reg)
 
         if (hit)
         {
-            entity::factory::create_hit(reg, projectile.type, projectile_pos);
+            // TODO define which kind of hit, e.g. aoe?
+            // TODO store radius to projectile
+            // TODO there is a very high risk to hit wrong enemy currently, mvp
+            static constexpr float radius = 10.0f;
+            entity::factory::create_hit(reg, projectile.type, target_pos, projectile.damage, radius);
             reg.destroy(e);
         }
     }

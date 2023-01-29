@@ -5,6 +5,7 @@
 #include "../components/position_component.hpp"
 #include "../entities/entity_factory.hpp"
 #include "loguru/loguru.hpp"
+#include "types/entity_id.hpp"
 #include "types/projectile_type.hpp"
 
 namespace game
@@ -18,7 +19,7 @@ void shoot_enemies(entt::registry& reg, float dt)
     for (const entt::entity e : view)
     {
         auto& shooter = reg.get<comp::Enemy_shooter>(e);
-        if (shooter.target_id == comp::INVALID_TARGET_ID)
+        if (shooter.target_id == types::Invalid_entity_id)
         {
             continue;
         }

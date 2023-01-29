@@ -33,5 +33,6 @@ void Sound_cache::add_sound(const Sound_id& id, const types::Asset_id& asset_id)
         return;
     }
     m_sounds[id] = sf::Sound{*buffer};
+    m_sounds[id].setVolume(50.0);
 }
 }  // namespace sound

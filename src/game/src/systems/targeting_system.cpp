@@ -8,6 +8,7 @@
 #include "../components/enemy_shooter_component.hpp"
 #include "../components/position_component.hpp"
 #include "loguru/loguru.hpp"
+#include "types/entity_id.hpp"
 
 namespace game
 {
@@ -22,7 +23,7 @@ void acquire_targets(entt::registry& reg)
     for (const entt::entity shooter_entity : shooter_view)
     {
         auto& shooter_shooter = reg.get<comp::Enemy_shooter>(shooter_entity);
-        if (shooter_shooter.target_id != comp::INVALID_TARGET_ID)
+        if (shooter_shooter.target_id != types::Invalid_entity_id)
         {
             // Already has target
             continue;
@@ -58,7 +59,7 @@ void release_targets(entt::registry& reg)
     for (const entt::entity shooter_entity : shooter_view)
     {
         auto& shooter_shooter = reg.get<comp::Enemy_shooter>(shooter_entity);
-        if (shooter_shooter.target_id == comp::INVALID_TARGET_ID)
+        if (shooter_shooter.target_id == types::Invalid_entity_id)
         {
             // No target
             continue;
@@ -72,7 +73,7 @@ void release_targets(entt::registry& reg)
         const auto distance = std::sqrt(std::powf(dx, 2) + std::powf(dy, 2));
         if (distance > shooter_radius.radius)
         {
-            shooter_shooter.target_id = comp::INVALID_TARGET_ID;
+            shooter_shooter.target_id = types::Invalid_entity_id;
         }
     }
 }

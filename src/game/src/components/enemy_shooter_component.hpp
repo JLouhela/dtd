@@ -3,17 +3,17 @@
 #include <cstdint>
 #include <limits>
 
+#include "types/entity_id.hpp"
+
 namespace game::comp
 {
-
-static constexpr std::uint32_t INVALID_TARGET_ID = std::numeric_limits<std::uint32_t>::max();
 
 struct Enemy_shooter
 {
     Enemy_shooter(float shooting_delay) : shooting_delay{shooting_delay}
     {
     }
-    std::uint32_t target_id{INVALID_TARGET_ID};
+    types::Entity_id target_id{types::Invalid_entity_id};
     float shooting_delay{1.0f};
     float shooting_time{0.0f};
 };
