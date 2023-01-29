@@ -37,6 +37,8 @@ src/systems/damage_system.hpp
 src/systems/damage_system.cpp
 src/systems/debug_render_system.hpp
 src/systems/debug_render_system.cpp
+src/systems/enemy_dispose_system.hpp
+src/systems/enemy_dispose_system.cpp
 src/systems/enemy_spawn_system.hpp
 src/systems/enemy_spawn_system.cpp
 src/systems/movement_system.hpp

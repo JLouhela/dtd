@@ -3,6 +3,7 @@
 #include "../entities/entity_factory.hpp"
 #include "../systems/damage_system.hpp"
 #include "../systems/debug_render_system.hpp"
+#include "../systems/enemy_dispose_system.hpp"
 #include "../systems/movement_system.hpp"
 #include "../systems/projectile_system.hpp"
 #include "../systems/render_system.hpp"
@@ -19,7 +20,8 @@ Battle_scene::Battle_scene(entt::registry& registry,
                            sound::Sound_player_interface& sound_player)
     : Scene(registry, renderer, sound_player)
 {
-    entity::factory::create_debug_entity(registry);
+    entity::factory::create_debug_entity(registry, 608.0f, 544.0f);
+    entity::factory::create_debug_entity(registry, 928.0f, 544.0f);
 }
 
 void Battle_scene::init(const assets::level::Level_interface& level_content)
@@ -55,6 +57,7 @@ void Battle_scene::update(const float delta_time)
     sys::Shooting_system::shoot_enemies(m_registry, delta_time);
     sys::Damage_system::deal_damage(m_registry);
     sys::Projectile_system::destroy_projectiles(m_registry);
+    sys::Enemy_dispose_system::dispose_enemies_by_health(m_registry);
     execute_sound_systems(delta_time);
     execute_renderers(delta_time);
 }

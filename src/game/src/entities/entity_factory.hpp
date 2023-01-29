@@ -8,7 +8,7 @@ namespace game::entity
 {
 namespace factory
 {
-void create_debug_entity(entt::registry& registry);
+void create_debug_entity(entt::registry& registry, float x, float y);
 
 void create_enemy(entt::registry& registry,
                   const std::string& enemy_type_str,

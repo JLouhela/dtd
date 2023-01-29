@@ -39,10 +39,10 @@ namespace game::entity
 {
 namespace factory
 {
-void create_debug_entity(entt::registry& registry)
+void create_debug_entity(entt::registry& registry, float x, float y)
 {
     auto entity = registry.create();
-    registry.emplace<game::comp::Position>(entity, 608.0f, 544.0f);
+    registry.emplace<game::comp::Position>(entity, x, y);
     registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Basic_tower);
     registry.emplace<game::comp::Enemy_shooter>(entity, 1.0f);
     registry.emplace<game::comp::Circle_radius>(entity, 200.0f);

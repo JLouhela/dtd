@@ -64,6 +64,11 @@ void release_targets(entt::registry& reg)
             // No target
             continue;
         }
+        if (!reg.valid(static_cast<entt::entity>(shooter_shooter.target_id)))
+        {
+            shooter_shooter.target_id = types::Invalid_entity_id;
+            continue;
+        }
         const auto& shooter_pos = creg.get<comp::Position>(shooter_entity);
         const auto& shooter_radius = creg.get<comp::Circle_radius>(shooter_entity);
 
