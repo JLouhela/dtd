@@ -20,7 +20,8 @@ class Battle_scene : public Scene
 public:
     Battle_scene(entt::registry& registry,
                  renderer::Renderer_interface& renderer,
-                 sound::Sound_player_interface& sound_player);
+                 sound::Sound_player_interface& sound_player,
+                 input::Input_handler_interface& input_handler);
 
     void dispose() final;
 

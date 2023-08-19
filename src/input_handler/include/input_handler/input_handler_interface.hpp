@@ -6,15 +6,17 @@ namespace events
 {
 class Event_handler_interface;
 }
-class Mouse_listener;
 namespace input
 {
 
+class Mouse_listener;
 class Input_handler_interface
 {
 public:
     virtual ~Input_handler_interface() = default;
-    void register_mouse_listener(const Mouse_listener& listener);
+    virtual void register_mouse_listener(const Mouse_listener& listener) = 0;
+    virtual void reset_listeners() = 0;
+
     // TODO read config
 };
 

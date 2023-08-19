@@ -12,10 +12,15 @@ Input_handler::Input_handler(events::Event_handler_interface& event_handler) : m
 {
 }
 
-void register_mouse_listener(const Mouse_listener& listener)
+void Input_handler::register_mouse_listener(const Mouse_listener& listener)
 {
     LOG_F(WARNING, "Register mouse listener - not implemented yet!");
 }
+
+void Input_handler::reset_listeners()
+{
+}
+
 std::unique_ptr<Input_handler_interface> make_input_handler(events::Event_handler_interface& event_handler)
 {
     return std::make_unique<Input_handler>(event_handler);

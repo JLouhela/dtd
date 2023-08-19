@@ -28,6 +28,8 @@ src/scenes/scene.hpp
 src/scenes/scene.cpp
 src/scenes/battle_scene.hpp
 src/scenes/battle_scene.cpp
+src/scenes/scene_input_handler.hpp
+src/scenes/scene_input_handler.cpp
 src/scenes/scene_id.hpp
 src/scenes/menu_scene.hpp
 src/scenes/menu_scene.cpp

@@ -4,7 +4,6 @@ target_include_directories(input_handler_interface INTERFACE include)
 add_library(input_handler
     src/input_handler.hpp
     src/input_handler.cpp
-    src/mouse_listener.hpp
 )
 
 target_include_directories(input_handler

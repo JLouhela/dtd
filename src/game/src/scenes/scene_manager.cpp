@@ -9,11 +9,12 @@ namespace game
 
 void Scene_manager::init(entt::registry& registry,
                          renderer::Renderer_interface& renderer,
-                         sound::Sound_player_interface& sound_player)
+                         sound::Sound_player_interface& sound_player,
+                         input::Input_handler_interface& input_handler)
 {
-    m_scenes.emplace(Scene_id::UNINITIALIZED, std::make_unique<Scene>(registry, renderer, sound_player));
-    m_scenes.emplace(Scene_id::BATTLE, std::make_unique<Battle_scene>(registry, renderer, sound_player));
-    m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>(registry, renderer, sound_player));
+    m_scenes.emplace(Scene_id::UNINITIALIZED, std::make_unique<Scene>(registry, renderer, sound_player, input_handler));
+    m_scenes.emplace(Scene_id::BATTLE, std::make_unique<Battle_scene>(registry, renderer, sound_player, input_handler));
+    m_scenes.emplace(Scene_id::MENU, std::make_unique<Menu_scene>(registry, renderer, sound_player, input_handler));
 }
 
 void Scene_manager::set_battle_scene(const assets::level::Level_interface& level_content)

@@ -17,8 +17,9 @@ namespace game
 {
 Battle_scene::Battle_scene(entt::registry& registry,
                            renderer::Renderer_interface& renderer,
-                           sound::Sound_player_interface& sound_player)
-    : Scene(registry, renderer, sound_player)
+                           sound::Sound_player_interface& sound_player,
+                           input::Input_handler_interface& input_handler)
+    : Scene(registry, renderer, sound_player, input_handler)
 {
     entity::factory::create_debug_entity(registry, 608.0f, 544.0f);
     entity::factory::create_debug_entity(registry, 928.0f, 544.0f);

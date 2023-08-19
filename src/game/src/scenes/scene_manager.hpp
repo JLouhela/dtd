@@ -22,6 +22,10 @@ namespace sound
 {
 class Sound_player_interface;
 }
+namespace input
+{
+class Input_handler_interface;
+}
 
 namespace game
 {
@@ -32,7 +36,8 @@ public:
 
     void init(entt::registry& registry,
               renderer::Renderer_interface& renderer,
-              sound::Sound_player_interface& sound_player);
+              sound::Sound_player_interface& sound_player,
+              input::Input_handler_interface& input_handler);
 
     void set_battle_scene(const assets::level::Level_interface& level_content);
 

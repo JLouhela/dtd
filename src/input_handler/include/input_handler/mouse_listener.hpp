@@ -4,6 +4,6 @@ namespace input
 class Mouse_listener
 {
 public:
-    virtual void Mouse_left_clicked() const = 0;
+    virtual void mouse_left_clicked(int x, int y) const = 0;
 };
 }  // namespace input

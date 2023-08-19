@@ -15,7 +15,7 @@ Game::Game(renderer::Renderer_interface& renderer,
     : m_renderer{renderer}, m_assets{assets}, m_sound_player{sound_player}, m_input_handler{input_handler}
 {
     // TODO init registry properly
-    m_scene_manager.init(m_registry, m_renderer, m_sound_player);
+    m_scene_manager.init(m_registry, m_renderer, m_sound_player, input_handler);
 
     // Assuming current level has been loaded OK before game ctor is called
     const auto& level_asset = assets.get_loaded_level_content();
