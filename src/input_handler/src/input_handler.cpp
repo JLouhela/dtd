@@ -10,11 +10,28 @@ namespace input
 
 Input_handler::Input_handler(events::Event_handler_interface& event_handler) : m_event_handler{event_handler}
 {
+    m_mouse_click_listener.name = "Input_mclick";
+    m_mouse_click_listener.callback = [this](const sf::Event& event)
+    {
+        if (!m_mouse_listener)
+        {
+            return;
+        }
+        if (event.mouseButton.button == sf::Mouse::Button::Left)
+        {
+            m_mouse_listener->mouse_left_clicked(event.mouseButton.x, event.mouseButton.y);
+        }
+    };
+    event_handler.register_listener(sf::Event::EventType::MouseButtonPressed, m_mouse_click_listener);
 }
 
 void Input_handler::register_mouse_listener(const Mouse_listener& listener)
 {
-    LOG_F(WARNING, "Register mouse listener - not implemented yet!");
+    if (m_mouse_listener)
+    {
+        LOG_F(INFO, "Input handler: Mouse listener replaced");
+    }
+    m_mouse_listener = &listener;
 }
 
 void Input_handler::reset_listeners()

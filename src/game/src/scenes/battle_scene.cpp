@@ -11,18 +11,34 @@
 #include "../systems/sound_system.hpp"
 #include "../systems/targeting_system.hpp"
 #include "assets/level_interface.hpp"
+#include "loguru/loguru.hpp"
 #include "renderer/renderer_interface.hpp"
 
 namespace game
 {
+
 Battle_scene::Battle_scene(entt::registry& registry,
                            renderer::Renderer_interface& renderer,
                            sound::Sound_player_interface& sound_player,
                            input::Input_handler_interface& input_handler)
     : Scene(registry, renderer, sound_player, input_handler)
 {
+    setup_input_handler();
     entity::factory::create_debug_entity(registry, 608.0f, 544.0f);
     entity::factory::create_debug_entity(registry, 928.0f, 544.0f);
+}
+
+void Battle_scene::setup_input_handler()
+{
+    m_input_handler.handle_mouse_left_click(
+        [](int x, int y)
+        {
+            // TODO: translate to tile -> create camera for transformations
+            // delegate to UI if underneath
+            // select towers
+            LOG_F(INFO, "mouse click: %d, %d", x, y);
+        });
+    m_input_handler.enable();
 }
 
 void Battle_scene::init(const assets::level::Level_interface& level_content)
@@ -39,6 +55,7 @@ std::string Battle_scene::get_level_id()
 
 void Battle_scene::dispose()
 {
+    m_input_handler.disable();
     m_enemy_spawner.set_level(std::weak_ptr<Level>());
 }
 

@@ -38,6 +38,8 @@ private:
 
     };
 
+    void setup_input_handler();
+
     void execute_renderers(float delta_time);
     void execute_sound_systems(float delta_time);
     std::shared_ptr<Level> m_level{nullptr};
