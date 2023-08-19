@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <vector>
 
 #include "SFML/Graphics/Sprite.hpp"
@@ -13,7 +14,7 @@ class Sprite_cache
 {
 public:
     Sprite_cache(const assets::Assets_interface& assets);
-    sf::Sprite get(const Sprite_id& id);
+    std::optional<sf::Sprite> get(const Sprite_id& id);
 
 private:
     struct Sprite_creation_data

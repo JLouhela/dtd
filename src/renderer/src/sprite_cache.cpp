@@ -15,15 +15,14 @@ Sprite_cache::Sprite_cache(const assets::Assets_interface& assets) : m_assets{as
     init_projectiles();
 }
 
-sf::Sprite Sprite_cache::get(const Sprite_id& id)
+std::optional<sf::Sprite> Sprite_cache::get(const Sprite_id& id)
 {
     auto it = std::find_if(std::begin(m_sprites), std::end(m_sprites),
                            [&id](const auto& CachedSprite) { return CachedSprite.id == id; });
     if (it == m_sprites.end())
     {
         LOG_F(ERROR, "Could not find sprite %d", static_cast<int>(id));
-        static const sf::Sprite invalid_sprite;
-        return invalid_sprite;
+        return {};
     }
     auto sprite = sf::Sprite{*it->texture, it->sprite_rect};
     sprite.setOrigin({static_cast<float>(it->sprite_rect.width / 2), static_cast<float>(it->sprite_rect.height / 2)});
