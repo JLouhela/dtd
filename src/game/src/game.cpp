@@ -10,8 +10,9 @@ namespace game
 
 Game::Game(renderer::Renderer_interface& renderer,
            assets::Assets_interface& assets,
-           sound::Sound_player_interface& sound_player)
-    : m_renderer{renderer}, m_assets{assets}, m_sound_player{sound_player}
+           sound::Sound_player_interface& sound_player,
+           input::Input_handler_interface& input_handler)
+    : m_renderer{renderer}, m_assets{assets}, m_sound_player{sound_player}, m_input_handler{input_handler}
 {
     // TODO init registry properly
     m_scene_manager.init(m_registry, m_renderer, m_sound_player);
@@ -28,9 +29,10 @@ void Game::update(float delta_time)
 
 std::unique_ptr<Game_interface> make_game(renderer::Renderer_interface& renderer,
                                           assets::Assets_interface& assets,
-                                          sound::Sound_player_interface& sound_player)
+                                          sound::Sound_player_interface& sound_player,
+                                          input::Input_handler_interface& input_handler)
 {
-    return std::make_unique<Game>(renderer, assets, sound_player);
+    return std::make_unique<Game>(renderer, assets, sound_player, input_handler);
 }
 
 }  // namespace game

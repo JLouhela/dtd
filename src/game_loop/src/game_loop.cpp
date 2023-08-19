@@ -22,7 +22,8 @@ void Game_loop::start()
     }
     m_running = true;
 
-    events::Event_listener loop_close_listener{"game_loop_close", [this](const sf::Event& event)
+    // TODO move to input_handler
+    events::Event_listener loop_close_listener{"game_loop_close", [this](const sf::Event&)
                                                {
                                                    LOG_F(INFO, "Window closed, shutdown game loop");
                                                    m_renderer.close_window();

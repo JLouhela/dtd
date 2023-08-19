@@ -3,6 +3,7 @@
 #include "event_handler/event_handler_interface.hpp"
 #include "game/game_interface.hpp"
 #include "game_loop/game_loop_interface.hpp"
+#include "input_handler/input_handler_interface.hpp"
 #include "loguru/loguru.hpp"
 #include "renderer/renderer_interface.hpp"
 #include "sound_player/sound_player_interface.hpp"
@@ -29,8 +30,9 @@ int main(int argc, char* argv[])
     auto sound_player = sound::make_sound_player(*assets);
     renderer->get_level_renderer().init_current_Level();
 
-    auto game = game::make_game(*renderer, *assets, *sound_player);
     auto event_handler = events::make_event_handler(renderer->get_window());
+    auto input_handler = input::make_input_handler(*event_handler);
+    auto game = game::make_game(*renderer, *assets, *sound_player, *input_handler);
     auto game_loop = game_loop::make_game_loop(*game, *renderer, *event_handler);
 
     game_loop->start();

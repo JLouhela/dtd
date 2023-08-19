@@ -70,6 +70,7 @@ target_link_libraries(game
         game_interface
     PRIVATE
         assets_interface
+        input_handler_interface
         renderer_interface
         sound_player_interface
         types

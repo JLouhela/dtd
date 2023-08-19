@@ -12,4 +12,5 @@ target_link_libraries(dtd
         game_loop
         event_handler
         sound_player
+        input_handler
 )

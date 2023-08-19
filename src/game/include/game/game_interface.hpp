@@ -3,19 +3,25 @@
 #include <cstdint>
 #include <memory>
 
-namespace renderer
-{
-class Renderer_interface;
-}
-
 namespace assets
 {
 class Assets_interface;
 }
-
+namespace renderer
+{
+class Renderer_interface;
+}
 namespace sound
 {
 class Sound_player_interface;
+}
+namespace events
+{
+class Event_handler_interface;
+}
+namespace input
+{
+class Input_handler_interface;
 }
 
 namespace game
@@ -31,6 +37,7 @@ public:
 
 std::unique_ptr<Game_interface> make_game(renderer::Renderer_interface& renderer_interface,
                                           assets::Assets_interface& assets,
-                                          sound::Sound_player_interface& sound_player);
+                                          sound::Sound_player_interface& sound_player,
+                                          input::Input_handler_interface& input_handler);
 
 }  // namespace game

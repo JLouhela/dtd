@@ -14,6 +14,7 @@ class Event_handler_interface
 public:
     virtual ~Event_handler_interface() = default;
     virtual void update() = 0;
+    // TODO consider decoupling from SFML event, now client needs to link sfml-window
     virtual void register_listener(sf::Event::EventType event, Event_listener listener) = 0;
 };
 
