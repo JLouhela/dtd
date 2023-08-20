@@ -22,13 +22,13 @@ void Waypoint_follow_system::update_entity_waypoints(entt::registry& reg)
 
             static constexpr float WAYPOINT_SWITCH_DISTANCE = 1.0f;
             const auto& waypoints = level->get_waypoints()[waypoint.spawn_index].waypoints;
-            if (waypoints.size() <= waypoint.waypoint_index)
+            if (waypoints.size() <= static_cast<size_t>(waypoint.waypoint_index))
             {
                 continue;
             }
             const auto& target = waypoints[waypoint.waypoint_index].point;
             const math::Float_vector direction{target.x - pos.x, target.y - pos.y};
-            const float distance_to_target = std::sqrt(std::powf(direction.x, 2) + std::powf(direction.y, 2));
+            const float distance_to_target = std::sqrt(std::pow(direction.x, 2) + std::pow(direction.y, 2));
             if (distance_to_target < WAYPOINT_SWITCH_DISTANCE)
             {
                 waypoint.waypoint_index++;
@@ -55,13 +55,13 @@ void Waypoint_follow_system::update_entity_directions(entt::registry& reg)
             const auto& waypoint = creg.get<comp::Waypoint_follower>(e);
 
             const auto& waypoints = level->get_waypoints()[waypoint.spawn_index].waypoints;
-            if (waypoints.size() <= waypoint.waypoint_index)
+            if (waypoints.size() <= static_cast<size_t>(waypoint.waypoint_index))
             {
                 continue;
             }
             const auto& target = waypoints[waypoint.waypoint_index].point;
             const math::Float_vector dir{target.x - pos.x, target.y - pos.y};
-            const float length = std::sqrt(std::powf(dir.x, 2) + std::powf(dir.y, 2));
+            const float length = std::sqrt(std::pow(dir.x, 2) + std::pow(dir.y, 2));
             direction.x = dir.x / length;
             direction.y = dir.y / length;
         }

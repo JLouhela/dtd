@@ -11,7 +11,7 @@ Sound_id get_hit_sound(const types::Projectile_type& projectile_type)
     {
         return it->second;
     }
-    LOG_F(WARNING, "Hit sound with id %s does not exist / mapping missing!", static_cast<int>(projectile_type));
+    LOG_F(WARNING, "Hit sound with id %d does not exist / mapping missing!", static_cast<int>(projectile_type));
     return Sound_id::Silent;
 }
 }  // namespace sound

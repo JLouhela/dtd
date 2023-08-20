@@ -1,5 +1,3 @@
-#pragma once
-
 #include "level_parser.hpp"
 
 #include <cstdint>

@@ -1,5 +1,3 @@
-#pragma once
-
 #include "subrenderer.hpp"
 
 #include "loguru/loguru.hpp"

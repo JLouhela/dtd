@@ -1,5 +1,3 @@
-#pragma once
-
 #include "level.hpp"
 
 namespace assets

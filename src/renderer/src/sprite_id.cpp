@@ -1,5 +1,3 @@
-#pragma once
-
 #include "renderer/sprite_id.hpp"
 
 #include "loguru/loguru.hpp"

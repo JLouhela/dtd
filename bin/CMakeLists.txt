@@ -7,8 +7,8 @@ target_link_libraries(dtd
 	PRIVATE
         assets
         loguru
-        renderer
         game
+        renderer
         game_loop
         event_handler
         sound_player

@@ -38,7 +38,7 @@ void acquire_targets(entt::registry& reg)
             const auto& enemy_pos = creg.get<comp::Position>(enemy_entity);
             const auto dx = shooter_pos.x - enemy_pos.x;
             const auto dy = shooter_pos.y - enemy_pos.y;
-            const auto distance_tmp = std::sqrt(std::powf(dx, 2) + std::powf(dy, 2));
+            const auto distance_tmp = std::sqrt(std::pow(dx, 2) + std::pow(dy, 2));
             if (distance_tmp < shooter_radius.radius && distance_tmp < distance)
             {
                 distance = distance_tmp;
@@ -75,7 +75,7 @@ void release_targets(entt::registry& reg)
         const auto& enemy_pos = creg.get<comp::Position>(entt::entity{shooter_shooter.target_id});
         const auto dx = shooter_pos.x - enemy_pos.x;
         const auto dy = shooter_pos.y - enemy_pos.y;
-        const auto distance = std::sqrt(std::powf(dx, 2) + std::powf(dy, 2));
+        const auto distance = std::sqrt(std::pow(dx, 2) + std::pow(dy, 2));
         if (distance > shooter_radius.radius)
         {
             shooter_shooter.target_id = types::Invalid_entity_id;

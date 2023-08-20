@@ -4,6 +4,7 @@
 
 namespace game
 {
+
 Level::Level(const assets::level::Level_interface& source) : m_content{source}
 {
 }

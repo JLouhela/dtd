@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sound_cache.hpp"
-#include "sound_player/sound_player_Interface.hpp"
+#include "sound_player/sound_player_interface.hpp"
 
 namespace sound
 {
