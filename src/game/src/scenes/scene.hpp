@@ -21,11 +21,13 @@ class Input_handler_interface;
 
 namespace game
 {
+class Camera;
 class Scene
 {
 public:
     virtual ~Scene() = default;
     Scene(entt::registry& registry,
+          Camera& camera,
           renderer::Renderer_interface& renderer,
           sound::Sound_player_interface& sound_player,
           input::Input_handler_interface& input_handler);
@@ -34,6 +36,7 @@ public:
 
 protected:
     entt::registry& m_registry;
+    Camera& m_camera;
     renderer::Renderer_interface& m_renderer;
     sound::Sound_player_interface& m_sound_player;
     Scene_input_handler m_input_handler;

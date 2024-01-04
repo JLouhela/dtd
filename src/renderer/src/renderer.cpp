@@ -57,6 +57,12 @@ sf::Window& Renderer::get_window()
     return m_window;
 }
 
+math::UInt_vector Renderer::get_window_size()
+{
+    const auto size = m_window.getSize();
+    return {size.x, size.y};
+}
+
 std::unique_ptr<Renderer_interface> make_renderer(const assets::Assets_interface& assets)
 {
     return std::make_unique<Renderer>(assets);

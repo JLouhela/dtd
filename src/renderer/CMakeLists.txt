@@ -34,6 +34,7 @@ target_include_directories(renderer
 
 target_link_libraries(renderer
     PUBLIC
+        math
         renderer_interface
         sfml-window
         types

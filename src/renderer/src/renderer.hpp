@@ -22,6 +22,7 @@ public:
     void clear() final;
     void close_window() final;
     sf::Window& get_window() final;
+    math::UInt_vector get_window_size() final;
 
     Sprite_renderer_interface& get_sprite_renderer() final
     {

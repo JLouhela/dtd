@@ -27,6 +27,7 @@ void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& re
 
         // TODO camera transform
         const auto screen_pos = renderer::Screen_coord{pos.x, pos.y};
+        // TODO transform component usage
         renderer.render_sprite(sprite.sprite, screen_pos);
     }
 }

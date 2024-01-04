@@ -11,6 +11,8 @@
 #include "components/sound_component.hpp"
 #include "components/sprite_animation_component.hpp"
 #include "components/sprite_component.hpp"
+#include "components/tower_component.hpp"
+#include "components/transform_component.hpp"
 #include "components/velocity_component.hpp"
 #include "components/waypoint_follower_component.hpp"
 #include "enemy_type.hpp"
@@ -45,6 +47,8 @@ void create_debug_entity(entt::registry& registry, float x, float y)
     registry.emplace<game::comp::Position>(entity, x, y);
     registry.emplace<game::comp::Sprite>(entity, renderer::Sprite_id::Basic_tower);
     registry.emplace<game::comp::Enemy_shooter>(entity, 0.5f);
+    registry.emplace<game::comp::Tower>(entity);
+    registry.emplace<game::comp::Transform>(entity, std::uint8_t{40}, std::uint8_t{50}, std::uint8_t{1});
     registry.emplace<game::comp::Circle_radius>(entity, 200.0f);
 }
 
@@ -60,6 +64,7 @@ void create_enemy(entt::registry& registry,
     registry.emplace<game::comp::Sprite>(entity, renderer::get_enemy_sprite(enemy_type_str));
     registry.emplace<game::comp::Direction>(entity, 0.f, 0.f);
     registry.emplace<game::comp::Enemy>(entity);
+    registry.emplace<game::comp::Transform>(entity, std::uint8_t{20}, std::uint8_t{32}, std::uint8_t{1});
     registry.emplace<game::comp::Health>(entity, hitpoints, hitpoints);
     registry.emplace<game::comp::Waypoint_follower>(entity, spawn_index, std::int8_t{1});
 

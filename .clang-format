@@ -1,6 +1,5 @@
 ---
 BasedOnStyle: Google
-AccessModifierOffset: '0'
 AllowShortBlocksOnASingleLine: 'false'
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: 'false'
@@ -19,6 +18,4 @@ SpacesInParentheses: 'false'
 UseTab: Never
 AccessModifierOffset: -4
 ColumnLimit: 120
-
-
 ...

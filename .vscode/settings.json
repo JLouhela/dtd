@@ -96,5 +96,6 @@
         "csignal": "cpp",
         "*.def": "cpp",
         "*.rh": "cpp"
-    }
+    },
+    "editor.defaultFormatter": null
 }

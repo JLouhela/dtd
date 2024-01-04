@@ -4,6 +4,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include "../camera/camera.hpp"
 #include "../level.hpp"
 #include "scene.hpp"
 #include "scene_id.hpp"
@@ -32,7 +33,7 @@ namespace game
 class Scene_manager
 {
 public:
-    Scene_manager() = default;
+    Scene_manager();
 
     void init(entt::registry& registry,
               renderer::Renderer_interface& renderer,
@@ -46,5 +47,6 @@ public:
 private:
     std::unordered_map<Scene_id, std::unique_ptr<Scene>> m_scenes;
     Scene_id m_current_scene{Scene_id::UNINITIALIZED};
+    Camera m_camera;
 };
 }  // namespace game

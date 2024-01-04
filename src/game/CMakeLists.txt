@@ -7,6 +7,8 @@ src/game.hpp
 src/game.cpp
 src/level.hpp
 src/level.cpp
+src/camera/camera.hpp
+src/camera/camera.cpp
 src/components/circle_radius_component.hpp
 src/components/damage_component.hpp
 src/components/direction_component.hpp
@@ -19,6 +21,8 @@ src/components/velocity_component.hpp
 src/components/sound_component.hpp
 src/components/sprite_component.hpp
 src/components/sprite_animation_component.hpp
+src/components/transform_component.hpp
+src/components/tower_component.hpp
 src/components/waypoint_follower_component.hpp
 src/entities/enemy_type.hpp
 src/entities/enemy_type.cpp
