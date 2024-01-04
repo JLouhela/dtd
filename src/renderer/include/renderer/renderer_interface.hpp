@@ -10,7 +10,7 @@
 namespace sf
 {
 class Window;
-class Event;
+struct Event;
 }  // namespace sf
 
 namespace assets

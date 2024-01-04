@@ -5,7 +5,7 @@
 
 namespace sf
 {
-class Event;
+struct Event;
 }
 
 namespace events

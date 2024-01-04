@@ -32,7 +32,7 @@ void Game_loop::start()
 
     events::Event_listener speed_button{"double_speed_button", [this](const sf::Event& event)
                                         {
-                                            if (event.key.code != sf::Keyboard::Space)
+                                            if (event.key.code != sf::Keyboard::Key::Space)
                                             {
                                                 return;
                                             }

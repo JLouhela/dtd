@@ -32,7 +32,7 @@ void Sound_cache::add_sound(const Sound_id& id, const types::Asset_id& asset_id)
         LOG_F(WARNING, "Could not get sound buffer for asset id %s", asset_id.c_str());
         return;
     }
-    m_sounds[id] = sf::Sound{*buffer};
-    m_sounds[id].setVolume(50.0);
+    m_sounds.emplace(id, sf::Sound{*buffer});
+    m_sounds.at(id).setVolume(50.0);
 }
 }  // namespace sound
