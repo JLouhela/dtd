@@ -17,6 +17,11 @@ public:
         m_viewport_size = size;
     }
 
+    math::UInt_vector get_viewport_size()
+    {
+        return m_viewport_size;
+    }
+
     void set_position(const math::Int_vector& pos)
     {
         m_position = pos;
