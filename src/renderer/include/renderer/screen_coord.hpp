@@ -5,6 +5,6 @@
 namespace renderer
 {
 
-using Screen_coord = math::Float_vector;
+using Screen_coord = math::Int_vector;
 
 }  // namespace renderer

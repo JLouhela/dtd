@@ -23,16 +23,19 @@ Renderer::Renderer(const assets::Assets_interface& assets)
 
 void Renderer::render()
 {
-    m_window.clear(bg_color);
+    m_level_renderer.get_render_texture().display();
     sf::Sprite level(m_level_renderer.get_render_texture().getTexture());
     m_window.draw(level);
 
+    m_sprite_renderer.get_render_texture().display();
     sf::Sprite sprites(m_sprite_renderer.get_render_texture().getTexture());
     m_window.draw(sprites);
 
+    m_hud_renderer.get_render_texture().display();
     sf::Sprite hud(m_hud_renderer.get_render_texture().getTexture());
     m_window.draw(hud);
 
+    m_shape_renderer.get_render_texture().display();
     sf::Sprite shapes(m_shape_renderer.get_render_texture().getTexture());
     m_window.draw(shapes);
 
@@ -45,6 +48,7 @@ void Renderer::clear()
     m_level_renderer.clear();
     m_sprite_renderer.clear();
     m_hud_renderer.clear();
+    m_window.clear(bg_color);
 }
 
 void Renderer::close_window()

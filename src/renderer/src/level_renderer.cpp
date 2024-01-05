@@ -19,7 +19,7 @@ const assets::level::Tileset* find_tile_set(const std::vector<assets::level::Til
                                     [](const assets::level::Layer::Tile& tile) { return tile.id != 0; });
     if (id_it == std::end(tiles))
     {
-        return 0;
+        return nullptr;
     }
     id = id_it->id;
     auto it = std::find_if(std::begin(tilesets), std::end(tilesets),

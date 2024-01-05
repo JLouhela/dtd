@@ -47,6 +47,7 @@ void destroy_projectiles(entt::registry& reg)
         {
             // TODO define which kind of hit, e.g. aoe?
             // TODO there is a very high risk to hit wrong enemy currently, mvp
+            // TODO doesn't even work if enemies are slow -> need to raycast better
             static constexpr float radius = 10.0f;
             entity::factory::create_hit(reg, projectile.type, target_pos, projectile.damage, radius);
             reg.destroy(e);

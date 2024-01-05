@@ -26,7 +26,9 @@ void render_sprites(entt::registry& reg, renderer::Sprite_renderer_interface& re
         const auto& sprite = creg.get<comp::Sprite>(e);
 
         // TODO camera transform
-        const auto screen_pos = renderer::Screen_coord{pos.x, pos.y};
+        const auto screen_pos =
+            renderer::Screen_coord{static_cast<std::int32_t>(pos.x), static_cast<std::int32_t>(pos.y)};
+
         // TODO transform component usage
         renderer.render_sprite(sprite.sprite, screen_pos);
     }
@@ -52,7 +54,8 @@ void render_sprite_animations(entt::registry& reg, renderer::Sprite_renderer_int
         }
         // TODO camera transform
         const auto& pos = creg.get<comp::Position>(e);
-        const auto screen_pos = renderer::Screen_coord{pos.x, pos.y};
+        const auto screen_pos =
+            renderer::Screen_coord{static_cast<std::int32_t>(pos.x), static_cast<std::int32_t>(pos.y)};
         renderer.render_sprite(anim.frames[anim.cur_frame], screen_pos);
         anim.duration -= dt;
         anim.frame_duration -= dt;
@@ -72,7 +75,7 @@ void render_hitpoints(entt::registry& reg, renderer::Shape_renderer_interface& r
         static const renderer::Color outline_color{0, 0, 0};
 
         static const float dx = -10.0f;
-        static const float dy = 20.0f;
+        static const float dy = -20.0f;
         static const float bar_height = 4.0f;
 
         const float outline_length = health.max_health / 5.0f;

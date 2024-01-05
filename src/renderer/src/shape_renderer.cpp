@@ -49,25 +49,23 @@ void Shape_renderer::draw_circle(const Screen_coord& center, float radius)
     circle.setFillColor({200, 0, 0, 128});
     circle.setOrigin({radius, radius});
     circle.setOutlineThickness(1);
-    circle.setPosition({center.x, center.y});
+    circle.setPosition({static_cast<float>(center.x), static_cast<float>(center.y)});
     draw(circle);
 }
 
 void Shape_renderer::draw_grid(const std::uint8_t grid_size)
 {
     const auto& screen_size = constants::WINDOW_SIZE;
-    const auto row_count = static_cast<float>(screen_size.y / grid_size);
-    const auto col_count = static_cast<float>(screen_size.x / grid_size);
+    const auto row_count = screen_size.y / grid_size;
+    const auto col_count = screen_size.x / grid_size;
 
     for (int y = 0; y <= static_cast<int>(row_count); ++y)
     {
-        draw_line({0.f, static_cast<float>(y) * grid_size},
-                  {static_cast<float>(screen_size.x), static_cast<float>(y) * grid_size});
+        draw_line({0, y * grid_size}, {static_cast<std::int32_t>(screen_size.x), y * grid_size});
     }
     for (int x = 0; x <= static_cast<int>(col_count); ++x)
     {
-        draw_line({static_cast<float>(x) * grid_size, 0.f},
-                  {static_cast<float>(x) * grid_size, static_cast<float>(screen_size.y)});
+        draw_line({x * grid_size, 0}, {x * grid_size, static_cast<std::int32_t>(screen_size.y)});
     }
 }
 

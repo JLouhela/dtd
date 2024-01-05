@@ -22,7 +22,7 @@ void render_shoot_radiuses(renderer::Shape_renderer_interface& renderer, entt::r
     {
         const auto& radius = creg.get<comp::Circle_radius>(e);
         const auto& pos = creg.get<comp::Position>(e);
-        renderer.draw_circle({pos.x, pos.y}, radius.radius);
+        renderer.draw_circle({static_cast<std::int32_t>(pos.x), static_cast<std::int32_t>(pos.y)}, radius.radius);
     }
 }
 

@@ -29,8 +29,8 @@ Battle_scene::Battle_scene(entt::registry& registry,
     : Scene(registry, camera, renderer, sound_player, input_handler)
 {
     setup_input_handler();
-    entity::factory::create_debug_entity(registry, 608.0f, 362.0f);
-    entity::factory::create_debug_entity(registry, 608.0f, 608.f);
+    entity::factory::create_debug_entity(registry, 608.0f, 352.0f);
+    entity::factory::create_debug_entity(registry, 864.0f, 544.f);
 }
 
 void Battle_scene::setup_input_handler()
@@ -38,14 +38,12 @@ void Battle_scene::setup_input_handler()
     m_input_handler.handle_mouse_left_click(
         [&camera = m_camera, &registry = m_registry](int x, int y)
         {
+            // TODO store component, move logic to system
             // TODO check mouse click in order
             // 1. HUD
             // .. TBD, there's  no hud yet
             // 2. towers
             const auto viewport = camera.get_viewport_size();
-            // TODO this is now quite ugly: RenderTexture seems to render 0,0 to bottomleft (due to FBO?)
-            // -> Need to find a proper solution, but for now our 0,0 is at bottomleft.
-            const math::Int_vector mouse_pos = {x, static_cast<int>(viewport.y) - y};
             auto tower_view =
                 registry.view<const game::comp::Tower, game::comp::Position, const game::comp::Transform>();
             // use forward iterators and get only the components of interest
@@ -58,11 +56,10 @@ void Battle_scene::setup_input_handler()
                 const float height = static_cast<float>(transform.height) * transform.scale;
                 const math::Float_rect tower_rect = {pos.x - width / 2, pos.y - height / 2, width, height};
 
-                const auto hit = tower_rect.contains(
-                    math::Float_vector{static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)});
+                const auto hit = tower_rect.contains(math::Float_vector{static_cast<float>(x), static_cast<float>(y)});
                 if (hit)
                 {
-                    LOG_F(INFO, "mouse click HIT: %d, %d", mouse_pos.x, mouse_pos.y);
+                    LOG_F(INFO, "mouse click HIT: %d, %d", x, y);
                 }
             }
         });
