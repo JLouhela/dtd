@@ -1,13 +1,13 @@
 #pragma once
 
 #include <unordered_map>
+#include "SFML/Audio/Sound.hpp"
 
 #include "sound_player/sound_id.hpp"
 #include "types/asset_id.hpp"
 
 namespace sf
 {
-class Sound;
 class SoundBuffer;
 }  // namespace sf
 

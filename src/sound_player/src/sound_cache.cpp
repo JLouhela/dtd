@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-#include "SFML/Audio/Sound.hpp"
 #include "assets/assets_interface.hpp"
 #include "loguru/loguru.hpp"
 

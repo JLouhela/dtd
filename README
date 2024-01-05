@@ -5,7 +5,15 @@ Tech stack: SFLM 3 (WIP) and C++17.
 
 Nothing here yet
 
+## Prerequisites
+
+SFML dependencies need to be installed to the host system: https://www.sfml-dev.org/tutorials/2.6/compile-with-cmake.php
+
+There is install_sfml_dependencies.sh for linux in the repository.
+
 ## Usage
+
+Pull submodules first: git submodule update --init --recursive
 
 make generate
 make compile
