@@ -15,6 +15,7 @@ struct Enemy_shooter
     }
     types::Entity_id target_id{types::Invalid_entity_id};
     float shooting_delay{1.0f};
+    bool enabled{true};
     float shooting_time{0.0f};
 };
 

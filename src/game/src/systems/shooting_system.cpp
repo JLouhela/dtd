@@ -19,6 +19,10 @@ void shoot_enemies(entt::registry& reg, float dt)
     for (const entt::entity e : view)
     {
         auto& shooter = reg.get<comp::Enemy_shooter>(e);
+        if (!shooter.enabled)
+        {
+            continue;
+        }
         if (shooter.target_id == types::Invalid_entity_id)
         {
             continue;

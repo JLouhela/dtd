@@ -41,7 +41,7 @@ void acquire_targets(entt::registry& reg)
             const auto distance_tmp = std::sqrt(std::pow(dx, 2) + std::pow(dy, 2));
             if (distance_tmp < shooter_radius.radius && distance_tmp < distance)
             {
-                distance = distance_tmp;
+                distance = static_cast<float>(distance_tmp);
                 target = enemy_entity;
             }
         }

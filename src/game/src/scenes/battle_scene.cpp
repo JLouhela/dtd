@@ -15,8 +15,35 @@
 #include "components/position_component.hpp"
 #include "components/tower_component.hpp"
 #include "components/transform_component.hpp"
+#include "entities/command_factory.hpp"
 #include "loguru/loguru.hpp"
 #include "renderer/renderer_interface.hpp"
+
+namespace
+{
+bool handle_mouse_click_tower(entt::registry& registry, int x, int y)
+{
+    auto tower_view = registry.view<const game::comp::Tower, game::comp::Position, const game::comp::Transform>();
+    // use forward iterators and get only the components of interest
+    for (auto entity : tower_view)
+    {
+        auto& pos = tower_view.get<const game::comp::Position>(entity);
+        auto& transform = tower_view.get<const game::comp::Transform>(entity);
+
+        const float width = static_cast<float>(transform.width) * transform.scale;
+        const float height = static_cast<float>(transform.height) * transform.scale;
+        const math::Float_rect tower_rect = {pos.x - width / 2, pos.y - height / 2, width, height};
+
+        const auto hit = tower_rect.contains(math::Float_vector{static_cast<float>(x), static_cast<float>(y)});
+        if (hit)
+        {
+            LOG_F(INFO, "TODO: tower select command created -> handle it");
+            game::entity::factory::create_tower_select_command(registry, static_cast<types::Entity_id>(entity));
+        }
+    }
+    return false;
+}
+}  // namespace
 
 namespace game
 {
@@ -38,30 +65,12 @@ void Battle_scene::setup_input_handler()
     m_input_handler.handle_mouse_left_click(
         [&camera = m_camera, &registry = m_registry](int x, int y)
         {
-            // TODO store component, move logic to system
-            // TODO check mouse click in order
-            // 1. HUD
-            // .. TBD, there's  no hud yet
-            // 2. towers
-            const auto viewport = camera.get_viewport_size();
-            auto tower_view =
-                registry.view<const game::comp::Tower, game::comp::Position, const game::comp::Transform>();
-            // use forward iterators and get only the components of interest
-            for (auto entity : tower_view)
+            // TODO handle in order
+            if (handle_mouse_click_tower(registry, x, y))
             {
-                auto& pos = tower_view.get<const game::comp::Position>(entity);
-                auto& transform = tower_view.get<const game::comp::Transform>(entity);
-
-                const float width = static_cast<float>(transform.width) * transform.scale;
-                const float height = static_cast<float>(transform.height) * transform.scale;
-                const math::Float_rect tower_rect = {pos.x - width / 2, pos.y - height / 2, width, height};
-
-                const auto hit = tower_rect.contains(math::Float_vector{static_cast<float>(x), static_cast<float>(y)});
-                if (hit)
-                {
-                    LOG_F(INFO, "mouse click HIT: %d, %d", x, y);
-                }
+                return;
             }
+            // HUD.. etc
         });
     m_input_handler.enable();
 }
