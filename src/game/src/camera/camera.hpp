@@ -17,7 +17,7 @@ public:
         m_viewport_size = size;
     }
 
-    math::UInt_vector get_viewport_size()
+    math::UInt_vector get_viewport_size() const
     {
         return m_viewport_size;
     }

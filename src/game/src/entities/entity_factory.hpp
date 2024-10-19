@@ -16,6 +16,8 @@ void create_enemy(entt::registry& registry,
                   std::int8_t spawn_index,
                   float hitpoints);
 
+void create_mouse_click(entt::registry& registry, int x, int y);
+
 void create_projectile(entt::registry& registry,
                        const types::Projectile_type& type,
                        const math::Float_vector& pos,

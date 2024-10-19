@@ -6,6 +6,7 @@
 #include "components/enemy_component.hpp"
 #include "components/enemy_shooter_component.hpp"
 #include "components/health_component.hpp"
+#include "components/mouse_click_component.hpp"
 #include "components/position_component.hpp"
 #include "components/projectile_component.hpp"
 #include "components/sound_component.hpp"
@@ -30,6 +31,10 @@ float get_enemy_velocity(const game::entity::Enemy_type type)
     case game::entity::Enemy_type::basic:
     {
         return 1.0f;
+    }
+    case game::entity::Enemy_type::unknown:
+    {
+        break;
     }
     }
     LOG_F(WARNING, "Unhandled enemy type %d, cannot provide velocity. Using 1.0f", static_cast<uint8_t>(type));
@@ -86,6 +91,13 @@ void create_projectile(entt::registry& registry,
     registry.emplace<game::comp::Direction>(entity, dir.x, dir.y);
     registry.emplace<game::comp::Projectile>(entity, damage, target_pos, type);
     registry.emplace<game::comp::Velocity>(entity, velocity);
+}
+
+void create_mouse_click(entt::registry& registry, int x, int y)
+{
+    auto entity = registry.create();
+    registry.emplace<game::comp::Position>(entity, static_cast<float>(x), static_cast<float>(y));
+    registry.emplace<game::comp::Mouse_click>(entity);
 }
 
 void create_hit(entt::registry& registry,

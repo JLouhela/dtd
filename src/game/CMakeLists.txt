@@ -16,6 +16,7 @@ src/components/direction_component.hpp
 src/components/enemy_component.hpp
 src/components/enemy_shooter_component.hpp
 src/components/health_component.hpp
+src/components/mouse_click_component.hpp
 src/components/position_component.hpp
 src/components/projectile_component.hpp
 src/components/velocity_component.hpp
@@ -52,6 +53,8 @@ src/systems/enemy_spawn_system.hpp
 src/systems/enemy_spawn_system.cpp
 src/systems/movement_system.hpp
 src/systems/movement_system.cpp
+src/systems/mouse_click_system.hpp
+src/systems/mouse_click_system.cpp
 src/systems/projectile_system.hpp
 src/systems/projectile_system.cpp
 src/systems/render_system.hpp

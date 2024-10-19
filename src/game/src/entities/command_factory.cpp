@@ -1,5 +1,3 @@
-#pragma once
-
 #include "command_factory.hpp"
 
 #include "components/commands/tower_select_command.hpp"
